@@ -227,3 +227,58 @@ I was then finally able to declare the exchanges:
 root# rmq -V /sobs/de declare exchange name=de type=topic auto_delete=false durable=true internal=false
 root# rmq -V /sobs/data-store declare exchange name=irods type=topic auto_delete=false durable=true internal=false
 ```
+
+## Install iRODS rules.
+
+An Ansible role was available for this, but it didn't quite suit the needs of the SOBS deployment because not all of the
+settings that needed to be modified were configurable. Also, the default zone name was configurable, but the
+configuration parameter wasn't used in all relevant places. I ended up using the role to generate the configuration,
+editing the resulting files manually, and running the iRODS setup script once again for good measure.
+
+### Created a playbook for deploying iRODS
+
+``` yaml
+# Note: this playbook was created for the SOBS deployment. It uses some additional iRODS settings that aren't
+# currently included in the group variables for other deployments. Use with caution.
+---
+- hosts: irods
+  become: true
+  gather_facts: true
+  vars:
+    cfg: "{{ amqp.irods }}"
+    amqp_uri: "amqp://{{ cfg.user }}:{{ cfg.password }}@{{ cfg.host }}:{{ cfg.port }}/{{ cfg.vhost_encoded }}"
+  roles:
+    - role: CyVerse-Ansible.cyverse-irods-cfg
+      irods_amqp_uri: "{{ amqp_uri }}"
+      irods_default_resource_name: "{{ irods.resource.name }}"
+      irods_default_resource_directory: "{{ irods.resource.directory }}"
+      irods_negotiation_key: "{{ irods.resource.negotiation_key }}"
+      irods_server_control_plane_key: "{{ irods.resource.control_plane_key }}"
+      irods_zone_key: "{{ irods.resource.zone_key }}"
+      irods_db:
+        host: "{{ icat.host }}"
+        port: "{{ icat.port }}"
+        username: "{{ icat.user }}"
+        password: "{{ icat.password }}"
+```
+
+The custom iRODS settings mentioned in the header comments include the iRODS resource settings. These settings appear in
+`group_vars/sobs`, but nowhere else.
+
+### Installed the role on my workstation.
+
+```
+myself$ sudo ansible-galaxy install CyVerse-Ansible.cyverse-irods-cfg
+```
+
+### Ran the playbook on my workstation.
+
+```
+myself$ ansible-playbook -i inventories/sobs -K deployrods.yaml
+```
+
+### Fixed the configuration files.
+
+- Replaced `iplant` with `sobs` wherever it was used to refer to a zone name.
+- Corrected any incorrect values in the iRODS configuration files.
+- Ran `/var/lib/irods/packaging/setup_irods.sh` again for good measure.
