@@ -535,6 +535,69 @@ These changes required a restart:
 root# systemctl restart elasticsearch
 ```
 
-## Allow connections to ElasticSearch ports.
+### Allow connections to ElasticSearch ports.
 
 Updated the firewall to allow connections to ElasticSearch ports and restarted the firewall.
+
+## Install Docker
+
+I did this on my host using Ansible ad-hoc commands. I had to downgrade from Ansible version 2.2.0.0 to version 2.1.1.0
+in order for this to work.
+
+### Install the YUM version lock plugin.
+
+```
+myself$ ansible -i inventories/sobs docker-ready -u root -a "yum install -y yum-plugin-versionlock"
+
+```
+
+### Install the Docker YUM repository.
+
+The easiest way to do that was to create the file locally then copy it over to the remote host. Here are the contents of
+the local file (`docker.repo`):
+
+```
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+```
+
+The command to copy the file to each remote host was relatively simple:
+
+```
+myself$ ansible -i inventories/sobs docker-ready -u root -m copy -a "src=docker.repo dest=/etc/yum.repos.d/docker.repo"
+```
+
+### Update the YUM cache.
+
+```
+myself$ ansible -i inventories/sobs docker-ready -u root -a "yum makecache"
+```
+
+### Install `docker-engine`.
+
+```
+myself$ ansible -i inventories/sobs docker-ready -u root -a "yum install -y docker-engine-1.11.2"
+```
+
+### Lock the `docker-engine` package version.
+
+```
+myself$ ansible -i inventories/sobs docker-ready -u root -a "yum install -y docker-engine-1.11.2"
+```
+
+### Enable and start the Docker service.
+
+```
+myself$ ansible -i inventories/sobs docker-ready -u root -a "systemctl enable docker.service"
+myself$ ansible -i inventories/sobs docker-ready -u root -a "systemctl start docker.service"
+```
+
+### Verify that Docker is running.
+
+```
+myself$ ansible -i inventories/sobs docker-ready -u root -a "docker run --rm hello-world"
+```
