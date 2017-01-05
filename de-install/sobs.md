@@ -166,11 +166,64 @@ The path to this file is `/etc/rabbitmq/rabbitmq.config`:
 ].
 ```
 
+This change required the service to be restart:
+
+```
+root# systemctl restart rabbitmq-server
+```
+
 ### Create the virual hosts.
 
 ```
 root# rabbitmqctl add_vhost /sobs/de
 root# rabbitmqctl add_vhost /sobs/data-store
 root# rabbitmqctl set_permissions -p /sobs/de sobs_de ".*" ".*" ".*"
-root#rabbitmqctl set_permissions -p /sobs/data-store sobs_de ".*" ".*" ".*"
+root# rabbitmqctl set_permissions -p /sobs/data-store sobs_de ".*" ".*" ".*"
+```
+
+### Install the `rabbitmqadmin` utility.
+
+```
+root# curl -o /sbin/rabbitmqadmin http://localhost:31366/cli/rabbitmqadmin
+root# chmod +x /sbin/rabbitmqadmin
+root# rabbitmqadmin --bash-completion > /etc/bash_completion.d/rabbitmqadmin
+```
+
+### Declare the exchanges.
+
+The command used to connect to the management port was a bit of a pain to type repeatedly, so I created an alias for it:
+
+```
+root# alias rmq='rabbitmqadmin -P 31366 -u sobs_de -p "$PASSWORD"'
+```
+
+I set the environment variable in my session using the following command, which allows me to avoid having to repeatedly
+type the password without the password showing up in the command history file:
+
+```
+root# read -s PASSWORD && export PASSWORD
+```
+
+Just to make sure that the command works correctly, I tried listing the exchanges with the alias that I set up:
+
+```
+root# rmq -V /sobs/de list exchanges
++----------+--------------------+---------+-------------+---------+----------+
+|  vhost   |        name        |  type   | auto_delete | durable | internal |
++----------+--------------------+---------+-------------+---------+----------+
+| /sobs/de |                    | direct  | False       | True    | False    |
+| /sobs/de | amq.direct         | direct  | False       | True    | False    |
+| /sobs/de | amq.fanout         | fanout  | False       | True    | False    |
+| /sobs/de | amq.headers        | headers | False       | True    | False    |
+| /sobs/de | amq.match          | headers | False       | True    | False    |
+| /sobs/de | amq.rabbitmq.trace | topic   | False       | True    | True     |
+| /sobs/de | amq.topic          | topic   | False       | True    | False    |
++----------+--------------------+---------+-------------+---------+----------+
+```
+
+I was then finally able to declare the exchanges:
+
+```
+root# rmq -V /sobs/de declare exchange name=de type=topic auto_delete=false durable=true internal=false
+root# rmq -V /sobs/data-store declare exchange name=irods type=topic auto_delete=false durable=true internal=false
 ```
