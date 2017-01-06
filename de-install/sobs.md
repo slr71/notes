@@ -635,8 +635,14 @@ myself$ ansible -i inventories/sobs docker-ready -u root -a "docker-compose --ve
 
 ## Install the private Docker registry.
 
-I examined our existing private registry, which runs inside three separate Docker containers: one for the registry
-itself, one for a storage engine (redis), and one for an HTTP reverse proxy server (nginx). [It should be relatively
-easy to set up comparable services for the SOBS deployment. The one thing that I _don't_ know yet is how I should go
-about managing the SSL keys. I'll have to check to see how the keys are currently being managed for Apache HTTPD and do
-something similar.]
+When I was first considering how to do this, I wasn't entirely sure how I was going to manage the SSL keys. Andy said
+that the keys are currently being generated for free, but they have to be renewed every month. This works, but having to
+coordinate the SSL key updates on multiple hosts sounds a little painful. What I think I might do is use Apache HTTPD to
+manage the SSL connections instead simply because that's how it's currently set up. The only problem that I can foresee
+is that our Ansible scripts currently assume that nginx will be used instead. I don't know how painful it will be to
+skip the nginx installation and use HTTPD instead.
+
+Because of the slightly different HTTP reverse proxy setup in the SOBS deployment, the Docker registry will run on
+`sobs-storage`, but all requests to the docker registry will go through `sobs-de`. This shouldn't pose a security risk
+since the entire deployment has to be locked down. It will be something to keep in mind when we're troubleshooting
+problems, however.
