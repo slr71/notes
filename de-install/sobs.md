@@ -601,3 +601,34 @@ myself$ ansible -i inventories/sobs docker-ready -u root -a "systemctl start doc
 ```
 myself$ ansible -i inventories/sobs docker-ready -u root -a "docker run --rm hello-world"
 ```
+
+## Install `docker-compose`.
+
+We had a playbook that did this plus a few more things. I simply copied this playbook to a new file name, `blargh.yaml`,
+and deleted the stuff that I didn't want. The result was this:
+
+``` yaml
+---
+############################################
+# Condor
+############################################
+- include: playbooks/infra-condor-exec-jar.yaml
+
+############################################
+# Docker Compose
+############################################
+- include: playbooks/infra-docker-compose.yml
+```
+
+Once the playbook was in place, I simply ran it, skipping the tags to install `docker-compose.yml` and `de-dc` because
+I'm not quite ready for those yet:
+
+```
+myself$ ansible-playbook -i inventories/sobs -K blargh.yaml --skip-tags update-docker-compose-file,update-de-dc
+```
+
+Just for good measure, I ran another command to verify that docker-compose was installed:
+
+```
+myself$ ansible -i inventories/sobs docker-ready -u root -a "docker-compose --version"
+```
