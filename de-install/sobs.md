@@ -632,3 +632,11 @@ Just for good measure, I ran another command to verify that docker-compose was i
 ```
 myself$ ansible -i inventories/sobs docker-ready -u root -a "docker-compose --version"
 ```
+
+## Install the private Docker registry.
+
+I examined our existing private registry, which runs inside three separate Docker containers: one for the registry
+itself, one for a storage engine (redis), and one for an HTTP reverse proxy server (nginx). [It should be relatively
+easy to set up comparable services for the SOBS deployment. The one thing that I _don't_ know yet is how I should go
+about managing the SSL keys. I'll have to check to see how the keys are currently being managed for Apache HTTPD and do
+something similar.]
