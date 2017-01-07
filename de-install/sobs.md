@@ -586,7 +586,7 @@ myself$ ansible -i inventories/sobs docker-ready -u root -a "yum install -y dock
 ### Lock the `docker-engine` package version.
 
 ```
-myself$ ansible -i inventories/sobs docker-ready -u root -a "yum install -y docker-engine-1.11.2"
+myself$ ansible -i inventories/sobs docker-ready -u root -a "yum versionlock docker-engine"
 ```
 
 ### Enable and start the Docker service.
@@ -636,13 +636,127 @@ myself$ ansible -i inventories/sobs docker-ready -u root -a "docker-compose --ve
 ## Install the private Docker registry.
 
 When I was first considering how to do this, I wasn't entirely sure how I was going to manage the SSL keys. Andy said
-that the keys are currently being generated for free, but they have to be renewed every month. This works, but having to
-coordinate the SSL key updates on multiple hosts sounds a little painful. What I think I might do is use Apache HTTPD to
-manage the SSL connections instead simply because that's how it's currently set up. The only problem that I can foresee
-is that our Ansible scripts currently assume that nginx will be used instead. I don't know how painful it will be to
-skip the nginx installation and use HTTPD instead.
+that the keys are currently being generated for free, but they have to be renewed every month. I think it might be
+easier to Apache HTTPD to manage the SSL connections instead simply because that's how it's currently set up. It appears
+that the Docker registry has support for Let's Encrypt built in, but I'm not sure which account was used to set up the
+initial certificate. Rather than mess with that, I think that we can set up HTTPD relatively painlessly.
 
-Because of the slightly different HTTP reverse proxy setup in the SOBS deployment, the Docker registry will run on
-`sobs-storage`, but all requests to the docker registry will go through `sobs-de`. This shouldn't pose a security risk
-since the entire deployment has to be locked down. It will be something to keep in mind when we're troubleshooting
-problems, however.
+### Install Docker on the storage node.
+
+This wasn't included in the set of hosts that I already installed Docker on. The steps are similar to those I mentioned
+before except that I didn't use Ansible because I was only installing Docker on one host. Please refer to the notes from
+before for more details.
+
+### Set up a redis service.
+
+For this step, I simply copied and modified the service definition from our private Docker registry host. The contents
+of the service definition file, `/usr/lib/systemd/system/sobs-registry-redis.service`, are:
+
+```
+[Unit]
+Description=Redis for SOBS Docker Registry
+BindsTo=docker.service
+PartOf=docker.service
+After=docker.service
+Requisite=docker.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker rm sobs_registry_redis
+ExecStart=/usr/bin/docker run --name sobs_registry_redis \
+-v /etc/localtime:/etc/localtime \
+--log-driver=journald \
+redis:3.0.7
+ExecStop=-/usr/bin/docker stop sobs_registry_redis
+Restart=on-failure
+
+SyslogIdentifier=sobs_registry_redis
+SyslogFacility=local6
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Once the service definition file was created, I enabled and started the service:
+
+```
+root# systemctl enable sobs-registry-redis
+root# systemctl start sobs-registry-redis
+```
+
+### Set up the docker registry.
+
+First, we needed a configuration file. This was relatively easy to set up because we're using the reverse proxy. The
+path to the file is `/etc/docker/registry/config.yml`:
+
+```
+version: 0.1
+log:
+  level: info
+  fields:
+    service: sobs_registry
+    environment: production
+storage:
+    filesystem:
+        rootdirectory: /registry_data
+    cache:
+        blobdescriptor: redis
+http:
+    addr: :5000
+    secret: asecretforlocaldevelopment
+    debug:
+        addr: localhost:5001
+redis:
+    addr: redis:6379
+```
+
+Next, we needed the service definition file, `/usr/lib/systemd/system/sobs-registry.service`:
+
+```
+[Unit]
+Description=SOBS Docker Registry
+BindsTo=docker.service sobs-registry-redis.service
+PartOf=docker.service sobs-registry-redis.service
+After=docker.service sobs-registry-redis.service
+Requires=sobs-registry-redis.service
+Requisite=docker.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker rm -v sobs_registry
+ExecStart=/usr/bin/docker run --name sobs_registry \
+-p 5000:5000 \
+-v /etc/localtime:/etc/localtime \
+-v /usr/share/docker-registry:/registry_data \
+-v /etc/docker/registry/config.yml:/etc/docker/registry/config.yml \
+--link sobs_registry_redis:redis \
+--log-driver=journald \
+registry:2.5
+ExecStop=-/usr/bin/docker stop sobs_registry
+Restart=on-failure
+
+SyslogIdentifier=sobs_registry
+SyslogFacility=local6
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Once this was done, I enabled and started the service as usual:
+
+```
+root# systemctl enable sobs-registry
+root# systemctl start sobs-registry
+```
+
+### Allow connections from sobs-de to port 5000.
+
+This required me to simply add a firewall rule and restart iptables.
+
+### Set up the reverse proxy.
+
+This required me to add a new virtual host to `/etc/httpd/conf.d/ssl.conf`. Please see the configuration file for
+details.
+
+### Allow connections to port 5000.
+
+I added firewall rules to allow connections on port 5000 from the SOBS subnet and the subnet used by my Workstation at
+work (for testing).
