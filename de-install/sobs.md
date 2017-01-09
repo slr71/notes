@@ -636,16 +636,12 @@ myself$ ansible -i inventories/sobs docker-ready -u root -a "docker-compose --ve
 ## Install the private Docker registry.
 
 When I was first considering how to do this, I wasn't entirely sure how I was going to manage the SSL keys. Andy said
-that the keys are currently being generated for free, but they have to be renewed every month. I think it might be
-easier to Apache HTTPD to manage the SSL connections instead simply because that's how it's currently set up. It appears
-that the Docker registry has support for Let's Encrypt built in, but I'm not sure which account was used to set up the
-initial certificate. Rather than mess with that, I think that we can set up HTTPD relatively painlessly.
-
-### Install Docker on the storage node.
-
-This wasn't included in the set of hosts that I already installed Docker on. The steps are similar to those I mentioned
-before except that I didn't use Ansible because I was only installing Docker on one host. Please refer to the notes from
-before for more details.
+that the keys are currently being generated for free, but they have to be renewed every month. I thought it might have
+been easier to let Apache HTTPD manage the SSL connections instead simply because that's how it's currently set up. I
+actually configured the system this way initially, but I was unable to push images to the registryw hen it was
+configured this way. The alternative that I ultimately chose was to put the private registry on the DE UI host directly
+and use the same SSL keys that Apache uses. Once this is done, I can simply modify the script that refreshes the keys so
+that restarts the Docker registry once the keys have been refreshed.
 
 ### Set up a redis service.
 
@@ -685,8 +681,7 @@ root# systemctl start sobs-registry-redis
 
 ### Set up the docker registry.
 
-First, we needed a configuration file. This was relatively easy to set up because we're using the reverse proxy. The
-path to the file is `/etc/docker/registry/config.yml`:
+First, we needed a configuration file. The path to the file is `/etc/docker/registry/config.yml`:
 
 ```
 version: 0.1
@@ -705,6 +700,9 @@ http:
     secret: asecretforlocaldevelopment
     debug:
         addr: localhost:5001
+    tls:
+      certificate: /usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu/chained.pem
+      key: /usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu/domain.key
 redis:
     addr: redis:6379
 ```
@@ -727,9 +725,11 @@ ExecStart=/usr/bin/docker run --name sobs_registry \
 -v /etc/localtime:/etc/localtime \
 -v /usr/share/docker-registry:/registry_data \
 -v /etc/docker/registry/config.yml:/etc/docker/registry/config.yml \
+-v /usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu:/usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu \
 --link sobs_registry_redis:redis \
 --log-driver=journald \
 registry:2.5
+ExecReload=-/usr/bin/docker kill -s HUP sobs_registry
 ExecStop=-/usr/bin/docker stop sobs_registry
 Restart=on-failure
 
@@ -739,6 +739,10 @@ SyslogFacility=local6
 [Install]
 WantedBy=multi-user.target
 ```
+
+Note: the `ExecReload` command isn't currently being used. I was considering using that to reload the configuration
+file, but I couldn't find any documentation indicating whether or not sending a `SIGHUP` to the registry daemon would
+cause the daemon to reload its configuration.
 
 Once this was done, I enabled and started the service as usual:
 
@@ -751,14 +755,17 @@ root# systemctl start sobs-registry
 
 This required me to simply add a firewall rule and restart iptables.
 
-### Set up the reverse proxy.
-
-This required me to add a new virtual host to `/etc/httpd/conf.d/ssl.conf`. Please see the configuration file for
-details.
-
-### Allow connections to port 5000.
-
-I added firewall rules to allow connections on port 5000 from the SOBS subnet and the subnet used by my Workstation at
-work (for testing).
-
 ## Create the data container for SOBS.
+
+This step required a little bit of backtracking because I was unable to push the new image after creating it. I ended up
+redeploying the Docker registry to solve that problem.
+
+The first step here was to generate the GPG keys. There were some instructions available in one of our private
+repositories. The instructions didn't contain any sensitive information, though, so I duplicated
+them [here](gpg-key.md). I then needed to generate a key pair that can be used to sign and validate the JWTs that the DE
+UI uses to authenticate to the Terrain services. I typically use
+the [buddy-sign instructions](https://funcool.github.io/buddy-sign/latest/#generate-keypairs) for generating RSA key
+pairs for this.
+
+The results of these commands are stored in the `docker-sobs-data` repository in GitLab, along with a Dockerfile that is
+used to generate the data container image. Please refer to this repository for more information.
