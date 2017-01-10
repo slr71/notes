@@ -781,3 +781,806 @@ configuration settings were present in the `group_vars` file for SOBS and creati
 image. To create the Jenkins job, I simply copied the Grouper configuration image job for the `de-2` environment and
 changed the default values of the build parameters. This new job still pushes the image to the CyVerse private Docker
 registry, so I pulled the image to my workstation, retagged it, and pushed it to the SOBS private Docker registry.
+
+## Create /etc/timezone on all hosts.
+
+It was easiest to do this using Ansible:
+
+```
+myself$ echo 'America/Phoenix' > timezone
+myself$ ansible -i inventories/sobs all -u root -m copy -a "src=timezone dest=/etc/timezone"
+myself$ ansible -i inventories/sobs all -u root -a "yum reinstall -y tzdata"
+```
+
+Once the files were created, I wanted to verify that they were all correct:
+
+```
+myself$ ansible -i inventories/sobs all -u root -a "cat /etc/timezone"
+```
+
+And just to make sure that the time zone was correct:
+
+```
+myself$ ansible -i inventories/sobs all -u root -a "rm /etc/localtime"
+myself$ ansible -i inventories/sobs all -u root -a "ln -s /usr/share/zoneinfo/America/Phoenix /etc/localtime"
+myself$ ansible -i inventories/sobs all -u root -a "ls -l /etc/localtime"
+ansible -i inventories/sobs all -u root -a "date"
+```
+
+## Add Grouper to the docker compose file for the SOBS deployment.
+
+Configs:
+
+``` yaml
+config_grouper:
+  image: sobs-de.sobs.arizona.edu:5000/grouper-configs-sobs:${DE_TAG}
+  container_name: config-grouper
+  labels:
+    org.cyverse.name: "grouper"
+    org.cyverse.type: "configs"
+```
+
+Service:
+
+``` yaml
+grouper:
+  image: discoenv/grouper:2.2.2
+  container_name: grouper
+  restart: "unless-stopped"
+  ports:
+    - "8080:8080"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_grouper
+  volumes:
+    - "/etc/localtime:/etc/localtime"
+    - "/etc/timezone:/etc/timezone"
+  labels:
+    org.cyverse.name: "grouper"
+    org.cyverse.type: "service"
+```
+
+## Remove all of the zero-downtime deployment containers.
+
+This involved a lot of changes. The easiest way to describe the changes is to include the file contents:
+
+``` yaml
+# -*- mode: yaml -*-
+
+###
+# Data containers that don't contain service configurations.
+###
+iplant_data_apps:
+  image: sobs-de.sobs.arizona.edu:5000/iplant_data:latest
+  labels:
+    org.cyverse.name: "apps"
+    org.cyverse.type: "data"
+
+iplant_data_de_ui:
+  image: sobs-de.sobs.arizona.edu:5000/iplant_data:latest
+  labels:
+    org.cyverse.name: "ui"
+    org.cyverse.type: "data"
+
+iplant_data_terrain:
+  image: sobs-de.sobs.arizona.edu:5000/iplant_data:latest
+  labels:
+    org.cyverse.name: "terrain"
+    org.cyverse.type: "data"
+
+###
+# Set up the configuration containers
+###
+config_anon_files:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "anon-files"
+    org.cyverse.type: "configs"
+
+config_apps:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "apps"
+    org.cyverse.type: "configs"
+
+config_clockwork:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "clockwork"
+    org.cyverse.type: "configs"
+
+config_data_info:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "data-info"
+    org.cyverse.type: "configs"
+
+config_de_ui:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "ui"
+    org.cyverse.type: "configs"
+
+config_dewey:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "dewey"
+    org.cyverse.type: "configs"
+
+config_grouper:
+  image: sobs-de.sobs.arizona.edu:5000/grouper-configs-sobs:${DE_TAG}
+  container_name: config-grouper
+  labels:
+    org.cyverse.name: "grouper"
+    org.cyverse.type: "configs"
+
+config_image_janitor:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "image-janitor"
+    org.cyverse.type: "configs"
+
+config_info_typer:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "info-typer"
+    org.cyverse.type: "configs"
+
+config_infosquito:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "infosquito"
+    org.cyverse.type: "configs"
+
+config_iplant_email:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "iplant-email"
+    org.cyverse.type: configs
+
+config_iplant_groups:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "iplant-groups"
+    org.cyverse.type: "configs"
+
+config_jex_adapter:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "jex-adapter"
+    org.cyverse.type: "configs"
+
+config_job_status_to_apps_adapter:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "job-status-to-apps-adapter"
+    org.cyverse.type: "configs"
+
+config_job_status_recorder:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "job-status-recorder"
+    org.cyverse.type: "configs"
+
+config_kifshare:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "kifshare"
+    org.cyverse.type: "configs"
+
+config_metadata:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "metadata"
+    org.cyverse.type: "configs"
+
+config_monkey:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "monkey"
+    org.cyverse.type: "configs"
+
+config_notification_agent:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "notification-agent"
+    org.cyverse.type: "configs"
+
+config_permissions:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "permissions"
+    org.cyverse.type: "configs"
+
+config_saved_searches:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "saved-searches"
+    org.cyverse.type: "configs"
+
+config_templeton_periodic:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "templeton-periodic"
+    org.cyverse.type: "configs"
+
+config_templeton_incremental:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "templeton-incremental"
+    org.cyverse.type: "configs"
+
+config_terrain:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "terrain"
+    org.cyverse.type: "configs"
+
+config_tree_urls:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "tree-urls"
+    org.cyverse.type: "configs"
+
+config_user_preferences:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "user-preferences"
+    org.cyverse.type: "configs"
+
+config_user_sessions:
+  image: sobs-de.sobs.arizona.edu:5000/de-configs-${DE_ENV}:${DE_TAG}
+  labels:
+    org.cyverse.name: "user-sessions"
+    org.cyverse.type: "configs"
+
+###
+# Service and UI definitions
+###
+anon_files:
+  image: discoenv/anon-files:${DE_TAG}
+  command: --config /etc/iplant/de/anon-files.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx2G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31102:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_anon_files
+  labels:
+    org.cyverse.name: "anon-files"
+    org.cyverse.type: "service"
+
+apps:
+  image: discoenv/apps:${DE_TAG}
+  command: --config /etc/iplant/de/apps.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx2G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31323:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - iplant_data_apps
+    - config_apps
+  labels:
+    org.cyverse.name: "apps"
+    org.cyverse.type: "service"
+
+clockwork:
+  image: discoenv/clockwork:${DE_TAG}
+  command: --config /etc/iplant/de/clockwork.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx1G -Djava.net.preferIPv4Stack=true
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_clockwork
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "clockwork"
+    org.cyverse.type: "service"
+
+data_info:
+  image: discoenv/data-info:${DE_TAG}
+  command: --config /etc/iplant/de/data-info.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx2G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31360:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_data_info
+  labels:
+    org.cyverse.name: "data-info"
+    org.cyverse.type: "service"
+
+de_ui:
+  image: discoenv/de:${DE_TAG}
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  ports:
+    - "8081:8080"
+  environment:
+    - JAVA_TOOL_OPTIONS=-Djava.net.preferIPv4Stack=true
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /var/log/de/:/home/iplant/log/
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - iplant_data_de_ui
+    - config_de_ui
+  labels:
+    org.cyverse.name: "ui"
+    org.cyverse.type: "service"
+
+dewey:
+  image: discoenv/dewey:${DE_TAG}
+  command: --config /etc/iplant/de/dewey.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx1G -Djava.net.preferIPv4Stack=true
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_dewey
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "dewey"
+    org.cyverse.type: "service"
+
+exim_sender:
+  image: discoenv/exim-sender
+  container_name: local-exim
+  expose:
+    - "25"
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - PRIMARY_HOST=sobs.arizona.edu
+    - ALLOWED_HOSTS=*
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "exim-sender"
+    org.cyverse.type: "service"
+
+grouper:
+  image: discoenv/grouper:2.2.2
+  container_name: grouper
+  restart: "unless-stopped"
+  ports:
+    - "8080:8080"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_grouper
+  volumes:
+    - "/etc/localtime:/etc/localtime"
+    - "/etc/timezone:/etc/timezone"
+  labels:
+    org.cyverse.name: "grouper"
+    org.cyverse.type: "service"
+
+image_janitor:
+  image: discoenv/image-janitor:${DE_TAG}
+  command: --config /etc/iplant/de/jobservices.yml
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_image_janitor
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /opt/image-janitor:/opt/image-janitor
+  labels:
+    org.cyverse.name: "image-janitor"
+    org.cyverse.type: "service"
+
+info_typer:
+  image: discoenv/info-typer:${DE_TAG}
+  command: --config /etc/iplant/de/info-typer.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx1G -Djava.net.preferIPv4Stack=true
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_info_typer
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "info-typer"
+    org.cyverse.type: "service"
+
+infosquito:
+  image: discoenv/infosquito:${DE_TAG}
+  command: --config /etc/iplant/de/infosquito.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx1G -Djava.net.preferIPv4Stack=true
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_infosquito
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "infosquito"
+    org.cyverse.type: "service"
+
+iplant_email:
+  image: discoenv/iplant-email:${DE_TAG}
+  command: --config /etc/iplant/de/iplant-email.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx1G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31337:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_iplant_email
+  links:
+    - exim_sender:local-exim
+  labels:
+    org.cyverse.name: "iplant-email"
+    org.cyverse.type: "service"
+
+iplant_groups:
+  image: discoenv/iplant-groups:${DE_TAG}
+  command: --config /etc/iplant/de/iplant-groups.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx1G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31310:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_iplant_groups
+  labels:
+    org.cyverse.name: "iplant-groups"
+    org.cyverse.type: "service"
+
+jex_adapter:
+  image: discoenv/jex-adapter:${DE_TAG}
+  command: --config /etc/iplant/de/jobservices.yml
+  expose:
+    - "60000"
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_jex_adapter
+  labels:
+    org.cyverse.name: "jex-adapter"
+    org.cyverse.type: "service"
+
+job_status_to_apps_adapter:
+  image: discoenv/job-status-to-apps-adapter:${DE_TAG}
+  command: --config /etc/iplant/de/jobservices.yml
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_job_status_to_apps_adapter
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "job-status-to-apps-adapter"
+    org.cyverse.type: "service"
+
+job_status_recorder:
+  image: discoenv/job-status-recorder:${DE_TAG}
+  command: --config /etc/iplant/de/jobservices.yml
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_job_status_recorder
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "job-status-recorder"
+    org.cyverse.type: "service"
+
+kifshare:
+  image: discoenv/kifshare:${DE_TAG}
+  command: --config /etc/iplant/de/kifshare.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx2G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31380:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_kifshare
+  labels:
+    org.cyverse.name: "kifshare"
+    org.cyverse.type: "service"
+
+metadata:
+  image: discoenv/metadata:${DE_TAG}
+  command: --config /etc/iplant/de/metadata.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx2G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31331:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_metadata
+  labels:
+    org.cyverse.name: "metadata"
+    org.cyverse.type: "service"
+
+monkey:
+  image: discoenv/monkey:${DE_TAG}
+  command: --config /etc/iplant/de/monkey.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx1G -Djava.net.preferIPv4Stack=true
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_monkey
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "monkey"
+    org.cyverse.type: "service"
+
+notification_agent:
+  image: discoenv/notification-agent:${DE_TAG}
+  command: --config /etc/iplant/de/notificationagent.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx1G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31320:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_notification_agent
+  labels:
+    org.cyverse.name: "notification-agent"
+    org.cyverse.type: "service"
+
+permissions:
+  image: discoenv/permissions:${DE_TAG}
+  command: --host 0.0.0.0 --port 60000
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  ports:
+    - "31308:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_permissions
+  labels:
+    org.cyverse.name: "permissions"
+    org.cyverse.type: "service"
+
+saved_searches:
+  image: discoenv/saved-searches:${DE_TAG}
+  command: --config /etc/iplant/de/jobservices.yml
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  ports:
+    - "31306:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_saved_searches
+  labels:
+    org.cyverse.name: "saved-searches"
+    org.cyverse.type: "service"
+
+templeton_periodic:
+  image: discoenv/templeton:${DE_TAG}
+  command: --mode periodic --config /etc/iplant/de/templeton-periodic.yaml
+  restart: unless-stopped
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_templeton_periodic
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "templeton-periodic"
+    org.cyverse.type: "service"
+
+templeton_incremental:
+  image: discoenv/templeton:${DE_TAG}
+  command: --mode incremental --config /etc/iplant/de/templeton-incremental.yaml
+  restart: unless-stopped
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes_from:
+    - config_templeton_incremental
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  labels:
+    org.cyverse.name: "templeton-incremental"
+    org.cyverse.type: "service"
+
+terrain:
+  image: discoenv/terrain:${DE_TAG}
+  command: --config /etc/iplant/de/terrain.properties
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  environment:
+    - JAVA_TOOL_OPTIONS=-Xmx2G -Djava.net.preferIPv4Stack=true
+  ports:
+    - "31325:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - iplant_data_terrain
+    - config_terrain
+  labels:
+    org.cyverse.name: "terrain"
+    org.cyverse.type: "service"
+
+tree_urls:
+  image: discoenv/tree-urls:${DE_TAG}
+  command: --config /etc/iplant/de/jobservices.yml
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  ports:
+    - "31307:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_tree_urls
+  labels:
+    org.cyverse.name: "tree-urls"
+    org.cyverse.type: "service"
+
+user_preferences:
+  image: discoenv/user-preferences:${DE_TAG}
+  command: --config /etc/iplant/de/jobservices.yml
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  ports:
+    - "31305:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_user_preferences
+  labels:
+    org.cyverse.name: "user-preferences"
+    org.cyverse.type: "service"
+
+user_sessions:
+  image: discoenv/user-sessions:${DE_TAG}
+  command: --config /etc/iplant/de/jobservices.yml
+  net: de-${DE_ENV}
+  restart: unless-stopped
+  ports:
+    - "31304:60000"
+  log_driver: "syslog"
+  log_opt:
+    tag: "{{.ImageName}}/{{.Name}}"
+  volumes:
+    - /etc/localtime:/etc/localtime
+    - /etc/timezone:/etc/timezone
+  volumes_from:
+    - config_user_sessions
+  labels:
+    org.cyverse.name: "user-sessions"
+    org.cyverse.type: "service"
+```
