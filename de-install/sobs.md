@@ -21,6 +21,8 @@ root# systemctl start postgresql-9.5.service
 postgres$ psql -c "ALTER USER postgres WITH PASSWORD 'notreal'"
 postgres$ psql -c "CREATE USER de"
 postgres$ psql -c "ALTER USER de WITH PASSWORD 'reallyfake'"
+postgres$ psql -c "CREATE USER grouper"
+postgres$ psql -c "ALTER USER grouper WITH PASSWORD 'totallyfake'"
 ```
 
 ## Created the databases.
@@ -30,10 +32,12 @@ postgres$ psql -c "CREATE DATABASE de WITH OWNER de"
 postgres$ psql -c "CREATE DATABASE metadata WITH OWNER de"
 postgres$ psql -c "CREATE DATABASE notifications WITH OWNER de"
 postgres$ psql -c "CREATE DATABASE permissions WITH OWNER de"
+postgres$ psql -c "CREATE DATABASE grouper WITH OWNER grouper"
 postgres$ psql -d de -c "ALTER SCHEMA public OWNER TO de"
 postgres$ psql -d metadata -c "ALTER SCHEMA public OWNER TO de"
 postgres$ psql -d notifications -c "ALTER SCHEMA public OWNER TO de"
 postgres$ psql -d permissions -c "ALTER SCHEMA public OWNER TO de"
+postgres$ psql -d grouper -c "ALTER SCHEMA public OWNER TO grouper"
 ```
 
 ## Updated `pg_hba.conf` and `postgresql.conf`.
@@ -769,3 +773,11 @@ pairs for this.
 
 The results of these commands are stored in the `docker-sobs-data` repository in GitLab, along with a Dockerfile that is
 used to generate the data container image. Please refer to this repository for more information.
+
+## Create the Grouper configuration container for SOBS.
+
+This step was relatively simple although a bit time-consuming. It involved ensuring that all of the relevant
+configuration settings were present in the `group_vars` file for SOBS and creating a Jenkins job to build the
+image. To create the Jenkins job, I simply copied the Grouper configuration image job for the `de-2` environment and
+changed the default values of the build parameters. This new job still pushes the image to the CyVerse private Docker
+registry, so I pulled the image to my workstation, retagged it, and pushed it to the SOBS private Docker registry.
