@@ -1584,3 +1584,9 @@ user_sessions:
     org.cyverse.name: "user-sessions"
     org.cyverse.type: "service"
 ```
+
+## Ensure that the SOBS group variables file has all required settings for generating DE config files.
+
+This was one of the more tedious tasks associated with the SOBS deployment. I went through all of the templates in the
+`util-cfg-service` role and verified that all of the group variables referenced in the templates would be set
+correctly. One beneficial side-effect of this task was that I was able to remove some dead code.
