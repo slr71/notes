@@ -1590,3 +1590,46 @@ user_sessions:
 This was one of the more tedious tasks associated with the SOBS deployment. I went through all of the templates in the
 `util-cfg-service` role and verified that all of the group variables referenced in the templates would be set
 correctly. One beneficial side-effect of this task was that I was able to remove some dead code.
+
+## Add reverse proxies to Apache HTTPD.
+
+I added this information in two separate sections, the first section is intended to add CORS support to all locations in
+the HTTP virtual host.
+
+```
+# Allow cross-origin resource sharing.
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Credentials "true"
+Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header set Access-Control-Allow-Headers "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range"
+Header set Access-Control-Expose-Headers "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range"
+```
+
+The second section sets up the reverse proxies:
+
+```
+ProxyTimeout 3600
+ProxyAddHeaders On
+
+ProxyPass /anon-files/ http://localhost:31102/
+ProxyPassReverse /anon-files/ http://localhost:31102/
+
+ProxyPass /dl/ http://localhost:31380/
+ProxyPassReverse /dl/ http://localhost:31380/
+
+ProxyPass /de/agave-cb http://sobs-services.sobs.arizona.edu:31323/callbacks/agave-job
+ProxyPassReverse /de/agave-cb http://sobs-services.sobs.arizona.edu:31323/callbacks/agave-job
+
+<Location "/de/websocket">
+    Header set Upgrade "websocket"
+    Header set Connection "Upgrade"
+
+    ProxyPass http://localhost:8081
+    ProxyPassReverse http://localhost:8081
+</Location>
+
+ProxyPass / http://localhost:8081
+ProxyPassReverse / http://localhost:8081
+```
+
+Both of these changes are in `/etc/httpd/conf.d/ssl.conf`.
