@@ -1633,3 +1633,12 @@ ProxyPassReverse / http://localhost:8081
 ```
 
 Both of these changes are in `/etc/httpd/conf.d/ssl.conf`.
+
+## Install CAS.
+
+I wanted to make CAS a little easier to deploy here than it is in other environments, so I decided to deploy it in a
+Docker container. The first step was to create a CAS overlay repository for it. The repository, `sobs/sobs-cas`, in
+GitLab.
+
+The deployment on the server was also relatively easy once I figured out all of the hoops I had to jump through to get
+LDAPS and HTTPS connections working.
