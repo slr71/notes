@@ -755,6 +755,13 @@ root# systemctl enable sobs-registry
 root# systemctl start sobs-registry
 ```
 
+The final step in the registry deployment was to ensure that it's restarted whenever the SSL certificate is renewed. I
+added a line to the certificate renewal script to do this:
+
+```
+systemctl restart sobs-registry
+```
+
 ### Allow connections from sobs-de to port 5000.
 
 This required me to simply add a firewall rule and restart iptables.
@@ -1638,7 +1645,72 @@ Both of these changes are in `/etc/httpd/conf.d/ssl.conf`.
 
 I wanted to make CAS a little easier to deploy here than it is in other environments, so I decided to deploy it in a
 Docker container. The first step was to create a CAS overlay repository for it. The repository, `sobs/sobs-cas`, in
-GitLab.
+GitLab. For this step, I copied and modified the CyVerse `cas-overlay` deployment. Most of the changes simply involved
+updating the configuration settings and renaming some files. I'm not going to list the changes here simply because they
+can be found by checking out the git repository.
 
 The deployment on the server was also relatively easy once I figured out all of the hoops I had to jump through to get
-LDAPS and HTTPS connections working.
+LDAPS and HTTPS connections working. The first step was to create the service definition file, which is stored in
+`/usr/lib/systemd/system/sobs-cas.service` on the host system:
+
+```
+[Unit]
+Description=Apereo CAS for the SOBS DE Deployment
+BindsTo=docker.service
+PartOf=docker.service
+After=docker.service
+Requisite=docker.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker rm sobs_cas
+ExecStart=/usr/bin/docker run --name sobs_cas \
+-v /etc/localtime:/etc/localtime:ro \
+-v /etc/openldap:/etc/openldap:ro \
+-v /usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu:/usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu:ro \
+-v /etc/tomcat/server.xml:/usr/local/tomcat/conf/server.xml:ro \
+-p 8082:8443 \
+--log-driver=journald \
+sobs-de.sobs.arizona.edu:5000/sobs-cas:latest
+ExecStop=-/usr/bin/docker stop sobs_cas
+Restart=on-failure
+
+SyslogIdentifier=sobs_cas
+SyslogFacility=local6
+
+[Install]
+WantedBy=multi-user.target
+```
+
+There's a few things of note in this file. First, bind-mounting `/etc/openldap` was required in order to get LDAPS to
+work. If you examine `cas.properties` in the `sobs/sobs-cas` repository, you'll notice that the CAS configuration
+references a certificate file in `/etc/openldap/cacerts`. Second, bind-mounting the LetsEncrypt directory was required
+in order to enable SSL in Tomcat. We couldn't rely solely on Apache HTTPD to provide the SSL because CAS displays a
+warning message any time its authentication pabge is served over a non-SSL connection. Finally, we're also bind-mounting
+a local copy of Tomcat's `server.xml` configuration file in order to enable the SSL connection. The only change to this
+file was to define the SSL connector:
+
+```
+    <Connector
+           protocol="org.apache.coyote.http11.Http11AprProtocol"
+           port="8443" maxThreads="200"
+           scheme="https" secure="true" SSLEnabled="true"
+           SSLCertificateFile="/usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu/signed.crt"
+           SSLCertificateKeyFile="/usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu/domain.key"
+           SSLVerifyClient="optional" SSLProtocol="TLSv1+TLSv1.1+TLSv1.2"/>
+```
+
+Because CAS will be using the certificates on the host system, it's also necessary to restart it when the certificates
+are renewed. I added the following line to the script that renews the certificates:
+
+```
+systemctl restart sobs-cas
+```
+
+## Place `/etc/docker-compose.yml`.
+
+Since we're not using consul for this deployment, I had to make a small change to the role that does this in order to
+get the `de-dc` script to be generated correctly. Once I made the change, I simply ran the playbook:
+
+```
+myself$ ansible-playbook -i inventories/sobs -K infra-docker-compose.yml
+```
