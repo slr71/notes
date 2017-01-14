@@ -1714,3 +1714,33 @@ get the `de-dc` script to be generated correctly. Once I made the change, I simp
 ```
 myself$ ansible-playbook -i inventories/sobs -K infra-docker-compose.yml
 ```
+
+### Initialize the Grouper database.
+
+For this step, I need to launch a Grouper container with access to the configuration settings:
+
+```
+root# de-dc pull grouper
+root# de-dc pull config_grouper
+root# de-dc up -d config_grouper
+root# docker run --rm -it --name grouper \
+                 -v /etc/timezone:/etc/timezone \
+                 -v /etc/localtime:/etc/localtime \
+                 --volumes-from=grouper-config \
+                 --entrypoint=sh \
+                 discoenv/grouper:2.2.2
+```
+
+Once inside the container, I used the following command to initialize the database:
+
+```
+root# gsh -registry -init
+```
+
+This command generates an SQL file that can be loaded with GSH:
+
+```
+root# gsh -registry -runsqlfile /opt/grouper/api/ddlScripts/grouperDdl_20170113_14_04_10_546.sql
+```
+
+Note: the name of the SQL file will appear in the output from the previous command.
