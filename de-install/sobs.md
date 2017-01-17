@@ -170,7 +170,7 @@ The path to this file is `/etc/rabbitmq/rabbitmq.config`:
 ].
 ```
 
-This change required the service to be restart:
+This change required the service to be restarted:
 
 ```
 root# systemctl restart rabbitmq-server
@@ -1748,3 +1748,43 @@ Note: the name of the SQL file will appear in the output from the previous comma
 As an aside, I ran into some errors related to Grouper not being able to establish the SSL connection when I tried to
 load the SQL file. I made several attempts to get the SSL working, but none of them worked. I eventually gave up and
 switched back to a plain text LDAP connection. I can revisit this after everything is working if necessary.
+
+## Initialize the databases used by the de.
+
+This step was pretty straight-forward once I remembered exactly what had to be done. The `db-migrations` playbook with
+the extra variable, `facepalm_mode` set to `init`. Is enough to do this:
+
+```
+myself$ ansible-playbook -K -i $DE_SCM_REPOS_DIR/de-ansible/inventories/sobs --extra-vars="facepalm_mode=init" \
+        db-migrations.yaml
+```
+
+## Create the groups used by the DE.
+
+I ran sharkbait from within a Docker container for this one:
+
+```
+root# docker run --rm -it --name sharkbait \
+      -v /root/.pgpass:/root/.pgpass \
+      -v /etc/timezone:/etc/timezone \
+      -v /etc/localtime:/etc/localtime \
+      -v /etc/openldap:/etc/openldap \
+      -v /usr/local/etc/letsencrypt/sobs-de.sobs.arizona.edu:/etc/ssl \
+      --volumes-from=config-grouper \
+      discoenv/sharkbait:latest -h sobs-pgsql.sobs.arizona.edu -e sobs
+```
+
+## Updated paths and data container names containing `iplant` in the `docker-compose.yaml` file for SOBS:
+
+I did a selective search and replace for this. The data container names all begin with `sobs_data_` rather than
+`iplant_data_`, and the config file paths begin with `/etc/sobs` rather than `/etc/iplant`.
+
+## Deployed the DE.
+
+I used the `deploy-all` playbook for this:
+
+```
+myself$ ansible-playbook -i $DE_SCM_REPOS_DIR/de-ansible/inventories/sobs -K deploy-all.yaml
+```
+
+A few changes were necessary to get this to work.
