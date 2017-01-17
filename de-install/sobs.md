@@ -1744,3 +1744,7 @@ root# gsh -registry -runsqlfile /opt/grouper/api/ddlScripts/grouperDdl_20170113_
 ```
 
 Note: the name of the SQL file will appear in the output from the previous command.
+
+As an aside, I ran into some errors related to Grouper not being able to establish the SSL connection when I tried to
+load the SQL file. I made several attempts to get the SSL working, but none of them worked. I eventually gave up and
+switched back to a plain text LDAP connection. I can revisit this after everything is working if necessary.
