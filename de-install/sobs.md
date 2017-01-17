@@ -1788,3 +1788,75 @@ myself$ ansible-playbook -i $DE_SCM_REPOS_DIR/de-ansible/inventories/sobs -K dep
 ```
 
 A few changes were necessary to get this to work.
+
+## Checked for presence of UUIDs in iRODS.
+
+```
+root# iinit
+root# imeta ls -c /sobs/home
+```
+
+No UUID was associated with the collection, so I checked the logs in `/var/lib/irods/iRODS/server/log/rodsLog*` to see
+what errors were present. I found this error:
+
+```
+line 11, col 4, rule base ipc-uuid
+    fail;
+    ^
+
+caused by: execMicroService3: error when executing microservice
+line 5, col 22, rule base ipc-uuid
+  *status = errorcode(msiExecCmd("generateuuid.sh", "", ipc_RE_HOST, "null", "null", *out));
+                      ^
+
+caused by: DEBUG: msiExecCmd: rsExecCmd failed for generateuuid.sh, status = -344000
+```
+
+### Assigning UUIDs to existing items.
+
+I searched for the `generateuuid.sh` script on one of our other data store hosts and ended up copying the script from
+one of our development environments. After copying the script, I had to generate UUIDs for all of the data objects and
+collections in iRODS. A quick run of `ils -r /` revealed that only collections had been made so far, which made
+generating UUIDs easy. The first step was to get the list of collection names:
+
+```
+root# ils -r / | grep '  C- ' | sed 's/  C- //' > collections.txt
+```
+
+The next step was to associate UUIDs with all of the collections:
+
+```
+root# for dir in $(< collections.txt); do imeta add -c "$dir" "ipc_UUID" $(uuidgen -t); done
+```
+
+The last step was to verify that UUIDs had been successfully assigned to all of the collections:
+
+```
+root# for dir in $(< collections.txt); do imeta ls -c "$dir"; done
+```
+
+### Testing the rules on a new collection.
+
+For this step, I simply created a new collection and checked for the presence of a UUID, which was not present. The
+following error showed up in the logs:
+
+```
+Jan 17 16:19:01 pid:11099 ERROR: [-]    iRODS/server/re/src/rules.cpp:670:actionTableLookUp :  status [PLUGIN_ERROR_MISSING_SHARED_OBJECT]  errno [] -- message []
+        [-]     iRODS/server/re/src/irods_ms_plugin.cpp:110:load_microservice_plugin :  status [PLUGIN_ERROR_MISSING_SHARED_OBJECT]  errno [] -- message [Failed to create ms plugin entry.]
+                [-]     iRODS/lib/core/include/irods_load_plugin.hpp:175:load_plugin :  status [PLUGIN_ERROR_MISSING_SHARED_OBJECT]  errno [] -- message [shared library does not exist [/var/lib/irods/plugins/microservices/libmsiSetAVU.so]]
+```
+
+I ended up fixing this problem by copying the shared object file from our development environment. After trying again,
+the following error was generated:
+
+```
+Jan 17 16:37:42 pid:11986 NOTICE: writeLine: inString = Failed to send AMQP message: /usr/bin/env: python2.6: No such file or directory
+```
+
+This was easy enough to fix. Since the new iRODS server is running CentOS 7, `python` refers to version `2.7.5`, which
+has all of the libraries that we need. I modified `amqptopicsend.py` to use `python` rather than `python2.6`. Upon
+trying again, the following error was generated:
+
+```
+Jan 17 16:41:53 pid:12094 NOTICE: writeLine: inString = Failed to send AMQP message: ERROR: (406, "PRECONDITION_FAILED - cannot redeclare exchange 'irods' in vhost '/sobs/data-store' with different type, durable, internal or autodelete value")
+```
