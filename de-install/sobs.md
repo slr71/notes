@@ -1860,3 +1860,128 @@ trying again, the following error was generated:
 ```
 Jan 17 16:41:53 pid:12094 NOTICE: writeLine: inString = Failed to send AMQP message: ERROR: (406, "PRECONDITION_FAILED - cannot redeclare exchange 'irods' in vhost '/sobs/data-store' with different type, durable, internal or autodelete value")
 ```
+
+It appears that `amqptopicsend.py` declares the exchange by default, so I simply deleted the exchange:
+
+```
+root# rmq -V /sobs/data-store delete exchange name=irods
+```
+
+After deleting and re-creating the folder, the UUID was successfully generated:
+
+```
+root# imeta ls -c foo
+AVUs defined for collection foo:
+attribute: ipc_UUID
+value: b9d4ec08-ddc0-11e6-9e57-90e2baa983f5
+units:
+```
+
+### Testing the roles on a new data object.
+
+Just for good measure, I tested this with a data object as well:
+
+```
+root# echo foo > foo.txt
+root# iput foo.txt
+root# imeta ls -d foo.txt
+AVUs defined for dataObj foo.txt:
+attribute: ipc_UUID
+value: 31b5786e-ddc1-11e6-9873-90e2baa983f5
+units:
+```
+
+## Testing DE logins.
+
+The first error that I encountered was a `NoRouteToHost` exception. I copied the exception into a file on my machine
+then used `jq` to examine the stack trace:
+
+```
+myself$ jq -r .stack_trace err.json
+java.lang.RuntimeException: java.net.NoRouteToHostException: Host is unreachable
+    at org.jasig.cas.client.util.CommonUtils.getResponseFromServer(CommonUtils.java:407) ~[cas-client-core-3.3.3.jar!/:3.3.3]
+    at org.jasig.cas.client.validation.AbstractCasProtocolUrlBasedTicketValidator.retrieveResponseFromServer(AbstractCasProtocolUrlBasedTicketValidator.java:45) ~[cas-client-core-3.3.3.jar!/:3.3.3]
+    at org.jasig.cas.client.validation.AbstractUrlBasedTicketValidator.validate(AbstractUrlBasedTicketValidator.java:200) ~[cas-client-core-3.3.3.jar!/:3.3.3]
+    at org.springframework.security.cas.authentication.CasAuthenticationProvider.authenticateNow(CasAuthenticationProvider.java:140) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.cas.authentication.CasAuthenticationProvider.authenticate(CasAuthenticationProvider.java:126) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:156) ~[spring-security-core-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.cas.web.CasAuthenticationFilter.attemptAuthentication(CasAuthenticationFilter.java:242) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:211) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.jasig.cas.client.session.SingleSignOutFilter.doFilter(SingleSignOutFilter.java:100) ~[cas-client-core-3.3.3.jar!/:3.3.3]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:57) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85) ~[spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:501) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:516) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1086) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:659) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.http11.Http11NioProtocol$Http11ConnectionHandler.process(Http11NioProtocol.java:223) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1558) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1515) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_92-internal]
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_92-internal]
+    at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at java.lang.Thread.run(Thread.java:745) [na:1.8.0_92-internal]
+Caused by: java.net.NoRouteToHostException: Host is unreachable
+    at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_92-internal]
+    at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_92-internal]
+    at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_92-internal]
+    at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_92-internal]
+    at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92-internal]
+    at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92-internal]
+    at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:668) ~[na:1.8.0_92-internal]
+    at sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:173) ~[na:1.8.0_92-internal]
+    at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92-internal]
+    at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92-internal]
+    at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:367) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92-internal]
+    at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254) ~[na:1.8.0_92-internal]
+    at org.jasig.cas.client.util.CommonUtils.getResponseFromServer(CommonUtils.java:393) ~[cas-client-core-3.3.3.jar!/:3.3.3]
+    ... 48 common frames omitted
+```
+
+A quick examiniation of the stack trace revealed that this was a problem validating the CAS service ticket. I attempted
+to connect to the CAS service from within the container:
+
+```
+root# docker exec -it etc_de_ui_1 sh
+container-root# nc -v sobs-de.sobs.arizona.edu 443
+nc: sobs-de.sobs.arizona.edu (128.196.59.20:443): Host is unreachable
+```
+
+This confirms that the host was unreachable, so I opened up the HTTPS port to the docker network and restarted
+Docker. I also redeployed the DE to the SOBS environment. It's just easier to restart the services that way. Updating
+the firewall rules and restarting Docker was enough to get past that error.
