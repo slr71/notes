@@ -1985,3 +1985,221 @@ nc: sobs-de.sobs.arizona.edu (128.196.59.20:443): Host is unreachable
 This confirms that the host was unreachable, so I opened up the HTTPS port to the docker network and restarted
 Docker. I also redeployed the DE to the SOBS environment. It's just easier to restart the services that way. Updating
 the firewall rules and restarting Docker was enough to get past that error.
+
+The next error that I encountered was a redirection error. I was being redirected back to `http` rather than `https`,
+which prevented the login from working, partially because the SSL redirect had not been added to the Apache
+configs. Adding the SSL redirect was enough to fix this error:
+
+```
+Redirect permanent /de https://sobs-de.sobs.arizona.edu/de
+Redirect permanent /cas https://sobs-de.sobs.arizona.edu/cas
+```
+
+The next error that I encountered was a failure to load the JWT signing key. Once again, I copied the error to a file on
+my local computer and used `jq` to get the stack trace:
+
+```
+myself$ jq -r .stack_trace err.json
+java.lang.IllegalArgumentException: Unable to load JWT signing key
+    at org.iplantc.de.server.auth.DefaultJwtBuilder.getPrivateKey(DefaultJwtBuilder.java:37) ~[de-lib-2.8.0.jar!/:na]
+    at org.iplantc.de.server.auth.DefaultJwtBuilder.buildJwt(DefaultJwtBuilder.java:66) ~[de-lib-2.8.0.jar!/:na]
+    at org.iplantc.de.server.auth.JwtUrlConnector.addHeaders(JwtUrlConnector.java:69) ~[de-lib-2.8.0.jar!/:na]
+    at org.iplantc.de.server.auth.JwtUrlConnector.getRequest(JwtUrlConnector.java:33) ~[de-lib-2.8.0.jar!/:na]
+    at org.iplantc.de.server.services.DEServiceImpl.getResponse(DEServiceImpl.java:215) [de-lib-2.8.0.jar!/:na]
+    at org.iplantc.de.server.services.DEServiceImpl.getServiceData(DEServiceImpl.java:89) [de-lib-2.8.0.jar!/:na]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92-internal]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92-internal]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92-internal]
+    at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92-internal]
+    at com.google.gwt.user.server.rpc.RPC.invokeAndEncodeResponse(RPC.java:587) [gwt-servlet-2.7.0.jar!/:na]
+    at com.google.gwt.user.server.rpc.RPC.invokeAndEncodeResponse(RPC.java:571) [gwt-servlet-2.7.0.jar!/:na]
+    at com.google.gwt.user.server.rpc.RPC.invokeAndEncodeResponse(RPC.java:533) [gwt-servlet-2.7.0.jar!/:na]
+    at org.iplantc.de.server.rpc.GwtRpcController.processCall(GwtRpcController.java:72) [classes!/:na]
+    at com.google.gwt.user.server.rpc.RemoteServiceServlet.processPost(RemoteServiceServlet.java:373) [gwt-servlet-2.7.0.jar!/:na]
+    at com.google.gwt.user.server.rpc.AbstractRemoteServiceServlet.doPost(AbstractRemoteServiceServlet.java:62) [gwt-servlet-2.7.0.jar!/:na]
+    at org.iplantc.de.server.rpc.GwtRpcController.handleRequest(GwtRpcController.java:60) [classes!/:na]
+    at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:50) [spring-webmvc-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959) [spring-webmvc-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893) [spring-webmvc-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:966) [spring-webmvc-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:868) [spring-webmvc-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:707) [javax.servlet-api-3.1.0.jar!/:3.1.0]
+    at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:842) [spring-webmvc-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:790) [javax.servlet-api-3.1.0.jar!/:3.1.0]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:330) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:118) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:154) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.iplantc.de.server.MDCFilter.doFilter(MDCFilter.java:63) [classes!/:na]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.iplantc.de.server.CacheControlFilter.doFilter(CacheControlFilter.java:51) [classes!/:na]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:199) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.jasig.cas.client.session.SingleSignOutFilter.doFilter(SingleSignOutFilter.java:100) [cas-client-core-3.3.3.jar!/:3.3.3]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:57) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160) [spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85) [spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:501) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:516) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1086) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:659) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.http11.Http11NioProtocol$Http11ConnectionHandler.process(Http11NioProtocol.java:223) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1558) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1515) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_92-internal]
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_92-internal]
+    at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at java.lang.Thread.run(Thread.java:745) [na:1.8.0_92-internal]
+Caused by: java.io.FileNotFoundException: /etc/sobs/crypto/private-key.pem (No such file or directory)
+    at java.io.FileInputStream.open0(Native Method) ~[na:1.8.0_92-internal]
+    at java.io.FileInputStream.open(FileInputStream.java:195) ~[na:1.8.0_92-internal]
+    at java.io.FileInputStream.<init>(FileInputStream.java:138) ~[na:1.8.0_92-internal]
+    at java.io.FileInputStream.<init>(FileInputStream.java:93) ~[na:1.8.0_92-internal]
+    at java.io.FileReader.<init>(FileReader.java:58) ~[na:1.8.0_92-internal]
+    at org.iplantc.de.server.auth.PemKeyUtils.loadPrivateKey(PemKeyUtils.java:42) ~[de-lib-2.8.0.jar!/:na]
+    at org.iplantc.de.server.auth.DefaultJwtBuilder.getPrivateKey(DefaultJwtBuilder.java:35) ~[de-lib-2.8.0.jar!/:na]
+    ... 101 common frames omitted
+```
+
+The missing file path probably means that I used a different set of paths when I generated the config and data images
+than I did when I launched the services. Logging into the DE container and checking the path was enough to confirm that
+the path does not exist:
+
+```
+root# docker exec -it etc_de_ui_1 sh
+container-root# ls -l /etc/sobs
+ls: /etc/sobs: No such file or directory
+```
+
+Examining the Dockerfile revealed that I'd forgotten to declare the volumes:
+
+``` dockerfile
+FROM clojure:alpine
+
+USER root
+RUN \
+  mkdir -p /etc/sobs/crypto/accepted_keys \
+           /etc/sobs/crypto/sobs \
+           /etc/ssl/sobs
+
+#############################################
+## GPG files -- ADD auto-extracts tarballs ##
+#############################################
+ADD sobs.tar.gz /etc/sobs/crypto/sobs
+
+##################
+## Signing keys ##
+##################
+COPY private-key.pem /etc/sobs/crypto/private-key.pem
+COPY public-key.pem /etc/sobs/crypto/public-key.pem
+
+############################
+## SSL files for Logstash ##
+############################
+
+#################
+## PERMISSIONS ##
+#################
+RUN \
+  chmod 0600 /etc/sobs/crypto/private-key.pem && \
+  chmod 0644 /etc/sobs/crypto/public-key.pem
+
+CMD ["/bin/sh"]
+```
+
+Adding the volumes should fix the problem:
+
+``` dockerfile
+FROM clojure:alpine
+
+USER root
+RUN \
+  mkdir -p /etc/sobs/crypto/accepted_keys \
+           /etc/sobs/crypto/sobs \
+           /etc/ssl/sobs
+
+#############################################
+## GPG files -- ADD auto-extracts tarballs ##
+#############################################
+ADD sobs.tar.gz /etc/sobs/crypto/sobs
+
+##################
+## Signing keys ##
+##################
+COPY private-key.pem /etc/sobs/crypto/private-key.pem
+COPY public-key.pem /etc/sobs/crypto/public-key.pem
+
+############################
+## SSL files for Logstash ##
+############################
+
+#################
+## PERMISSIONS ##
+#################
+RUN \
+  chmod 0600 /etc/sobs/crypto/private-key.pem && \
+  chmod 0644 /etc/sobs/crypto/public-key.pem
+
+VOLUME ["/etc/ssl", "/etc/sobs/crypto"]
+CMD ["/bin/sh"]
+```
+
+After regenerating the image and restarting the service, this error stopped occurring. I restarted the other services
+that use a data container at the same time since they're likely to encounter similar errors.
+
+The next error that occurred was a `Connection refused` error message when the UI was attempting to make a call to
+terrain. This was the same firewall issue that prevented the UI from validating the CAS service ticket above. I updated
+the firewall rules on the services host to fix this problem.
