@@ -1774,10 +1774,10 @@ root# docker run --rm -it --name sharkbait \
       discoenv/sharkbait:latest -h sobs-pgsql.sobs.arizona.edu -e sobs
 ```
 
-## Updated paths and data container names containing `iplant` in the `docker-compose.yaml` file for SOBS:
+## Updated data container names containing `iplant` in the `docker-compose.yaml` file for SOBS:
 
 I did a selective search and replace for this. The data container names all begin with `sobs_data_` rather than
-`iplant_data_`, and the config file paths begin with `/etc/sobs` rather than `/etc/iplant`.
+`iplant_data_`.
 
 ## Deployed the DE.
 
