@@ -2203,3 +2203,11 @@ that use a data container at the same time since they're likely to encounter sim
 The next error that occurred was a `Connection refused` error message when the UI was attempting to make a call to
 terrain. This was the same firewall issue that prevented the UI from validating the CAS service ticket above. I updated
 the firewall rules on the services host to fix this problem.
+
+The next error that occurred was a failure to get notifications. I looked at the notification agent's log messages to
+determine why this was happening. The AMQP connection was failing. There were two problems here. The first was that the
+firewall was not allowing connections to the AMQP port. I updated the firewall rules on the server running RabbitMQ and
+tried again. The error was still occurring, but for a different reason this time. After chasing several red herrings, I
+finally figured out that the problem was caused by a password that wasn't being URL encoded before being placed in a
+URL. I updated the group variables file to fix this and tried again. This time, the notification agent started
+successfully.
