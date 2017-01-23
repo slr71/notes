@@ -1715,7 +1715,7 @@ get the `de-dc` script to be generated correctly. Once I made the change, I simp
 myself$ ansible-playbook -i inventories/sobs -K infra-docker-compose.yml
 ```
 
-### Initialize the Grouper database.
+## Initialize the Grouper database.
 
 For this step, I need to launch a Grouper container with access to the configuration settings:
 
