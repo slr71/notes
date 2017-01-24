@@ -2587,5 +2587,5 @@ Redirect permanent /anon-files https://sobs-de.sobs.arizona.edu/anon-files
 Redirect permanent /dl https://sobs-de.sobs.arizona.edu/dl
 ```
 
-I was still getting an error when I tried the URL again. This time it was because a firewall was blocking the port. [I
-haven't fixed this yet. I'll need to add a firewall rule then retest to verify that this works.]
+I was still getting an error when I tried the URL again. This time it was because a firewall was blocking the port and
+the reverse proxy was configured incorrectly. After fixing these settings, the download links started working correctly.
