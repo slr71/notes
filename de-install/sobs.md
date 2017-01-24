@@ -2211,3 +2211,381 @@ tried again. The error was still occurring, but for a different reason this time
 finally figured out that the problem was caused by a password that wasn't being URL encoded before being placed in a
 URL. I updated the group variables file to fix this and tried again. This time, the notification agent started
 successfully.
+
+## Troubleshooting RabbitMQ connection issues.
+
+RabbitMQ was quickly running out of available file descriptors. I stopped all of the services on the host where most of
+the connections were coming from, and started them up one-by-one hoping to determine which services were causing
+problems. To my surprise, the number of open connections didn't dramatically increase after starting one or more of the
+services. I'll have to keep an eye out for this problem.
+
+## Troubleshooting DE data operations.
+
+Errors were being displayed when I opened up the data Window in the DE. The first error that I encountered was a missing
+path, but the exception didn't indicate which path was missing:
+
+```
+org.ixxxxxxxx.jargon.core.exception.FileNotFoundException: unable to find file under path
+    at org.ixxxxxxxx.jargon.core.pub.CollectionListingUtils.handleNoObjStatUnderRootOrHomeByLookingForPublicAndHome(CollectionListingUtils.java:292)
+    at org.ixxxxxxxx.jargon.core.pub.CollectionAndDataObjectListAndSearchAOImpl.retrieveObjectStatForPathWithHeuristicPathGuessing(CollectionAndDataObjectListAndSearchAOImpl.java:1589)
+    at org.ixxxxxxxx.jargon.core.pub.IRODSFileSystemAOImpl.getObjStat(IRODSFileSystemAOImpl.java:465)
+    at clj_jargon.item_info$jargon_type_check.invokeStatic(item_info.clj:69)
+    at clj_jargon.item_info$jargon_type_check.invoke(item_info.clj:67)
+    at clj_jargon.item_info$is_dir_QMARK_.invokeStatic(item_info.clj:81)
+    at clj_jargon.item_info$is_dir_QMARK_.invoke(item_info.clj:77)
+    at clj_jargon.permissions$is_readable_QMARK_.invokeStatic(permissions.clj:380)
+    at clj_jargon.permissions$is_readable_QMARK_.invoke(permissions.clj:367)
+    at data_info.util.validators$path_readable.invokeStatic(validators.clj:147)
+    at data_info.util.validators$path_readable.invoke(validators.clj:145)
+    at data_info.services.root$get_root.invokeStatic(root.clj:24)
+    at data_info.services.root$get_root.invoke(root.clj:22)
+    at data_info.services.root$root_listing.invokeStatic(root.clj:50)
+    at data_info.services.root$root_listing.invoke(root.clj:40)
+    at data_info.services.root$do_root_listing.invokeStatic(root.clj:57)
+    at data_info.services.root$do_root_listing.invoke(root.clj:55)
+    at clojure.lang.AFn.applyToHelper(AFn.java:154)
+    at clojure.lang.AFn.applyTo(AFn.java:144)
+    at clojure.core$apply.invokeStatic(core.clj:646)
+    at clojure.core$apply.invoke(core.clj:641)
+    at dire.core$supervised_meta.invokeStatic(core.clj:240)
+    at dire.core$supervised_meta.doInvoke(core.clj:235)
+    at clojure.lang.RestFn.invoke(RestFn.java:442)
+    at clojure.core$partial$fn__4759.invoke(core.clj:2516)
+    at clojure.lang.AFn.applyToHelper(AFn.java:156)
+    at clojure.lang.RestFn.applyTo(RestFn.java:132)
+    at clojure.core$apply.invokeStatic(core.clj:648)
+    at clojure.core$apply.invoke(core.clj:641)
+    at robert.hooke$compose_hooks$fn__12473.doInvoke(hooke.clj:40)
+    at clojure.lang.RestFn.applyTo(RestFn.java:137)
+    at clojure.core$apply.invokeStatic(core.clj:646)
+    at clojure.core$apply.invoke(core.clj:641)
+    at robert.hooke$run_hooks.invokeStatic(hooke.clj:46)
+    at robert.hooke$run_hooks.invoke(hooke.clj:45)
+    at robert.hooke$prepare_for_hooks$fn__12478$fn__12479.doInvoke(hooke.clj:54)
+    at clojure.lang.RestFn.applyTo(RestFn.java:137)
+    at clojure.lang.AFunction$1.doInvoke(AFunction.java:29)
+    at clojure.lang.RestFn.applyTo(RestFn.java:137)
+    at clojure.core$apply.invokeStatic(core.clj:646)
+    at clojure.core$apply.invoke(core.clj:641)
+    at data_info.util.service$trap$fn__14374.invoke(service.clj:34)
+    at clojure.lang.AFn.applyToHelper(AFn.java:152)
+    at clojure.lang.AFn.applyTo(AFn.java:144)
+    at clojure.core$apply.invokeStatic(core.clj:646)
+    at clojure.core$apply.invoke(core.clj:641)
+    at clojure_commons.error_codes$trap.invokeStatic(error_codes.clj:167)
+    at clojure_commons.error_codes$trap.doInvoke(error_codes.clj:165)
+    at clojure.lang.RestFn.invoke(RestFn.java:425)
+    at data_info.util.service$trap.invokeStatic(service.clj:34)
+    at data_info.util.service$trap.doInvoke(service.clj:31)
+    at clojure.lang.RestFn.invoke(RestFn.java:442)
+    at data_info.routes.navigation$fn__15493$fn__15501.invoke(navigation.clj:46)
+    at compojure.core$make_route$fn__6000.invoke(core.clj:135)
+    at compojure.core$pre_init$fn__6039.invoke(core.clj:268)
+    at compojure.api.coerce$body_coercer_middleware$fn__11141.invoke(coerce.clj:51)
+    at compojure.core$pre_init$fn__6041$fn__6042.invoke(core.clj:271)
+    at compojure.core$wrap_route_middleware$fn__5993.invoke(core.clj:121)
+    at compojure.core$wrap_route_info$fn__5997.invoke(core.clj:126)
+    at compojure.core$if_route$fn__5955.invoke(core.clj:45)
+    at compojure.core$if_method$fn__5945.invoke(core.clj:27)
+    at compojure.core$wrap_routes$fn__6047.invoke(core.clj:279)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at compojure.core$routing$fn__6007.invoke(core.clj:151)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.core$routing.invokeStatic(core.clj:151)
+    at compojure.core$routing.doInvoke(core.clj:148)
+    at clojure.lang.RestFn.applyTo(RestFn.java:139)
+    at clojure.core$apply.invokeStatic(core.clj:648)
+    at clojure.core$apply.invoke(core.clj:641)
+    at compojure.core$routes$fn__6011.invoke(core.clj:156)
+    at compojure.core$routing$fn__6007.invoke(core.clj:151)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.core$routing.invokeStatic(core.clj:151)
+    at compojure.core$routing.doInvoke(core.clj:148)
+    at clojure.lang.RestFn.invoke(RestFn.java:423)
+    at data_info.routes.navigation$fn__15493.invokeStatic(navigation.clj:13)
+    at data_info.routes.navigation$fn__15493.invoke(navigation.clj:13)
+    at compojure.core$if_context$fn__6029.invoke(core.clj:220)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at compojure.api.core$handle$fn__11278.invoke(core.clj:8)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.api.core$handle.invokeStatic(core.clj:8)
+    at compojure.api.core$handle.invoke(core.clj:7)
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at compojure.api.core$handle$fn__11278.invoke(core.clj:8)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.api.core$handle.invokeStatic(core.clj:8)
+    at compojure.api.core$handle.invoke(core.clj:7)
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at service_logging.middleware$log_validation_errors$fn__11758.invoke(middleware.clj:120)
+    at data_info.util$req_logger$fn__16226.invoke(util.clj:14)
+    at compojure.api.middleware$wrap_exceptions$fn__10107.invoke(middleware.clj:43)
+    at ring.middleware.keyword_params$wrap_keyword_params$fn__7659.invoke(keyword_params.clj:35)
+    at clojure_commons.lcase_params$wrap_lcase_params$fn__5567.invoke(lcase_params.clj:18)
+    at clojure_commons.query_params$wrap_query_params$fn__5586.invoke(query_params.clj:62)
+    at service_logging.middleware$add_user_to_context$fn__11752.invoke(middleware.clj:112)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at compojure.api.core$handle$fn__11278.invoke(core.clj:8)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.api.core$handle.invokeStatic(core.clj:8)
+    at compojure.api.core$handle.invoke(core.clj:7)
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at ring.middleware.http_response$wrap_http_response$fn__7629.invoke(http_response.clj:8)
+    at ring.swagger.middleware$wrap_swagger_data$fn__9788.invoke(middleware.clj:33)
+    at compojure.api.middleware$wrap_options$fn__10117.invoke(middleware.clj:74)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:118)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:119)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:119)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:119)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:119)
+    at compojure.api.middleware$wrap_exceptions$fn__10107.invoke(middleware.clj:43)
+    at ring.middleware.format_response$wrap_format_response$fn__7539.invoke(format_response.clj:183)
+    at ring.middleware.keyword_params$wrap_keyword_params$fn__7659.invoke(keyword_params.clj:35)
+    at ring.middleware.nested_params$wrap_nested_params$fn__7703.invoke(nested_params.clj:86)
+    at ring.middleware.params$wrap_params$fn__7759.invoke(params.clj:64)
+    at compojure.api.middleware$wrap_options$fn__10117.invoke(middleware.clj:74)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at ring.adapter.jetty$proxy_handler$fn__117.invoke(jetty.clj:24)
+    at ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a.handle(Unknown Source)
+    at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+    at org.eclipse.jetty.server.Server.handle(Server.java:497)
+    at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310)
+    at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257)
+    at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+    at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)
+    at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)
+    at java.lang.Thread.run(Thread.java:745)
+```
+
+Since this was happening when the data window was first being loaded, I suspected that it was one of the paths that the
+data window initially displays when it's launched. After looking over the `data-info` configuration file, I suspected
+that the missing path was the path to the shared data folder: `/sobs/home/shared`. After creating this folder and
+reopening the data window, another error occurred:
+
+```
+clojure.lang.ExceptionInfo: throw+: {:error_code "ERR_NOT_READABLE", :path "/sobs/home", :user "dennis"} {:error_code "ERR_NOT_READABLE", :path "/sobs/home", :user "dennis"}
+    at slingshot.support$stack_trace.invoke(support.clj:201)
+    at data_info.util.validators$path_readable.invokeStatic(validators.clj:148)
+    at data_info.util.validators$path_readable.invoke(validators.clj:145)
+    at data_info.services.root$get_root.invokeStatic(root.clj:24)
+    at data_info.services.root$get_root.invoke(root.clj:22)
+    at data_info.services.root$root_listing.invokeStatic(root.clj:51)
+    at data_info.services.root$root_listing.invoke(root.clj:40)
+    at data_info.services.root$do_root_listing.invokeStatic(root.clj:57)
+    at data_info.services.root$do_root_listing.invoke(root.clj:55)
+    at clojure.lang.AFn.applyToHelper(AFn.java:154)
+    at clojure.lang.AFn.applyTo(AFn.java:144)
+    at clojure.core$apply.invokeStatic(core.clj:646)
+    at clojure.core$apply.invoke(core.clj:641)
+    at dire.core$supervised_meta.invokeStatic(core.clj:240)
+    at dire.core$supervised_meta.doInvoke(core.clj:235)
+    at clojure.lang.RestFn.invoke(RestFn.java:442)
+    at clojure.core$partial$fn__4759.invoke(core.clj:2516)
+    at clojure.lang.AFn.applyToHelper(AFn.java:156)
+    at clojure.lang.RestFn.applyTo(RestFn.java:132)
+    at clojure.core$apply.invokeStatic(core.clj:648)
+    at clojure.core$apply.invoke(core.clj:641)
+    at robert.hooke$compose_hooks$fn__12473.doInvoke(hooke.clj:40)
+    at clojure.lang.RestFn.applyTo(RestFn.java:137)
+    at clojure.core$apply.invokeStatic(core.clj:646)
+    at clojure.core$apply.invoke(core.clj:641)
+    at robert.hooke$run_hooks.invokeStatic(hooke.clj:46)
+    at robert.hooke$run_hooks.invoke(hooke.clj:45)
+    at robert.hooke$prepare_for_hooks$fn__12478$fn__12479.doInvoke(hooke.clj:54)
+    at clojure.lang.RestFn.applyTo(RestFn.java:137)
+    at clojure.lang.AFunction$1.doInvoke(AFunction.java:29)
+    at clojure.lang.RestFn.applyTo(RestFn.java:137)
+    at clojure.core$apply.invokeStatic(core.clj:646)
+    at clojure.core$apply.invoke(core.clj:641)
+    at data_info.util.service$trap$fn__14374.invoke(service.clj:34)
+    at clojure.lang.AFn.applyToHelper(AFn.java:152)
+    at clojure.lang.AFn.applyTo(AFn.java:144)
+    at clojure.core$apply.invokeStatic(core.clj:646)
+    at clojure.core$apply.invoke(core.clj:641)
+    at clojure_commons.error_codes$trap.invokeStatic(error_codes.clj:167)
+    at clojure_commons.error_codes$trap.doInvoke(error_codes.clj:165)
+    at clojure.lang.RestFn.invoke(RestFn.java:425)
+    at data_info.util.service$trap.invokeStatic(service.clj:34)
+    at data_info.util.service$trap.doInvoke(service.clj:31)
+    at clojure.lang.RestFn.invoke(RestFn.java:442)
+    at data_info.routes.navigation$fn__15493$fn__15501.invoke(navigation.clj:46)
+    at compojure.core$make_route$fn__6000.invoke(core.clj:135)
+    at compojure.core$pre_init$fn__6039.invoke(core.clj:268)
+    at compojure.api.coerce$body_coercer_middleware$fn__11141.invoke(coerce.clj:51)
+    at compojure.core$pre_init$fn__6041$fn__6042.invoke(core.clj:271)
+    at compojure.core$wrap_route_middleware$fn__5993.invoke(core.clj:121)
+    at compojure.core$wrap_route_info$fn__5997.invoke(core.clj:126)
+    at compojure.core$if_route$fn__5955.invoke(core.clj:45)
+    at compojure.core$if_method$fn__5945.invoke(core.clj:27)
+    at compojure.core$wrap_routes$fn__6047.invoke(core.clj:279)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at compojure.core$routing$fn__6007.invoke(core.clj:151)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.core$routing.invokeStatic(core.clj:151)
+    at compojure.core$routing.doInvoke(core.clj:148)
+    at clojure.lang.RestFn.applyTo(RestFn.java:139)
+    at clojure.core$apply.invokeStatic(core.clj:648)
+    at clojure.core$apply.invoke(core.clj:641)
+    at compojure.core$routes$fn__6011.invoke(core.clj:156)
+    at compojure.core$routing$fn__6007.invoke(core.clj:151)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.core$routing.invokeStatic(core.clj:151)
+    at compojure.core$routing.doInvoke(core.clj:148)
+    at clojure.lang.RestFn.invoke(RestFn.java:423)
+    at data_info.routes.navigation$fn__15493.invokeStatic(navigation.clj:13)
+    at data_info.routes.navigation$fn__15493.invoke(navigation.clj:13)
+    at compojure.core$if_context$fn__6029.invoke(core.clj:220)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at compojure.api.core$handle$fn__11278.invoke(core.clj:8)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.api.core$handle.invokeStatic(core.clj:8)
+    at compojure.api.core$handle.invoke(core.clj:7)
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at compojure.api.core$handle$fn__11278.invoke(core.clj:8)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.api.core$handle.invokeStatic(core.clj:8)
+    at compojure.api.core$handle.invoke(core.clj:7)
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at service_logging.middleware$log_validation_errors$fn__11758.invoke(middleware.clj:120)
+    at data_info.util$req_logger$fn__16226.invoke(util.clj:14)
+    at compojure.api.middleware$wrap_exceptions$fn__10107.invoke(middleware.clj:43)
+    at ring.middleware.keyword_params$wrap_keyword_params$fn__7659.invoke(keyword_params.clj:35)
+    at clojure_commons.lcase_params$wrap_lcase_params$fn__5567.invoke(lcase_params.clj:18)
+    at clojure_commons.query_params$wrap_query_params$fn__5586.invoke(query_params.clj:62)
+    at service_logging.middleware$add_user_to_context$fn__11752.invoke(middleware.clj:112)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at compojure.api.core$handle$fn__11278.invoke(core.clj:8)
+    at clojure.core$some.invokeStatic(core.clj:2592)
+    at clojure.core$some.invoke(core.clj:2583)
+    at compojure.api.core$handle.invokeStatic(core.clj:8)
+    at compojure.api.core$handle.invoke(core.clj:7)
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at ring.middleware.http_response$wrap_http_response$fn__7629.invoke(http_response.clj:8)
+    at ring.swagger.middleware$wrap_swagger_data$fn__9788.invoke(middleware.clj:33)
+    at compojure.api.middleware$wrap_options$fn__10117.invoke(middleware.clj:74)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:118)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:119)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:119)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:119)
+    at ring.middleware.format_params$wrap_format_params$fn__6840.invoke(format_params.clj:119)
+    at compojure.api.middleware$wrap_exceptions$fn__10107.invoke(middleware.clj:43)
+    at ring.middleware.format_response$wrap_format_response$fn__7539.invoke(format_response.clj:183)
+    at ring.middleware.keyword_params$wrap_keyword_params$fn__7659.invoke(keyword_params.clj:35)
+    at ring.middleware.nested_params$wrap_nested_params$fn__7703.invoke(nested_params.clj:86)
+    at ring.middleware.params$wrap_params$fn__7759.invoke(params.clj:64)
+    at compojure.api.middleware$wrap_options$fn__10117.invoke(middleware.clj:74)
+    at compojure.api.routes.Route.invoke(routes.clj:74)
+    at ring.adapter.jetty$proxy_handler$fn__117.invoke(jetty.clj:24)
+    at ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a.handle(Unknown Source)
+    at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+    at org.eclipse.jetty.server.Server.handle(Server.java:497)
+    at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310)
+    at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257)
+    at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+    at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)
+    at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)
+    at java.lang.Thread.run(Thread.java:745)
+```
+
+This error message was a little bit easier to decipher. After giving the `public` group read access to `/sobs/home`, I
+was able to open the data window without error.
+
+My next step was to create some files and verify that the info types were updated correctly. I was able to create files
+without any problems, but info types weren't being assigned automatically. This error was showing up in the iRODS log
+files again:
+
+```
+Jan 23 16:42:39 pid:9262 NOTICE: writeLine: inString = Failed to send AMQP message: ERROR: (406, "PRECONDITION_FAILED - cannot redeclare exchange 'irods' in vhost '/sobs/data-store' with different type, durable, internal or autodelete value")
+```
+
+The exchange had once again been declared as durable, which is causing the error. I suspect that the exchange is
+actually being regenerated by one of the DE services:
+
+```
+root# rmq -V /sobs/data-store list exchanges
++------------------+--------------------+---------+-------------+---------+----------+
+|      vhost       |        name        |  type   | auto_delete | durable | internal |
++------------------+--------------------+---------+-------------+---------+----------+
+| /sobs/data-store |                    | direct  | False       | True    | False    |
+| /sobs/data-store | amq.direct         | direct  | False       | True    | False    |
+| /sobs/data-store | amq.fanout         | fanout  | False       | True    | False    |
+| /sobs/data-store | amq.headers        | headers | False       | True    | False    |
+| /sobs/data-store | amq.match          | headers | False       | True    | False    |
+| /sobs/data-store | amq.rabbitmq.trace | topic   | False       | True    | True     |
+| /sobs/data-store | amq.topic          | topic   | False       | True    | False    |
+| /sobs/data-store | irods              | topic   | False       | True    | False    |
++------------------+--------------------+---------+-------------+---------+----------+
+```
+
+I stopped the DE services, deleted the `irods` exchange, created a new file and checked the exchange listing again:
+
+```
+# rmq -V /sobs/data-store list exchanges
++------------------+--------------------+---------+-------------+---------+----------+
+|      vhost       |        name        |  type   | auto_delete | durable | internal |
++------------------+--------------------+---------+-------------+---------+----------+
+| /sobs/data-store |                    | direct  | False       | True    | False    |
+| /sobs/data-store | amq.direct         | direct  | False       | True    | False    |
+| /sobs/data-store | amq.fanout         | fanout  | False       | True    | False    |
+| /sobs/data-store | amq.headers        | headers | False       | True    | False    |
+| /sobs/data-store | amq.match          | headers | False       | True    | False    |
+| /sobs/data-store | amq.rabbitmq.trace | topic   | False       | True    | True     |
+| /sobs/data-store | amq.topic          | topic   | False       | True    | False    |
+| /sobs/data-store | irods              | topic   | True        | False   | False    |
++------------------+--------------------+---------+-------------+---------+----------+
+```
+
+This time, the exchange was declared the way that iRODS expects. Restarted the DE services and checked the exchange
+listing again. Interestingly enough, this caused the number of connections to RabbitMQ to explode. After examining the
+configuration on another one of our servers, I found that the problem was in `/etc/irods/ipc-env.re`. The value of
+`ipc_AMQP_EPHEMERAL` was `true` when it should have been `false`. After fixing the file and forcing an AMQP message to
+be sent, it appears that the exchange was declared correctly:
+
+```
+# rmq -V /sobs/data-store list exchanges
++------------------+--------------------+---------+-------------+---------+----------+
+|      vhost       |        name        |  type   | auto_delete | durable | internal |
++------------------+--------------------+---------+-------------+---------+----------+
+| /sobs/data-store |                    | direct  | False       | True    | False    |
+| /sobs/data-store | amq.direct         | direct  | False       | True    | False    |
+| /sobs/data-store | amq.fanout         | fanout  | False       | True    | False    |
+| /sobs/data-store | amq.headers        | headers | False       | True    | False    |
+| /sobs/data-store | amq.match          | headers | False       | True    | False    |
+| /sobs/data-store | amq.rabbitmq.trace | topic   | False       | True    | True     |
+| /sobs/data-store | amq.topic          | topic   | False       | True    | False    |
+| /sobs/data-store | irods              | topic   | False       | True    | False    |
++------------------+--------------------+---------+-------------+---------+----------+
+```
+
+I restarted the DE services then tested info type detection again. This time automatic file detection worked
+correctly. I briefly tested URL uploads. They weren't working, but I decided to table this problem. URL uploads are so
+closely related to job submissions that I wanted to verify that job submissions were working before digging into this
+too much.
+
+I tried anonymous file sharing next. The link appears to have been created correctly, but the connection to the
+anon-files service was refused. The first problem was that an HTTP URL was generated, but there was no reverse proxy for
+the HTTP URL. I fixed this by creating some additional redirects:
+
+```
+Redirect permanent /de https://sobs-de.sobs.arizona.edu/de
+Redirect permanent /cas https://sobs-de.sobs.arizona.edu/cas
+Redirect permanent /anon-files https://sobs-de.sobs.arizona.edu/anon-files
+Redirect permanent /dl https://sobs-de.sobs.arizona.edu/dl
+```
+
+I was still getting an error when I tried the URL again. This time it was because a firewall was blocking the port. [I
+haven't fixed this yet. I'll need to add a firewall rule then retest to verify that this works.]
