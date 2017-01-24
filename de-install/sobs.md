@@ -2589,3 +2589,16 @@ Redirect permanent /dl https://sobs-de.sobs.arizona.edu/dl
 
 I was still getting an error when I tried the URL again. This time it was because a firewall was blocking the port and
 the reverse proxy was configured incorrectly. After fixing these settings, the download links started working correctly.
+It was actually the reverse proxy setting that weas preventing the URL from working in this case, but the firewall would
+have caused issues for `anon-files`.
+
+The next step was to try to share a file with a collaborator. There was an error when I tried to do the first
+collaborator search, which was caused by an incorrectly configured reverse proxy. After fixing the reverse proxy, the
+collaborator search worked correctly. I ran into a bit of a problem when I tried to share with a collaborator at first,
+but it turned out that these errors occurred because the user that I picked didn't have an iRODS account yet. Also,
+while I was testing this, I noticed that I wasn't receiving notifications. It turned out that this was also an
+incorrectly configured reverse proxy. The differences between Apache and nginx are just enough to cause confusion.
+
+The next feature to test was the ability to share files with genome browsers via `anon-files`. The first time I tried
+this, I got `ERR_NOT_A_USER`. This was because the `anonymous` user hadn't been created in iRODS. After creating the
+user, this feature worked correctly as well.
