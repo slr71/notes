@@ -2602,3 +2602,104 @@ incorrectly configured reverse proxy. The differences between Apache and nginx a
 The next feature to test was the ability to share files with genome browsers via `anon-files`. The first time I tried
 this, I got `ERR_NOT_A_USER`. This was because the `anonymous` user hadn't been created in iRODS. After creating the
 user, this feature worked correctly as well.
+
+## Troubleshooting Belphegor access.
+
+When I tried to access Belphegor at first, I encountered this error:
+
+```
+java.lang.IllegalArgumentException: A granted authority textual representation is required
+    at org.springframework.util.Assert.hasText(Assert.java:162) ~[spring-core-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.security.core.authority.SimpleGrantedAuthority.<init>(SimpleGrantedAuthority.java:23) ~[spring-security-core-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.iplantc.de.server.auth.CasGroupUserDetailsService.loadUserDetails(CasGroupUserDetailsService.java:69) ~[classes!/:na]
+    at org.springframework.security.cas.userdetails.AbstractCasAssertionUserDetailsService.loadUserDetails(AbstractCasAssertionUserDetailsService.java:33) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.cas.userdetails.AbstractCasAssertionUserDetailsService.loadUserDetails(AbstractCasAssertionUserDetailsService.java:29) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.cas.authentication.CasAuthenticationProvider.loadUserByAssertion(CasAuthenticationProvider.java:185) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.cas.authentication.CasAuthenticationProvider.authenticateNow(CasAuthenticationProvider.java:141) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.cas.authentication.CasAuthenticationProvider.authenticate(CasAuthenticationProvider.java:126) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:156) ~[spring-security-core-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.cas.web.CasAuthenticationFilter.attemptAuthentication(CasAuthenticationFilter.java:242) ~[spring-security-cas-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:211) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.jasig.cas.client.session.SingleSignOutFilter.doFilter(SingleSignOutFilter.java:100) ~[cas-client-core-3.3.3.jar!/:3.3.3]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:57) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:50) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160) ~[spring-security-web-3.2.7.RELEASE.jar!/:3.2.7.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:85) ~[spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.1.6.RELEASE.jar!/:4.1.6.RELEASE]
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219) ~[tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:501) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:516) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1086) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:659) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.coyote.http11.Http11NioProtocol$Http11ConnectionHandler.process(Http11NioProtocol.java:223) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1558) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1515) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_111-internal]
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_111-internal]
+    at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.20.jar!/:8.0.20]
+    at java.lang.Thread.run(Thread.java:745) [na:1.8.0_111-internal]
+```
+
+After examining the code in `CasGroupUserDetailsService`, I believe that the problem is that we're trying to create an
+instance of `SimpleGrantedAuthority` with an empty string for a name. To troubleshoot this, I created a new Docker image
+for CAS with debug logging enabled in a few Java packages so that the attributes would be logged. From what I can see in
+the log file, the attributes appear to be correct:
+
+```
+Aggregated search results '[
+    NamedPersonImpl[
+        name=dennis,
+        attributes={firstName=[Dennis], lastName=[Roberts], email=[dennis@cyverse.org], entitlement=[sobs]}
+    ]
+]' for query='{username=[dennis]}'
+```
+
+Next, I created a new Docker image for the DE UI to confirm my hypothesis. For this image, I added some logging
+statements to `CasGroupUserDetailsService` and enabled debug logging. This helped to pinpoint the problem. The leading
+and trailing brackets were being removed before getting to the DE servlet, which was preventing the DE from successfully
+extracting the group names:
+
+```
+Server response:
+
+<cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'>
+    <cas:authenticationSuccess>
+        <cas:user>dennis</cas:user>
+            <cas:attributes>
+                    <cas:firstName>Dennis</cas:firstName>
+                    <cas:lastName>Roberts</cas:lastName>
+                    <cas:entitlement>sobs</cas:entitlement>
+                    <cas:email>dennis@cyverse.org</cas:email>
+            </cas:attributes>
+    </cas:authenticationSuccess>
+</cas:serviceResponse>
+
+```
+
+I'm going to have to experiment with this to determine whether or not the brackets are always being stripped in the SOBS
+deployment. If they are then I'll have to modify `CasGroupUserDetailsService` so that it can accept comma-delimited
+lists either with or without leading and trailing brackets. Otherwise, I should probably update all of the existing CAS
+configurations so that they behave consistently.
