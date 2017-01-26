@@ -2703,3 +2703,396 @@ I'm going to have to experiment with this to determine whether or not the bracke
 deployment. If they are then I'll have to modify `CasGroupUserDetailsService` so that it can accept comma-delimited
 lists either with or without leading and trailing brackets. Otherwise, I should probably update all of the existing CAS
 configurations so that they behave consistently.
+
+To test this, I added myself to another Group in LDAP and tried to log in again. The login was successful after I added
+myself to another group. This means that the brackets are only added when a user belongs to more than one group, so one
+workaround is to place all administrative users in more than one LDAP group. This is only temporary, however. Our CAS
+configuration will have to be modified to format the list of groups consistently in all cases. We've been meaning to use
+groups for authorization in Jenkins for a while, and the CAS plugin for Jenkins expects a simple comma-delimited string
+for the list of groups. I'm planning to modify the CAS configuration so that it formats the list of groups as a
+comma-delimited string and modify `CasGroupUserDetailsService` so that it expects a simple comma-delimited string. This
+doesn't have to be done right now, though. I'm going to use the workaround for the time being and work on getting the
+permanent fix in for February's release.
+
+Once I had access to Belphegor, I was able to add an ontology, set it as the default ontology and set the root hierarchy
+IRIs, all of which were necessary for testing apps in the DE.
+
+## Troubleshooting app operations in the DE.
+
+The first time I tried to list apps in the DE, I encountered an error in the apps service that was caused by a malformed
+SQL query:
+
+```
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "NULL"
+  Position: 367
+    at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2198) ~[apps-standalone.jar:na]
+    at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1927) ~[apps-standalone.jar:na]
+    at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:255) ~[apps-standalone.jar:na]
+    at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:561) ~[apps-standalone.jar:na]
+    at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:419) ~[apps-standalone.jar:na]
+    at org.postgresql.jdbc2.AbstractJdbc2Statement.executeQuery(AbstractJdbc2Statement.java:304) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_query_with_resultset$run_query_with_params__333.invoke(jdbc.clj:790) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_query_with_resultset.invokeStatic(jdbc.clj:797) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_query_with_resultset.invoke(jdbc.clj:757) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$query.invokeStatic(jdbc.clj:832) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$query.doInvoke(jdbc.clj:804) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:464) ~[apps-standalone.jar:na]
+    at korma.db$exec_sql.invokeStatic(db.clj:259) ~[apps-standalone.jar:na]
+    at korma.db$exec_sql.invoke(db.clj:256) ~[apps-standalone.jar:na]
+    at korma.db$do_query.invokeStatic(db.clj:275) ~[apps-standalone.jar:na]
+    at korma.db$do_query.invoke(db.clj:273) ~[apps-standalone.jar:na]
+    at korma.core$exec.invokeStatic(core.clj:498) ~[apps-standalone.jar:na]
+    at korma.core$exec.invoke(core.clj:477) ~[apps-standalone.jar:na]
+    at apps.persistence.app_listing$count_apps_in_group_for_user.invokeStatic(app_listing.clj:127) ~[apps-standalone.jar:na]
+    at apps.persistence.app_listing$count_apps_in_group_for_user.invoke(app_listing.clj:116) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.listings$add_private_virtual_groups.invokeStatic(listings.clj:135) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.listings$add_private_virtual_groups.invoke(listings.clj:132) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.listings$format_app_group_hierarchy.invokeStatic(listings.clj:151) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.listings$format_app_group_hierarchy.invoke(listings.clj:143) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.listings$get_workspace_app_groups.invokeStatic(listings.clj:158) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.listings$get_workspace_app_groups.invoke(listings.clj:154) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.listings$get_app_groups.invokeStatic(listings.clj:179) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.listings$get_app_groups.invoke(listings.clj:172) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.DeApps.listAppCategories(de.clj:45) ~[apps-standalone.jar:na]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92-internal]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92-internal]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92-internal]
+    at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92-internal]
+    at clojure.lang.Reflector.invokeMatchingMethod(Reflector.java:93) ~[apps-standalone.jar:na]
+    at clojure.lang.Reflector.invokeInstanceMethod(Reflector.java:28) ~[apps-standalone.jar:na]
+    at apps.service.apps.combined.CombinedApps$fn__21714.invoke(combined.clj:32) ~[apps-standalone.jar:na]
+    at clojure.core$map$fn__4785.invoke(core.clj:2644) ~[apps-standalone.jar:na]
+    at clojure.lang.LazySeq.sval(LazySeq.java:40) ~[apps-standalone.jar:na]
+    at clojure.lang.LazySeq.seq(LazySeq.java:49) ~[apps-standalone.jar:na]
+    at clojure.lang.RT.seq(RT.java:521) ~[apps-standalone.jar:na]
+    at clojure.core$seq__4357.invokeStatic(core.clj:137) ~[apps-standalone.jar:na]
+    at clojure.core$apply.invokeStatic(core.clj:641) ~[apps-standalone.jar:na]
+    at clojure.core$mapcat.invokeStatic(core.clj:2674) ~[apps-standalone.jar:na]
+    at clojure.core$mapcat.doInvoke(core.clj:2674) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:423) ~[apps-standalone.jar:na]
+    at apps.service.apps.combined.CombinedApps.listAppCategories(combined.clj:32) ~[apps-standalone.jar:na]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92-internal]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92-internal]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92-internal]
+    at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92-internal]
+    at clojure.lang.Reflector.invokeMatchingMethod(Reflector.java:93) ~[apps-standalone.jar:na]
+    at clojure.lang.Reflector.invokeInstanceMethod(Reflector.java:28) ~[apps-standalone.jar:na]
+    at apps.service.apps$get_app_categories$fn__23800.invoke(apps.clj:76) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_transaction_STAR_.invokeStatic(jdbc.clj:584) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_transaction_STAR_.doInvoke(jdbc.clj:557) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:521) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_transaction_STAR_.invokeStatic(jdbc.clj:600) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_transaction_STAR_.doInvoke(jdbc.clj:557) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:521) ~[apps-standalone.jar:na]
+    at apps.service.apps$get_app_categories.invokeStatic(apps.clj:76) ~[apps-standalone.jar:na]
+    at apps.service.apps$get_app_categories.invoke(apps.clj:73) ~[apps-standalone.jar:na]
+    at apps.routes.apps.categories$fn__24896.invokeStatic(categories.clj:24) ~[apps-standalone.jar:na]
+    at apps.routes.apps.categories$fn__24896.invoke(categories.clj:18) ~[apps-standalone.jar:na]
+    at compojure.core$make_route$fn__9332.invoke(core.clj:135) ~[apps-standalone.jar:na]
+    at compojure.core$pre_init$fn__9371.invoke(core.clj:268) ~[apps-standalone.jar:na]
+    at compojure.api.coerce$body_coercer_middleware$fn__14359.invoke(coerce.clj:51) ~[apps-standalone.jar:na]
+    at compojure.core$pre_init$fn__9373$fn__9374.invoke(core.clj:271) ~[apps-standalone.jar:na]
+    at compojure.core$wrap_route_middleware$fn__9325.invoke(core.clj:121) ~[apps-standalone.jar:na]
+    at compojure.core$wrap_route_info$fn__9329.invoke(core.clj:126) ~[apps-standalone.jar:na]
+    at compojure.core$if_route$fn__9287.invoke(core.clj:45) ~[apps-standalone.jar:na]
+    at compojure.core$if_method$fn__9277.invoke(core.clj:27) ~[apps-standalone.jar:na]
+    at compojure.core$wrap_routes$fn__9379.invoke(core.clj:279) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at compojure.api.core$handle$fn__14496.invoke(core.clj:8) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invokeStatic(core.clj:8) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invoke(core.clj:7) ~[apps-standalone.jar:na]
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at compojure.core$routing$fn__9339.invoke(core.clj:151) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.core$routing.invokeStatic(core.clj:151) ~[apps-standalone.jar:na]
+    at compojure.core$routing.doInvoke(core.clj:148) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.applyTo(RestFn.java:139) ~[apps-standalone.jar:na]
+    at clojure.core$apply.invokeStatic(core.clj:648) ~[apps-standalone.jar:na]
+    at clojure.core$apply.invoke(core.clj:641) ~[apps-standalone.jar:na]
+    at compojure.core$routes$fn__9343.invoke(core.clj:156) ~[apps-standalone.jar:na]
+    at compojure.core$routing$fn__9339.invoke(core.clj:151) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.core$routing.invokeStatic(core.clj:151) ~[apps-standalone.jar:na]
+    at compojure.core$routing.doInvoke(core.clj:148) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:423) ~[apps-standalone.jar:na]
+    at apps.routes$fn__25737$fn__25740.invoke(routes.clj:87) ~[apps-standalone.jar:na]
+    at compojure.core$if_context$fn__9361.invoke(core.clj:220) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at compojure.api.core$handle$fn__14496.invoke(core.clj:8) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invokeStatic(core.clj:8) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invoke(core.clj:7) ~[apps-standalone.jar:na]
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at service_logging.middleware$wrap_logging$fn__15109.invoke(middleware.clj:85) ~[apps-standalone.jar:na]
+    at apps.user$store_current_user$fn__7052.invoke(user.clj:37) ~[apps-standalone.jar:na]
+    at service_logging.middleware$add_user_to_context$fn__15121.invoke(middleware.clj:112) ~[apps-standalone.jar:na]
+    at clojure_commons.query_params$wrap_query_params$fn__25718.invoke(query_params.clj:62) ~[apps-standalone.jar:na]
+    at ring.middleware.keyword_params$wrap_keyword_params$fn__10877.invoke(keyword_params.clj:35) [apps-standalone.jar:na]
+    at service_logging.middleware$clean_context$fn__15104.invoke(middleware.clj:73) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at compojure.api.core$handle$fn__14496.invoke(core.clj:8) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invokeStatic(core.clj:8) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invoke(core.clj:7) ~[apps-standalone.jar:na]
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at ring.middleware.http_response$wrap_http_response$fn__10847.invoke(http_response.clj:8) ~[apps-standalone.jar:na]
+    at ring.swagger.middleware$wrap_swagger_data$fn__13006.invoke(middleware.clj:33) ~[apps-standalone.jar:na]
+    at compojure.api.middleware$wrap_options$fn__13335.invoke(middleware.clj:74) [apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at compojure.api.middleware$wrap_exceptions$fn__13325.invoke(middleware.clj:43) ~[apps-standalone.jar:na]
+    at ring.middleware.format_response$wrap_format_response$fn__10757.invoke(format_response.clj:183) [apps-standalone.jar:na]
+    at ring.middleware.keyword_params$wrap_keyword_params$fn__10877.invoke(keyword_params.clj:35) [apps-standalone.jar:na]
+    at ring.middleware.nested_params$wrap_nested_params$fn__10921.invoke(nested_params.clj:86) [apps-standalone.jar:na]
+    at ring.middleware.params$wrap_params$fn__10977.invoke(params.clj:64) [apps-standalone.jar:na]
+    at compojure.api.middleware$wrap_options$fn__13335.invoke(middleware.clj:74) [apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at ring.adapter.jetty$proxy_handler$fn__113.invoke(jetty.clj:24) [na:na]
+    at ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a.handle(Unknown Source) [na:na]
+    at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [apps-standalone.jar:na]
+    at org.eclipse.jetty.server.Server.handle(Server.java:497) [apps-standalone.jar:na]
+    at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [apps-standalone.jar:na]
+    at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [apps-standalone.jar:na]
+    at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [apps-standalone.jar:na]
+    at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [apps-standalone.jar:na]
+    at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [apps-standalone.jar:na]
+    at java.lang.Thread.run(Thread.java:745) [na:1.8.0_92-internal]
+```
+
+I took a quick look at the code:
+
+``` clojure
+(defn count-apps-in-group-for-user
+  "Counts all of the apps in an app group and all of its descendents."
+  ([app-group-id query-opts]
+    ((comp :total first)
+      (-> (get-app-count-base-query query-opts)
+        (add-app-group-where-clause app-group-id)
+        (select))))
+  ([app-group-id username {:keys [public-app-ids] :as query-opts}]
+    ((comp :total first)
+      (-> (get-app-count-base-query query-opts)
+        (add-app-group-plus-public-apps-where-clause app-group-id username public-app-ids)
+        (select)))))
+```
+
+The only part of this query that may actually have a null value that I could think of is the list of public app IDs. I
+ran the playbook to initialize app permissions in the DE, which fixed the problem.
+
+The next problem that I ran into was when I tried to submit the job. The following exception was thrown:
+
+```
+java.net.UnknownHostException: jex-adapter: unknown error
+    at java.net.Inet4AddressImpl.lookupAllHostAddr(Native Method) ~[na:1.8.0_92-internal]
+    at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[na:1.8.0_92-internal]
+    at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[na:1.8.0_92-internal]
+    at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[na:1.8.0_92-internal]
+    at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[na:1.8.0_92-internal]
+    at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[na:1.8.0_92-internal]
+    at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:111) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.conn.BasicHttpClientConnectionManager.connect(BasicHttpClientConnectionManager.java:338) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[apps-standalone.jar:na]
+    at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[apps-standalone.jar:na]
+    at clj_http.core$request.invokeStatic(core.clj:387) ~[apps-standalone.jar:na]
+    at clj_http.core$request.invoke(core.clj:321) ~[apps-standalone.jar:na]
+    at clj_http.core$request.invokeStatic(core.clj:322) ~[apps-standalone.jar:na]
+    at clj_http.core$request.invoke(core.clj:321) ~[apps-standalone.jar:na]
+    at clojure.lang.Var.invoke(Var.java:379) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_request_timing$fn__5886.invoke(client.clj:1013) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_async_pooling$fn__5894.invoke(client.clj:1046) ~[apps-standalone.jar:na]
+    at clj_http.headers$wrap_header_map$fn__4551.invoke(headers.clj:147) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_query_params$fn__5790.invoke(client.clj:773) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_basic_auth$fn__5796.invoke(client.clj:796) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_oauth$fn__5801.invoke(client.clj:813) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_user_info$fn__5808.invoke(client.clj:833) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_url$fn__5868.invoke(client.clj:965) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_redirects$fn__5594.invoke(client.clj:344) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_decompression$fn__5614.invoke(client.clj:397) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_input_coercion$fn__5718.invoke(client.clj:593) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_additional_header_parsing$fn__5743.invoke(client.clj:648) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_output_coercion$fn__5705.invoke(client.clj:537) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_exceptions$fn__5570.invoke(client.clj:232) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_accept$fn__5758.invoke(client.clj:691) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_accept_encoding$fn__5765.invoke(client.clj:713) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_content_type$fn__5752.invoke(client.clj:674) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_form_params$fn__5845.invoke(client.clj:915) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_nested_params$fn__5863.invoke(client.clj:950) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_method$fn__5813.invoke(client.clj:849) ~[apps-standalone.jar:na]
+    at clj_http.cookies$wrap_cookies$fn__3830.invoke(cookies.clj:131) ~[apps-standalone.jar:na]
+    at clj_http.links$wrap_links$fn__4775.invoke(links.clj:63) ~[apps-standalone.jar:na]
+    at clj_http.client$wrap_unknown_host$fn__5871.invoke(client.clj:976) ~[apps-standalone.jar:na]
+    at clj_http.client$request_STAR_.invokeStatic(client.clj:1149) ~[apps-standalone.jar:na]
+    at clj_http.client$request_STAR_.invoke(client.clj:1142) ~[apps-standalone.jar:na]
+    at clj_http.client$post.invokeStatic(client.clj:1167) ~[apps-standalone.jar:na]
+    at clj_http.client$post.doInvoke(client.clj:1163) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:423) ~[apps-standalone.jar:na]
+    at apps.clients.jex$submit_job.invokeStatic(jex.clj:19) ~[apps-standalone.jar:na]
+    at apps.clients.jex$submit_job.invoke(jex.clj:17) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.jobs$do_jex_submission.invokeStatic(jobs.clj:32) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.jobs$do_jex_submission.invoke(jobs.clj:29) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.jobs$submit_standalone_job.invokeStatic(jobs.clj:104) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.jobs$submit_standalone_job.invoke(jobs.clj:102) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.jobs$submit_job.invokeStatic(jobs.clj:112) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.jobs$submit_job.invoke(jobs.clj:108) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.jobs$submit.invokeStatic(jobs.clj:129) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.jobs$submit.invoke(jobs.clj:124) ~[apps-standalone.jar:na]
+    at apps.service.apps.de.DeApps.submitJob(de.clj:251) ~[apps-standalone.jar:na]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92-internal]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92-internal]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92-internal]
+    at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92-internal]
+    at clojure.lang.Reflector.invokeMatchingMethod(Reflector.java:93) ~[apps-standalone.jar:na]
+    at clojure.lang.Reflector.invokeInstanceMethod(Reflector.java:28) ~[apps-standalone.jar:na]
+    at apps.service.apps.combined.CombinedApps.submitJob(combined.clj:222) ~[apps-standalone.jar:na]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92-internal]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92-internal]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92-internal]
+    at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92-internal]
+    at clojure.lang.Reflector.invokeMatchingMethod(Reflector.java:93) ~[apps-standalone.jar:na]
+    at clojure.lang.Reflector.invokeInstanceMethod(Reflector.java:28) ~[apps-standalone.jar:na]
+    at apps.service.apps.jobs.submissions$submit.invokeStatic(submissions.clj:249) ~[apps-standalone.jar:na]
+    at apps.service.apps.jobs.submissions$submit.invoke(submissions.clj:241) ~[apps-standalone.jar:na]
+    at apps.service.apps.jobs$submit$fn__23778.invoke(jobs.clj:185) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_transaction_STAR_.invokeStatic(jdbc.clj:584) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_transaction_STAR_.doInvoke(jdbc.clj:557) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:521) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_transaction_STAR_.invokeStatic(jdbc.clj:600) ~[apps-standalone.jar:na]
+    at clojure.java.jdbc$db_transaction_STAR_.doInvoke(jdbc.clj:557) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:521) ~[apps-standalone.jar:na]
+    at apps.service.apps.jobs$submit.invokeStatic(jobs.clj:184) ~[apps-standalone.jar:na]
+    at apps.service.apps.jobs$submit.invoke(jobs.clj:182) ~[apps-standalone.jar:na]
+    at apps.service.apps$submit_job.invokeStatic(apps.clj:239) ~[apps-standalone.jar:na]
+    at apps.service.apps$submit_job.invoke(apps.clj:236) ~[apps-standalone.jar:na]
+    at apps.routes.analyses$fn__25134.invokeStatic(analyses.clj:40) ~[apps-standalone.jar:na]
+    at apps.routes.analyses$fn__25134.invoke(analyses.clj:30) ~[apps-standalone.jar:na]
+    at compojure.core$make_route$fn__9332.invoke(core.clj:135) ~[apps-standalone.jar:na]
+    at compojure.core$pre_init$fn__9371.invoke(core.clj:268) ~[apps-standalone.jar:na]
+    at compojure.api.coerce$body_coercer_middleware$fn__14359.invoke(coerce.clj:51) ~[apps-standalone.jar:na]
+    at compojure.core$pre_init$fn__9373$fn__9374.invoke(core.clj:271) ~[apps-standalone.jar:na]
+    at compojure.core$wrap_route_middleware$fn__9325.invoke(core.clj:121) ~[apps-standalone.jar:na]
+    at compojure.core$wrap_route_info$fn__9329.invoke(core.clj:126) ~[apps-standalone.jar:na]
+    at compojure.core$if_route$fn__9287.invoke(core.clj:45) ~[apps-standalone.jar:na]
+    at compojure.core$if_method$fn__9277.invoke(core.clj:27) ~[apps-standalone.jar:na]
+    at compojure.core$wrap_routes$fn__9379.invoke(core.clj:279) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at compojure.api.core$handle$fn__14496.invoke(core.clj:8) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invokeStatic(core.clj:8) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invoke(core.clj:7) ~[apps-standalone.jar:na]
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at compojure.core$routing$fn__9339.invoke(core.clj:151) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.core$routing.invokeStatic(core.clj:151) ~[apps-standalone.jar:na]
+    at compojure.core$routing.doInvoke(core.clj:148) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.applyTo(RestFn.java:139) ~[apps-standalone.jar:na]
+    at clojure.core$apply.invokeStatic(core.clj:648) ~[apps-standalone.jar:na]
+    at clojure.core$apply.invoke(core.clj:641) ~[apps-standalone.jar:na]
+    at compojure.core$routes$fn__9343.invoke(core.clj:156) ~[apps-standalone.jar:na]
+    at compojure.core$routing$fn__9339.invoke(core.clj:151) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.core$routing.invokeStatic(core.clj:151) ~[apps-standalone.jar:na]
+    at compojure.core$routing.doInvoke(core.clj:148) ~[apps-standalone.jar:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:423) ~[apps-standalone.jar:na]
+    at apps.routes$fn__25737$fn__25764.invoke(routes.clj:105) ~[apps-standalone.jar:na]
+    at compojure.core$if_context$fn__9361.invoke(core.clj:220) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at compojure.api.core$handle$fn__14496.invoke(core.clj:8) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invokeStatic(core.clj:8) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invoke(core.clj:7) ~[apps-standalone.jar:na]
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at service_logging.middleware$wrap_logging$fn__15109.invoke(middleware.clj:85) ~[apps-standalone.jar:na]
+    at apps.user$store_current_user$fn__7052.invoke(user.clj:37) ~[apps-standalone.jar:na]
+    at service_logging.middleware$add_user_to_context$fn__15121.invoke(middleware.clj:112) ~[apps-standalone.jar:na]
+    at clojure_commons.query_params$wrap_query_params$fn__25718.invoke(query_params.clj:62) ~[apps-standalone.jar:na]
+    at ring.middleware.keyword_params$wrap_keyword_params$fn__10877.invoke(keyword_params.clj:35) [apps-standalone.jar:na]
+    at service_logging.middleware$clean_context$fn__15104.invoke(middleware.clj:73) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at compojure.api.core$handle$fn__14496.invoke(core.clj:8) ~[apps-standalone.jar:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[apps-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invokeStatic(core.clj:8) ~[apps-standalone.jar:na]
+    at compojure.api.core$handle.invoke(core.clj:7) ~[apps-standalone.jar:na]
+    at clojure.core$partial$fn__4759.invoke(core.clj:2515) ~[apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at ring.middleware.http_response$wrap_http_response$fn__10847.invoke(http_response.clj:8) ~[apps-standalone.jar:na]
+    at ring.swagger.middleware$wrap_swagger_data$fn__13006.invoke(middleware.clj:33) ~[apps-standalone.jar:na]
+    at compojure.api.middleware$wrap_options$fn__13335.invoke(middleware.clj:74) [apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:117) ~[apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at ring.middleware.format_params$wrap_format_params$fn__10058.invoke(format_params.clj:119) ~[apps-standalone.jar:na]
+    at compojure.api.middleware$wrap_exceptions$fn__13325.invoke(middleware.clj:43) ~[apps-standalone.jar:na]
+    at ring.middleware.format_response$wrap_format_response$fn__10757.invoke(format_response.clj:183) [apps-standalone.jar:na]
+    at ring.middleware.keyword_params$wrap_keyword_params$fn__10877.invoke(keyword_params.clj:35) [apps-standalone.jar:na]
+    at ring.middleware.nested_params$wrap_nested_params$fn__10921.invoke(nested_params.clj:86) [apps-standalone.jar:na]
+    at ring.middleware.params$wrap_params$fn__10977.invoke(params.clj:64) [apps-standalone.jar:na]
+    at compojure.api.middleware$wrap_options$fn__13335.invoke(middleware.clj:74) [apps-standalone.jar:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [apps-standalone.jar:na]
+    at ring.adapter.jetty$proxy_handler$fn__113.invoke(jetty.clj:24) [na:na]
+    at ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$ff19274a.handle(Unknown Source) [na:na]
+    at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [apps-standalone.jar:na]
+    at org.eclipse.jetty.server.Server.handle(Server.java:497) [apps-standalone.jar:na]
+    at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [apps-standalone.jar:na]
+    at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [apps-standalone.jar:na]
+    at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [apps-standalone.jar:na]
+    at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [apps-standalone.jar:na]
+    at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [apps-standalone.jar:na]
+    at java.lang.Thread.run(Thread.java:745) [na:1.8.0_92-internal]
+```
+
+This occurred because the deployment is not set up as a zero-downtime deployment and I hadn't set the container name for
+the JEX adapter image. I updated the container name in the compose file and redeployed the DE. After doing this, I was
+able to successfully submit a job.
+
+After submitting the job, it appeared that the job wasn't running. Checking the Condor logs revealed that the negotiator
+daemon was unable to connect to the submit node because of a firewall issue. I added some rules to the firewall on the
+submit node, which also required a restart of Docker, unfortunately.
+
+After updating the firewall and restarting Docker, I was able to submit jobs successfully, but all jobs were failing
+with a shadow exception. I reviewed the log files in one of the jobs, and it appears that `road-runner` was unable to
+create a file in `/opt/image-janitor`, which was preventing the job from being launched. I haven't completely determined
+the reason that this would cause a shadow exception yet because the files that are causing the exception should have
+been transferred before Condor started the job. At any rate, I checked the permissions on that path on one of the Condor
+execute nodes, and this path was owned by the `condor` user. I ran the following command to change the ownership of this
+directory on all Condor execute nodes:
+
+```
+myself$ ansible -i inventories/sobs condor -u root -a "chown condor.condor /opt/image-janitor"
+```
+
+Just for good measure, I used this command to verify that the ownership had been set correctly:
+
+```
+myself$ ansible -i inventories/sobs condor -u root -a "ls -ld /opt/image-janitor"
+```
+
+After making this change, I was finally able to get a job to run to completion.
+
+[The next step was to try a URL upload now that job submissions were working. They weren't. I'll have to troubleshoot
+this tomorrow.]
