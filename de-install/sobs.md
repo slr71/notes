@@ -3092,7 +3092,197 @@ Just for good measure, I used this command to verify that the ownership had been
 myself$ ansible -i inventories/sobs condor -u root -a "ls -ld /opt/image-janitor"
 ```
 
-After making this change, I was finally able to get a job to run to completion.
+After making this change, I was finally able to get a job to run to completion. URL uploads are also working.
 
-[The next step was to try a URL upload now that job submissions were working. They weren't. I'll have to troubleshoot
-this tomorrow.]
+## Testing metadata templates.
+
+When I first tried to save a metadata template, I encountered this error:
+
+```
+$ jq -r .stack_trace foo.json
+clojure.lang.ExceptionInfo: Request validation failed: {:attributes [{:type (not (#{} :String))} {:type (not (#{} :String))} {:type (not (#{} :String))} {:type (not (#{} :String))}]}
+    at clojure.core$ex_info.invokeStatic(core.clj:4617) ~[metadata-standalone.jar:na]
+    at clojure.core$ex_info.invoke(core.clj:4617) ~[metadata-standalone.jar:na]
+    at compojure.api.coerce$coerce_BANG_.invokeStatic(coerce.clj:61) ~[na:na]
+    at compojure.api.coerce$coerce_BANG_.invoke(coerce.clj:53) ~[na:na]
+    at metadata.routes.templates$fn__10831$fn__10834.invoke(templates.clj:84) ~[na:na]
+    at compojure.core$make_route$fn__2587.invoke(core.clj:135) ~[na:na]
+    at compojure.core$pre_init$fn__2674.invoke(core.clj:268) ~[na:na]
+    at compojure.api.coerce$body_coercer_middleware$fn__9175.invoke(coerce.clj:51) ~[na:na]
+    at compojure.core$pre_init$fn__2676$fn__2677.invoke(core.clj:271) ~[na:na]
+    at compojure.core$wrap_route_middleware$fn__2580.invoke(core.clj:121) ~[na:na]
+    at compojure.core$wrap_route_info$fn__2584.invoke(core.clj:126) ~[na:na]
+    at compojure.core$if_route$fn__2538.invoke(core.clj:45) ~[na:na]
+    at compojure.core$if_method$fn__2528.invoke(core.clj:27) ~[na:na]
+    at compojure.core$wrap_routes$fn__2682.invoke(core.clj:279) ~[na:na]
+    at compojure.api.routes.Route.invoke(routes.clj:74) [na:na]
+    at compojure.core$routing$fn__2594.invoke(core.clj:151) ~[na:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[metadata-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[metadata-standalone.jar:na]
+    at compojure.core$routing.invokeStatic(core.clj:151) ~[na:na]
+    at compojure.core$routing.doInvoke(core.clj:148) ~[na:na]
+    at clojure.lang.RestFn.applyTo(RestFn.java:139) ~[metadata-standalone.jar:na]
+    at clojure.core$apply.invokeStatic(core.clj:648) ~[metadata-standalone.jar:na]
+    at clojure.core$apply.invoke(core.clj:641) ~[metadata-standalone.jar:na]
+    at compojure.core$routes$fn__2598.invoke(core.clj:156) ~[na:na]
+    at compojure.core$routing$fn__2594.invoke(core.clj:151) ~[na:na]
+    at clojure.core$some.invokeStatic(core.clj:2592) ~[metadata-standalone.jar:na]
+    at clojure.core$some.invoke(core.clj:2583) ~[metadata-standalone.jar:na]
+    at compojure.core$routing.invokeStatic(core.clj:151) ~[na:na]
+    at compojure.core$routing.doInvoke(core.clj:148) ~[na:na]
+    at clojure.lang.RestFn.invoke(RestFn.java:423) ~[metadata-standalone.jar:na]
+    ...
+```
+
+I wasn't sure what to make of this exception at first because I wasn't expecting a request body validation
+failure. I tried comparing the request bodies between SOBS and our de-2 environment.
+
+SOBS Environment:
+
+```
+{
+  "deleted": false,
+  "description": "Metadata describing a song.",
+  "id": "103c59fe-e3ee-11e6-851e-a6f4ed6f3480",
+  "name": "song_metadata",
+  "attributes": [
+    {
+      "required": false,
+      "description": "foo",
+      "name": "foo",
+      "type": "String"
+    }
+  ]
+}
+```
+
+de-2 environment:
+
+```
+{
+  "deleted": true,
+  "id": "aab4c6f6-e3ee-11e6-b798-f64e9b87c109",
+  "name": "Bork",
+  "attributes": [
+    {
+      "required": false,
+      "description": "foo",
+      "name": "foo",
+      "type": "String"
+    }
+  ]
+}
+```
+
+The only differences between the request bodies are ID differences and differences in the data that I entered, so the
+request body isn't the problem. After thinking about this, it occurred to me that the metadata service loads these URLs
+from the metadata database. This would mean that this error could occur if the metadata database isn't loaded correctly
+or if the metadata service is unable to connect to the metadata database. I didn't see any database connection errors in
+the log files, so I looked in the database:
+
+```
+metadata=> select * from value_types;
+ id | name
+----+------
+(0 rows)
+```
+
+This would be enough to cause the problem. I checked the initialization code for the metadata database and couldn't find
+anything that inserted the value types. As a workaround, I retrieved the value type names from the metadata database in
+our development cluster and inserted them into the metadata database for the SOBS cluster:
+
+Exporting the value type names:
+
+```
+myself$ psql -Ath de-2 -U de -d metadata -c "select name from value_types" > value_types.txt
+```
+
+Importing the value type names (after copying the file to a host in the SOBS cluster):
+
+```
+root# for vt in $(< ~dennis/value_types.txt); do
+    psql -h db-host -U de -d metadata -c "INSERT INTO value_types (name) VALUES ('$vt')"
+done
+```
+
+## Troubleshooting app publication.
+
+I was unable to publish an app at first because the DE failed to recognize that the folder containing the example data
+was actually the public data folder. This weas because the template file used to generate the `de.properties` file was
+hard coded to use `/iplant/home/shared` as the community data folder. I made this path customizable and relative to the
+zone name. After rebuilding and redeploying the configuration image, app publication worked again.
+
+## Troubleshooting pipelines.
+
+I ran into an error that was unrelated to the SOBS deployment when I tried this. Apps that redirect standard output to a
+file always fail with a permission denied error. I haven't taken the time to investigate this problem further, but it's
+happening in the SOBS deployment and in our development environment. To get around this problem, I created a new word
+count wrapper tool that takes a command-line option specifying the output file name. The wrapper is a simple Perl
+script:
+
+``` perl
+#!/usr/bin/env perl
+
+use Carp;
+use English qw(-no_match_vars);
+use File::Basename;
+use Getopt::Long;
+
+my $outfile = "wc-out.txt";
+
+# Display a usage message.
+sub usage {
+    my $prog = basename $0;
+    print {*STDERR} <<"END_OF_USAGE";
+
+Usage:
+    ${prog} file [...]
+    ${prog} --output=filename file [...]
+    ${prog} -o filename file [...]
+END_OF_USAGE
+}
+
+# Parse the command line.
+my $opts_ok = GetOptions("output|o=s" => \$outfile);
+if ( !$opts_ok || scalar @ARGV < 1 ) {
+    usage();
+    exit 1;
+}
+
+# Open the output file.
+open my $out, '>', $outfile
+    or croak "Unable to open $outfile for output: $ERRNO";
+
+# Build the command to run wc.
+my @cmd = ( "/usr/bin/env", "wc", @ARGV );
+
+# Run the command.
+open my $in, '-|', @cmd
+    or croak "unable to run wc: $ERRNO";
+
+# Send the command output to the output file.
+while (my $line = <$in>) {
+    print {$out} $line
+        or croak "Unable to write to $outfile: $ERRNO";
+}
+
+# Close the command.
+close $in
+    or croak "wc exited with status code: $CHILD_ERROR";
+
+# Close the output file.
+close $out
+    or croak "unable to close $outfile: $ERRNO";
+
+exit;
+```
+
+I also discovered that my Perl is quite rusty today. :D
+
+After creating this tool and generating a pipeline with steps that use it, I was able to get a pipeline to complete
+successfully.
+
+## Troubleshooting analysis operations.
+
+Thankfully, everything in the `My Analyses` window worked once I fixed the problems in the other windows. No
+troubleshooting was required.
