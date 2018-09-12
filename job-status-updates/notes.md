@@ -81,3 +81,33 @@ Note that we may still want to change the way that notifications are processed; 
 avoid having locks on the database tables.
 
 ### What I'd Like to Do
+
+- `job-status-recorder` will record job status updates and immediately post a message to AMQP.
+  - These AMQP messages will be called `job-event` messages.
+- `apps` will listen for the messages that `job-status-recorder` posts to AMQP.
+  - If the job step status changed then the database will be updated and a message will be posted to AMQP.
+- `apps` will listen for the job step status changed messages.
+  - If the overall job status changed then the DE database will be updated and a `job-status-changed` event will be
+    posted to AMQP.
+  - If the job step finished and there are more steps remaining in the job then the next step in the job will be
+    submitted.
+- `apps` will listen for the message indicating that the job status changed.
+  - If the job is part of a batch and the overall batch status changed then the DE database will be updated and a
+    `batch-status-changed` message will be posted to AMQP.
+- The notification agent will listen for all of message types listed above.
+- Users will be able to subscribe to notifications for these messages.
+
+Pros:
+
+- Each step is a little bit smaller, so individual job status updates should take less time.
+- Since `apps` listens to AMQP, we'll no longer be relying on synchronous communication to process job status updates.
+- Users will be able to choose how many notifications to receive. If they want the firehose, they can enable
+  notifications for job events. If they want a trickle, they can subscribe to status updates only for jobs that are not
+  part of a batch.
+
+Potential Cons:
+
+- This could affect job status update processing performance. I don't anticipate a significant decrease in performance,
+  though. The performance may even improve because jobs will no longer be locked every time a status update for an
+  individual job step comes in.
+- The number of database connections we require may increase because of this.
