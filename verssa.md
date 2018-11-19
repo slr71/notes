@@ -10,8 +10,8 @@
 | ------------------------- | ----- | ---------------------------- |
 | haproxy.verssa-r.org      | A     | 172.28.1.241                 |
 | k8s-worker-1.verssa-r.org | A     | 172.28.1.169                 |
-| k8s-worker-1.verssa-r.org | A     | 172.28.1.146                 |
-| k8s-worker-2.verssa-r.org | A     | 172.28.1.64                  |
+| k8s-worker-2.verssa-r.org | A     | 172.28.1.146                 |
+| k8s-worker-3.verssa-r.org | A     | 172.28.1.64                  |
 | auth.verssa-r.org         | CNAME | haproxy.verssa-r.org         |
 | de.verssa-r.org           | CNAME | haproxy.verssa-r.org         |
 | vault.verssa-r.org        | CNAME | haproxy.verssa-r.org         |
