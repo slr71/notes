@@ -11,3 +11,7 @@
 - The accepted keys and signing keys for terrain are all hard-coded into the deployment, which forces the deployment
   template to be updated for every DE deployment. It would be nice if we changed this so that the template doesn't have
   to be different for every deployment.
+- The apps service doesn't currently handle the case where the user has no permissions for any apps very well. An
+  `unable to get app categories` error appears instead.
+- There isn't currently a good way to grant permissions to the default list of public apps in the DE. I had to add the
+  permissions mostly manually.
