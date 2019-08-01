@@ -15,3 +15,4 @@
   `unable to get app categories` error appears instead.
 - There isn't currently a good way to grant permissions to the default list of public apps in the DE. I had to add the
   permissions mostly manually.
+- The playbook to install Road runner doesn't currently inform Condor that it's installed.
