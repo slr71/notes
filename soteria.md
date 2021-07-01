@@ -13,6 +13,8 @@
   - [x] User Portal EC2 Instance
     - [x] Create instance
     - [x] Confirm access
+- [ ] Other Resources
+  - [ ] SSL certificates
 - [ ] Database Initialization
   - [x] Create DE user
   - [x] Create DE databases
