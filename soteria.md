@@ -1,0 +1,53 @@
+## Installation for Soteria
+
+- [ ] AWS Resources
+  - [x] RDS Instance
+    - [x] Create instance
+    - [x] Confirm access
+  - [ ] EKS Cluster
+    - [x] Create cluster
+    - [ ] Confirm access
+  - [x] LDAP EC2 Instance
+    - [x] Create instance
+    - [x] Confirm access
+  - [x] User Portal EC2 Instance
+    - [x] Create instance
+    - [x] Confirm access
+- [ ] Database Initialization
+  - [x] Create DE user
+  - [x] Create DE databases
+  - [x] Initialize DE databases
+  - [x] Create portal user
+  - [x] Create portal database
+  - [ ] Initialize portal database
+  - [x] Create grouper user (using `de` account)
+  - [x] Create grouper database
+  - [ ] Initialize grouper database
+  - [x] Create keycloak user (using `de` account)
+  - [x] Create keycloak database
+  - [ ] Initialize keycloak database
+- [ ] LDAP
+- [ ] Evaluations
+  - [x] RDS
+  - [ ] EKS
+  - [ ] Grouper configuration
+  - [ ] Authentication service configuration
+  - [ ] Evaluate block storage options
+  - [ ] Evaluate data store configuration
+- [ ] Installations
+  - [ ] Block storage drivers
+  - [ ] RabbitMQ
+  - [ ] ElasticSearch
+  - [ ] Nginx Ingress
+  - [x] OpenLDAP
+    - [x] Install OpenLDAP
+    - [ ] Configure LDAP
+    - [ ] Add initial accounts
+  - [ ] Authentication service
+  - [ ] Data store
+  - [ ] User portal
+    - [x] Install Node.JS
+    - [x] Install dependencies
+    - [ ] Configure user portal
+    - [ ] Configure reverse proxy
+  - [ ] Customize UI and services
