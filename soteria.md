@@ -4,9 +4,9 @@
   - [x] RDS Instance
     - [x] Create instance
     - [x] Confirm access
-  - [ ] EKS Cluster
+  - [x] EKS Cluster
     - [x] Create cluster
-    - [ ] Confirm access
+    - [x] Confirm access
   - [x] LDAP EC2 Instance
     - [x] Create instance
     - [x] Confirm access
