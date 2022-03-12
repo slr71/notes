@@ -115,3 +115,342 @@
     - Amazon machine image (AMI)
     - EC2 Image Builder - can dynamically build images
     - AWS Compute Optimizer - can make suggestions for instance type
+- The Session Manager role allows you to connect to an EC2 instance without SSH.
+- Instance Metadata
+    - http://169.254.169.254/latest/meta-data - list fields
+    - http://169.254.169.254/latest/meta-data/{field-name} - field value
+- Pricing
+    - Spot instances can be used to save a lot of money, but they can be recalaimed at any time.
+- High Performance Computing
+    - Multiple instances working on the same data set.
+- Placement groups
+    - Used to help ensure that instances are placed in close proximity to each other.
+    - Cluster placement groups
+        - HPC
+        - Low network latency
+        - High network throughput
+    - Partition placement groups
+        - Large distributed and replicated workloads (e.g., cassandra)
+    - Spread placement groups
+- Lambda
+
+# Module 5 - Storage
+
+- Storage Types
+    - Block storage
+    - File storage
+    - Object storage
+- S3
+    - Bucket names are globally unique.
+    - Lifecycle policies are essentially rules to do the same thing that intelligent tiering does.
+    - Event notifications
+        - Can publish to SNS
+        - Can publish to SQS
+        - Can trigger a Lambda function
+    - S3 Transfer Accelleration
+        - Increase transfer rates by getting to Amazon's global backbone more quickly.
+        - Less of the transfer happens on the internet at large.
+- EFS
+    - File System
+        - Specifically for Linux
+        - Can mount it to a Linux instance using NFS
+        - Atomatically scales based on storage.
+- FSx
+    - Like EFS for Windows
+- Migration
+    - Storage Gateway
+    - DataSync
+
+# Module 6 - Databases
+
+- Relational vs Nonrelational
+    - Relational
+        - Require strict schema rules
+        - App doesn't need extreme read/write capacity
+        - Have a relationl dataset that doesn't require extreme performance
+    - Nonrelational
+        - Need to scale horizontally
+        - Need extreme performance
+        - Don't need to do complex queries
+- Amazon RDS
+    - Relational
+    - Can use multiple database engines
+    - Supports multi-availability-zone deployments
+    - Can create a read replica
+    - Supports encryption at rest
+- Aurora
+    - Performance and scalability
+    - MySQL and PotgreSQL compatible
+    - Each instance attaches to a cluster volume.
+- Aurora Serverless
+    - A serverless flavor of Aurora
+- DynamoDB
+    - Nonrelational
+    - Key-value pairs
+    - DAX
+        - Can change response times from milliseconds to microseconds
+- Redshift
+    - Data warehouse
+    - Can be used to process heterogenious data
+    - Row vs columnar storage
+    - Multiple cluster node types are available
+- Caching
+    - Strategies
+        - Write-through
+    - ElastiCache
+        - Managed Redis or Memcached instances
+    - Items can be removed from the cache by setting a TTL
+- Database Migration Tools
+    - AWS Database Migration Service (DMS)
+        - Same to same
+    - AWS Schema Conversion Tool
+        - Can convert Source schemas to target schemas
+
+# Module 7 - Monitoring
+
+- Products
+    - CloudTrail
+    - CloudWatch
+    - EventBridge
+- Cost Control
+    - Trusted Advisor
+        - Cost optimization
+        - Performance
+        - Security
+        - Fault tolerance
+        - Service limits
+    - Cost Explorer
+        - Spending breakdown
+    - AWS Budgets
+- Monitoring
+    - Reasons
+        - Operational health
+        - Application performance
+        - Resource utilization
+        - Security auditing
+    - CloudWatch
+        - Log aggregation
+        - Tasks
+            - Collect
+            - Monitor
+            - Respond
+            - Analyze
+        - Alarms
+            - Send an email notification
+            - Auto-scale resources
+        - Types of Logs
+            - CloudTrail
+                - AWS API calls
+            - CloudWatch Logs
+            - VPC Flow Logs
+                - Network flow data
+                - Not full PCAP dump (think Wireshark or tcpdump)
+                - Can publish flow logs to CloudWatch or S3
+            - Custom Logs
+    - Invoking Events (EventBridge)
+        - Create an alarm based on any metric
+        - Invoke an event when a threshold is exceeded for a set period of time
+        - Event triggers do not have to be error conditions
+    - Load Balancers
+        - Classic Load Balancer
+            - Previous generation of HTTP, HTTPS, and TCP
+        - Application Load Balancer
+            - Layer 7
+        - Network Load Balanber
+            - Layer 4
+            - Faster than application load balancers, but not as flexible
+        - Gateway Load Balancer
+            - Load balance to an appliance in a different VPC
+    - Auto Scaling
+        - Automatically launch or terminate compute resources based on customized metrics
+        - Products
+            - AWS Auto Scaling
+                - Scaling for EC2, DynamoDB, Aurora, Etc.
+            - EC2 Auto Scaling
+                - Scaling specifically for EC2
+        - EC2 Auto Scaling
+            - Launch configuration and launch templates
+                - VPC and subnets
+                - Load balancer
+                - Minimum instances
+                - Maximum instances
+                - Desired capacity
+            - Auto scaling policy Types
+                - Scheduled
+                - On-demand
+                - Predictive
+            - Invocation
+                - Health status checks
+                - CloudWatch alarms
+                - Schedules
+                - Manual scaling
+
+# Module 8 - Automation
+
+- Higher-level services
+    - AWS Elastic Beanstalk
+- Do it yourself
+    - AWS CloudFormation
+        - Infrastructure as Code
+    - AWS SystemsManager
+    - AWS EC2
+
+# Module 9 - Containers
+
+- Microservices
+    - Monitoring (X-Ray)
+        - Records traces
+        - Produces a service map
+        - Sounds really useful for microservice debugging
+- Containers
+    - Standardized unit of storage
+    - Inside each container
+        - Configuration
+        - Code
+        - Dependencies
+        - Runtime engine
+- Container Registry (ECR)
+
+# Module 10 - VPC Peering
+
+- VPC Endpoints
+- VPC Peering
+- Transit Gateway
+- Hybrid Networking
+    - AWS Site-to-site VPN
+        - Connection options
+            - Virtual Private Gateway
+            - EC2 Instance
+            - AWS Direct Connect
+                - Private VIF to virtual private gateway
+                - Private VIF to direct connect gateway
+            - Public VIF
+- Route 53 (DNS)
+    - DNS Resolution
+        - Public hosted zone
+            - Route to internet-facing resources
+            - Resolve from the internet
+            - Global routing policies
+        - Private hosted zone
+            - Route to VPC resources
+            - Resolve from inside the VPC
+            - Integrate with on-premises private zones using forwarding rules and endpoints
+    - Routing Policies
+        - Public
+        - Routing policies allow you to choose where to route packets based on something
+            - Failover routing, routing based on health checks
+        - Geolocation Routing
+            - Routing based on where the user is.
+        - Geoproximity routing
+            - Routting based on where the app is.
+        - Latency-based routing
+            - Routing based on actual network latency.
+        - Multivalue answer routing
+        - Weighted routing
+            - Blue/green routing
+            - New code deployments
+                - For example, 90% code goes to existing deployment, 10% goes to new deployment.
+    - Resolving for Hybrid Clouds
+        - Can send resolution requests to Route 53
+        - I don't quite understand this; I think I need to read a little more about it.
+
+# Module 11 - Serverless Architecture
+
+- API Gateway
+    - Creates a unified front-end for multipel microservices
+    - Provides DDoS protection and throttling
+    - Authenticates and authorizes requests to a backend
+    - Throttles, meters, and monetizes API usage
+- Amazon SQS
+    - Fully managed queuing service
+    - Stores messages until a consumer can process them
+    - Use cases
+        - Work queues
+        - Buffering and batch operations
+        - Request offloading
+        - Auto scaling
+            - Scale up or down based on number of items in the queue
+    - Queue types
+        - Standard
+            - At least once
+            - Nearly unlimited number of API calls per second
+        - FIFO
+            - Only once
+            - Limited API calls per second
+        - Dead Letter
+            - Errored messages.
+    - Message lifecycle
+        - Receiving messages
+            - Short polling
+            - Long polling
+- Amazon SNS
+    - Publish messages to a topic
+    - Entities can subscribe to the topic
+    - Types of Subscribers
+        - Email
+        - SMS
+        - Mobile push
+        - HTTP
+        - Etc.
+- Amazon Kinesis
+    - Large data stream ingestion
+    - Near real time data processing
+- Step Functions
+    - Vending Machine
+        - Waiting for a transaction
+        - Accept money
+        - Soda selection
+        - Vend soda
+    - Basically a workflow editor and executor
+
+# Module 12 - Edge Services
+
+- AWS Regions
+- AWS Wavelength
+- AWS Outposts
+- AWS Edge Locations
+- AWS Local Zones
+
+- CloudFront Configuration
+    - Choose the origin
+        - S3 bucket
+        - ELB load balancer
+        - Custom origin
+            - EC2 instance
+            - On-premises server
+    - Create distribution
+        - Define cache behavior
+    - Do optional stuff
+- Global Accellerator
+    - Hop on AWS backbone as soon as possible
+- DDoS Protection
+    - AWS WAF (Web Application Firewall)
+        - Block IP ranges
+        - Ensure that people can't tamper with a web page
+        - OWASP - maintains a list of common web attacks
+        - Create a web ACL
+    - AWS Firewall Manager
+
+- Outposts
+    - Bring AWS infrastructure on premises.
+
+## Module 13 - Disaster Recovery
+
+- Availability Concepts
+    - High Availability
+    - Fault Tolerance
+    - Backup
+    - Disaster Recovery
+- Failover and Regions
+- Duplicate Storage
+    - S3
+        - cross-region replication
+    - S3 Glacier
+        - Data stored in regional vaults
+        - Inventory is updated daily
+- Failover networking design
+- Database backup and replicas
+- Templates and scripts to reproduce configuration
+- AWS Backup
+- Recovery Strategies
+- AWS Elastic Disaster Recovery
