@@ -54,3 +54,24 @@ town, and I demand to know what's going on!"
 Level up to 3 by next week.
 
 ## September 30, 2023
+
+Becklyn has heard rumors of the Red Dragon Army decimating cities to the east. We ask if the villagers can seek refuge
+in another city. We offer to go to the town of Calaman to see if they will accept refugees. While we were discussing
+trying to trick the army into avoiding the town, a messenger arrives.
+
+A human in black and red scale male sits aside a war horse. She asks, "who among you speaks for this village?" They
+attempt to force us to quarter the soldiers of the Red Army. The symbol on the meswsenger's armor is a symbol of
+Takhisis. We ask how many soldiers. The messenger raises her hand and four dragon soldiers appear on the hill.
+
+Becklyn has heard stories of this army. She believes that they will kill everyone even if we cooperate. She suggests
+that we should prepare everyone to evacuate. The only way to get everyone to Calaman would be by boat. We'd have to have
+everyone near the wharf.
+
+Keltrick casts heat metal on one of the warriors. He begins to take his armor off and sends one of them to get more
+soldiers. Five more soldiers show up, so we have a total of 9. A dwarf comes to the door to tell us that there's a whole
+bunch of soldiers on the hill. He offers to help us sneak up on the warriors using an invention called the Gnome
+Flinger. The Gnome Flinger was confiscated by Becklyn.
+
+We fought the warriors.
+
+## October 6, 2023
