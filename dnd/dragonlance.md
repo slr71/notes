@@ -74,7 +74,7 @@ Flinger. The Gnome Flinger was confiscated by Becklyn.
 
 We fought the warriors.
 
-## October 6, 2023
+## October 7, 2023
 
 Becklyn leaves us in charge of the villagers. We're tasked with helping them get to the boats. We hear the cries of a
 child. A family of four have been separated from each other. Each family member is searching for the others. We ask the
@@ -101,3 +101,46 @@ recognizes Becklyn's helmet. He asks where she is and asks for the helmet.
 We board the boat and sail away. Vogler is in flames and we can see raiders looting the houses.
 
 We have to level up to 4 for next week.
+
+## October 14, 2023
+
+I arrived late, so I don't have notes from the beginning of the evening.
+
+We arrive in Calaman, and encounter some Knights of Calaman. We ask them to take us to the town council, and they agree
+to lead us there. We arrive at the castle, and inform the town council of the attack on Vogler. Bacarus the younger
+intercepts us and states that his father has things under control. We...convince...him to leave with some spells, and he
+leaves in a hurry.
+
+We arrive at the governor's office, and the governor asks us if we're still preparing for battle. It appears that Lord
+Bacarus was telling the governor that we were preparing. We compel Lord Bacarus to tell the truth, and the governor
+calls a woman named Marshall. Marshall says that she's afraid that our plight is far from unique. Vogler is the largest
+community to be attacked, and the only one wiht a significant number of survivors. Experienced patrols have been cut
+down, some of them with mysterious claw marks in their armor.
+
+The council meets behind closed doors, and we listen in. We hear them asking Lord Bacarus why he lied to them. They
+eventually call us in, and the governor informs us that they will give us shelter and food, but we must report to
+Marshall as special operatives in the Calaman military. The villagers may seek refuge inside the city walls if the city
+is attacked. We agree to swear to serve Calaman while this danger persists. We are given palm-sized emblems as a symbol
+of our rank.
+
+We go back to the village and inform the villagers that they have been granted asylum.
+
+Marshall shows us around the castle. The first floor is where the governor and council meet and hold events. There's an
+armory on the first floor as well. The second floor is the military command and officer lodging. The guards sleep on the
+third floor. The fourth floor and the towers are vacant and in a state of disrepair; this is where we will be
+staying. The basement is used for storage.
+
+We find a shop called Wyhan's Apothecary and give the scroll to her. She asks us our names and why we believe we're
+worthy of magic. We respond, and she agrees to confer with the other members of the council.
+
+When we return to the castle, Marshall calls us to her office. "I won't mince words. We're in the dark here regarding
+the dangers I fear are fast approaching our gates, and your role will be to change that. But first, you must have
+questions. If you need any weapons, please visit the armory. I will inform you of your assignments in the
+morning. However, Darret will not be with you. I have other things for him to do."
+
+Derret meets us while we're eating breakfast. "Calaman's leadership is disturbed to hear about the mechanical
+dragon. Twelve miles south of Calaman lives a gnome tinkerer, Rukeldust. Marshall wants us to go to her home and ask us
+what she knows of this. I'm not allowed to join you on this mission." We get directions to Rukeldust's house."
+
+We go to try to find her house. We find what appears to be her home, which is under seige by goblins. We easily kill the
+goblins.
