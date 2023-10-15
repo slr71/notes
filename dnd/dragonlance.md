@@ -75,3 +75,29 @@ Flinger. The Gnome Flinger was confiscated by Becklyn.
 We fought the warriors.
 
 ## October 6, 2023
+
+Becklyn leaves us in charge of the villagers. We're tasked with helping them get to the boats. We hear the cries of a
+child. A family of four have been separated from each other. Each family member is searching for the others. We ask the
+child's name. She says that her name is Samantha. We go to the pier to find her parents, Fred and Wilma.
+
+Cudgel and becklyn leave to check to see if they can do something about the Red Dragon Army. We return to the village to
+help more people get to the boats. While we're returning, a Capack Draconian falls out of the sky and attacks us. We
+kill the Draconian.
+
+We continue helping villagers onto the boats, and Kari and Eiffa spot some knights on a ridge in the distance. We
+dispose of them, but then we hear the sound of clashing metal. The scaled soldiers bait the militia members, luring them
+into battle. We're attacked by a boiler drac, which is a machine. We kill the Baz Draconians that are piloting it, and
+Eiffa spots a glint of armor. She looks back, and they're gone again. Mayor Raven comes to us and asks if we saw the
+horses in the forest. She saw them too. The one on the large horse was wearing very old armor, and it looked like a
+skeleton. She thinks it might be the spirit of lord Vogler, but he's been dead for a century.
+
+Eiffa prays to Solinari, who says that these horsemen are spirits sent to watch over us. Just then, an ogre bursts
+through the front wall of the Brass Crab. After we dispatch the oger and her minions, we attempt to help the rest of the
+villagers. As we help the last of the villagers onto the boats, a man asks us to hold the boat. Jayev said that the
+battle with the Red Dragon Army went poorly. Becklyn sent him to ask us to ensure that we don't wait for the
+mercenearies. Jayev said that Becklyn and Cudgel were captured by the Red Dragon Army. Darret approaches us and
+recognizes Becklyn's helmet. He asks where she is and asks for the helmet.
+
+We board the boat and sail away. Vogler is in flames and we can see raiders looting the houses.
+
+We have to level up to 4 for next week.
