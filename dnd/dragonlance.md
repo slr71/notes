@@ -86,7 +86,7 @@ kill the Draconian.
 
 We continue helping villagers onto the boats, and Kari and Eiffa spot some knights on a ridge in the distance. We
 dispose of them, but then we hear the sound of clashing metal. The scaled soldiers bait the militia members, luring them
-into battle. We're attacked by a boiler drac, which is a machine. We kill the Baz Draconians that are piloting it, and
+into battle. We're attacked by a boiler drac, which is a machine. We kill the Baaz Draconians that are piloting it, and
 Eiffa spots a glint of armor. She looks back, and they're gone again. Mayor Raven comes to us and asks if we saw the
 horses in the forest. She saw them too. The one on the large horse was wearing very old armor, and it looked like a
 skeleton. She thinks it might be the spirit of lord Vogler, but he's been dead for a century.
@@ -144,3 +144,33 @@ what she knows of this. I'm not allowed to join you on this mission." We get dir
 
 We go to try to find her house. We find what appears to be her home, which is under seige by goblins. We easily kill the
 goblins.
+
+## October 28, 2023
+
+Derret comes to see us in Calaman. He informs us that the leaders of Calaman have tasked us with investigating the farm
+18 miles outside of Calaman. Nobody has heard from the farmers for 18 days. Marshall Vendries wants to talk to us before
+we go. She has a pair of devices that she believes will allow us to communicate up to 20 miles. She keeps the other one
+so that we can contact her. Before we leave, Marshall indicates that we can make use of the horses in the stable.
+
+As we approach the farmhouse, we find the farm ransacked. A dragon army soldier is outside, training six hobgoblin
+mercenaries. We see some moke in the distance about sixteen farther to the east. We kill the hobgoblins and capture the
+leader. On the leader, we find a note: the highmaster requires soldiers, not thugs. Find what you have and dispatch the
+ones who are not up to the task. On the hobgoblins, we find five suits of black chainmail, each with the symbol of
+Techesis on it. We take the soldier back to the dungeons of Calaman to be interrogated.
+
+As we're headed back to Calamanm we encounter two toppled wagons. We find clawed footprints leading into the woods to
+the south. We check the wagons and find no survivors. The wagons appear to be in working order, but the clawed
+footprints appear to be Draconian footprints. We follow the footprints and encounter five Baaz Draconian, led by a Bozak
+Draconian. We kill the Draconians, and rescue the one survivor. The survivor's name is Grog. We find enough food for
+about 120 days. Grog also points to something shiny. Kari identifies it; it's a drift globe.
+
+We grab the wagons and start heading back to Calaman. On the way back to Calaman, we see some soldiers who are marching
+towards Calaman about a mile away from us. We call Marshall to let her know. She instructs us to go check it out. As we
+get closer, we can see that the soldiers are exhausted. It appears that they've just survived a battle. We call out to
+them and offer them assistance. Cudgel is the leader! Becklyn is also alive! We offer them food and we make our way back
+to Calaman. Bringing up the rear, along with Becklyn, are a few fisher folks who had been missing.
+
+We give our report to Marshall and the leaders of Calaman. The mayor gives each of us a bonus of 100gp each. Marshall
+informs us that our enchantments are ready.
+
+We should level up to 5 next week.
