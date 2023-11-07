@@ -174,3 +174,13 @@ We give our report to Marshall and the leaders of Calaman. The mayor gives each 
 informs us that our enchantments are ready.
 
 We should level up to 5 next week.
+
+## November 4, 2023
+
+Kari runs into Darret, who informs her that Wheelwatch has been overtaken by the Red Dragon Army. He implores us to go
+recapture the fort. Wheelwatch Fort stand at the border with the land of Estylde. The fort lies 24 miles southeast of
+the city, and it's been taken by the Red Dragon Army. Raven has been tasked with retaking the fort. We all agree to do
+it. Darret arranges a meeting with Raven. He leads us into the War Room. Raven says, "I am so glad you're back. I've
+been told about your exploits. Thank you so much for what you've done." She lays open a sketch of the outpost and gives
+us some information about the fort. It's going to take us eight hours to get into position in the secluded grove about a
+mile from the fort. She wants us to slip into the fort and open a gate without sounding an alarm.
