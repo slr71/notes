@@ -80,3 +80,51 @@
 - An absolute path begins with a slash, and this is the path that's displayed when you type `pwd`.
 - The tilde (`~`) character refers to the current user's home directory.
 - The hyphen (`-`) character refers to the previous working directory.
+
+## General Syntax of a Command
+
+- Prompt
+- Command
+- Options
+- Arguments
+
+## Nelle's Pipeline - Organizing Files
+
+- Tab completion
+
+# Working With Files and Directories
+
+## Creating Directories
+
+- First, check to see where we are.
+- Switch to `exercise-data/writing` directory.
+- List files: `ls -F`
+- Create a directory `mkdir thesis`
+- List files in the directory: `ls -F thesis`
+- The `mkdir` command can create multiple directories at once using the `-p` option.
+
+- `mkdir -p ../project/data ../project/results`
+- List files in the project directory.
+  - `ls -FR ../project`
+- Good practices for naming:
+  - Avoid spaces.
+  - Don't begin names with a dash.
+- Create a text file.
+  - `cd thesis`
+  - `nano draft.txt`
+- Editors
+  - Nano
+  - Vim
+  - Emacs
+  - VSCode
+  - Notepad++
+- Creating files in a different way.
+  - `touch my-file.txt`
+- Moving Files and Directories
+  - `cd ~/Desktop/shell-lesson-data/exercise-data/writing`
+  - `mv thesis/draft.txt thesis/quotes.txt`
+  - `mv thesis/quotes.txt .`
+  - `ls thesis`
+  - `ls thesis/quotes.txt`
+  - `ls quotes.txt`
+- Moving files to a new folder
