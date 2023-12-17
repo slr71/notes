@@ -184,3 +184,18 @@ it. Darret arranges a meeting with Raven. He leads us into the War Room. Raven s
 been told about your exploits. Thank you so much for what you've done." She lays open a sketch of the outpost and gives
 us some information about the fort. It's going to take us eight hours to get into position in the secluded grove about a
 mile from the fort. She wants us to slip into the fort and open a gate without sounding an alarm.
+
+## December 16, 2023
+
+We enter a tunnel with alcoves containing bodies wrapped in yellow cloth on either side of the tunnel. It appears that
+this was done recently. The ceiling is fifteen feet high, and rocks are falling from the ceiling. Kari and Ketrick go
+into the tunnel first. The tunnel collapses, and Keltrick dodges. Kari gets stuck under the rubble. We dig her out and
+pull her back into the hallway. Kari charges down the hallway, and the rest of us follow behind. Forgotten knights of
+Salammnia are buried here. As we walk through the hallway, we notice that there are flames all around us, but there's no
+heat. The knight from the previous vision is being cast out of the group of knights. The flames disappear. We continue
+to pass the alcoves containing buried knights.
+
+We enter a chamber with a stone memorial. The memorial has hundreds of names inscribed on it. We open a door on the
+opposite side of the memorial. We see two slabs inscribed with text, there's a knight of Salamnia kneels before the
+slabs. We see a vision of a knight slaying his wife and becoming infused with his armor. The knight who is kneeling
+introduces herself as Knight Jamden of the Order of the Sword.
