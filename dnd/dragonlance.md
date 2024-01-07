@@ -199,3 +199,29 @@ We enter a chamber with a stone memorial. The memorial has hundreds of names ins
 opposite side of the memorial. We see two slabs inscribed with text, there's a knight of Salamnia kneels before the
 slabs. We see a vision of a knight slaying his wife and becoming infused with his armor. The knight who is kneeling
 introduces herself as Knight Jamden of the Order of the Sword.
+
+## January 6, 2024
+
+The Northern Wastelands are a desolate, barren region prone to flash floods. Ancient ruins that predate the cataclysms
+litter the landscape. They agree to send us there, and Darrett comes along. There's a secluded cove called Wrecker's
+Edge that we can depart from. We'll try to discover what the Dragon Army's plot is and then get back to the ship. When
+we get to the docks. We see both Tatiana Winkeldust and Cudgel. They offer to come with us, and we board the ship with
+the horses.
+
+When we go to leave, someone discovers that there's no safe place to embark. Darret asks us to see if there's a safe
+place to land the boat. Mora finds a place and lets us know. When we land, we see some buildings that are in ruins and
+one ship that appears to be in good shape that's also docked here. We watch the ship for a while, and it appears to be
+abandoned. The boat is of Sylvanesti Elvin Origin, and it appears to be seaworthy. It appears to be able to support a
+crew of ten. We board the ship, and two air elementals appear. The owner of the ship approaches and introduces
+himself. His name is Dalamar. He's part of a contingent of Sylvanesti elves surveying the coast for ancient ruins. He
+invites us to join them at their encampment where we can inform them of our quest.
+
+Dalamar says that he participated in an ill-fated defense of the Sylvanesti against the Red Dragon army. Dalamar is
+aware that Soth was killed. We inform him that Lord Soth was undead. This was the home of the Sylvanesti, and Dalamar
+says that he would love to strike back at the Dragon Army. He believes that one of the artifacts here is of magical
+value to the Sylvanesti. Dalamar thinks that The Dragon Army, the Sylvanesti, and us all have similar interests in the
+artifacts here. He directs us to some places in the Northern Wastes. The Blue Phoenix Shrine. The Sunward Fortress, and
+Wakenreth.
+
+We sail around the point and moor near the mouth of Deepdraught Canyon, camp overnight, then embark. The wasteland seems
+to go on forever.
