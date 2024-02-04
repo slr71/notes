@@ -229,8 +229,10 @@ to go on forever.
 ## February 3, 2024
 
 We defeat most of the enemies, and Akhviri, a black dragon arrives and asks for an item, which is in a chest. We manage
-to open the chest first and take the item, a golden dragon egg. We put the dragon egg in the bag of holding, close the
+to open the chest first and take the item, a bronze dragon egg. We put the dragon egg in the bag of holding, close the
 chest, and wake Zirok to hand the chest to the dragon. The dragon kills Zirok and flies away.
+
+The tent also had Dragon Army plans for excavating the Sunward Fortress and 300 gold.
 
 The three elves we save tell us that the fourth elf was taken to Sunward Forrtress, which is a pre cataclysm shrine to
 Sirrion. It is said to allow worshipers to commune with Sirrion's greatest flame, the sun.
