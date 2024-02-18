@@ -236,3 +236,19 @@ The tent also had Dragon Army plans for excavating the Sunward Fortress and 300 
 
 The three elves we save tell us that the fourth elf was taken to Sunward Forrtress, which is a pre cataclysm shrine to
 Sirrion. It is said to allow worshipers to commune with Sirrion's greatest flame, the sun.
+
+## February 17, 2024
+
+We're camped and we hear three Dragon Army soldiers and one officer patrolling the area. We findthe camp of the Red
+Dragon Army. There's a dozen ragged canvas tents and a bunch of broken crates near the tents. There's enough dried meat
+to sustain a person for ten days. We also find some leather armor. There's a spire nearby, with a dirt ramp leading up
+to it. We enter the spire.
+
+The ramp descends from a gap in an ancient stone wall. There's an altar with candle sconces and a shallow basin. We
+approach the altar, and Keltrick lights a flame. Eiffa says a prayer and the bowl fills with a thick red
+liquid. Keltrick tastes the fluid and fire erupts from his mouth. The liquid ia potion of fire breathing. A few of us
+fill some flasks and vials with the potion.
+
+We find Yerkel in a room in the spire. He's next to an unconscious human named, Rone. There's a slod tadpole attached to
+him. I cast lesser restoration on him. He offers us 1000 GP to take him to Hearts Hollow. The crew excavated the spire
+and found a glowing stone. The stone is at a lower level, so we go to the next floor.
