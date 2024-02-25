@@ -249,6 +249,27 @@ approach the altar, and Keltrick lights a flame. Eiffa says a prayer and the bow
 liquid. Keltrick tastes the fluid and fire erupts from his mouth. The liquid ia potion of fire breathing. A few of us
 fill some flasks and vials with the potion.
 
-We find Yerkel in a room in the spire. He's next to an unconscious human named, Rone. There's a slod tadpole attached to
-him. I cast lesser restoration on him. He offers us 1000 GP to take him to Hearts Hollow. The crew excavated the spire
-and found a glowing stone. The stone is at a lower level, so we go to the next floor.
+We find Yerkel in a room in the spire. He's next to an unconscious human named, Rone. There's a slaad tadpole attached
+to him. I cast lesser restoration on him. He offers us 1000 GP to take him to Hearts Hollow. The crew excavated the
+spire and found a glowing stone. The stone is at a lower level, so we go to the next floor.
+
+## February 24, 2024
+
+We finish off all of the slaads and find 900 GP. We find some notes, exit the fortress and seal the entrance. It's dark
+outside, so we take a lng rest. When we wake up, we discover that a quarter of the troops are missing. Darrett says that
+there were Dragonelles and Rad Dragon Army soldiers attacked in the night, and the soldiers chased them. We continue
+with our mission to meet Dalamar at Wakenreth. It takes all day to walk there; we get there around mid afternoon. As we
+approach, we see a ruined tower, a pale stone tower jutting from the landcape. It is carved with the likenesses of Elven
+soldiers. It's about 80 feet tall, and its decay is frozen unnatrually. A metal door at the base hangs ajar.
+
+We enter the tower. There's an obsidian sculpture in the center of the tower. Tradition dictates that everyone who
+enters must leave a silver coin at the base of the statue. We ascend to the second level. The room contains two stone
+crypts. Sconces on the walls shed light that is tinged a faint green. There's a door that leads to the stairs, but the
+stairs are blocked by rubble. It would take hours to clear the rubble. The walls are sculpted with empty burial
+niches. We encounter two wraiths and dispatch both of them. There's a hole in the ceiling, so Mora takes us all to the
+next level on her broom.
+
+The spirit from one of the wraiths is on the next level trying to pick up a sword. She says that she doesn't know how
+she got there, but she feels purpetually angry. She asks if we know of her sister, Teledria. None of us knows, so we
+offer to put her sword in her sarcophagus. She says that would bring her great comfort and disappears. We find six onyx
+gemstones worth 200 each.
