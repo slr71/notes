@@ -273,3 +273,19 @@ The spirit from one of the wraiths is on the next level trying to pick up a swor
 she got there, but she feels purpetually angry. She asks if we know of her sister, Teledria. None of us knows, so we
 offer to put her sword in her sarcophagus. She says that would bring her great comfort and disappears. We find six onyx
 gemstones worth 200 each.
+
+## March 9, 2024
+
+I didn't take many notes, but we destrouyed the link between Wakenreth and the Shadowfell. We travel to the Dread Wolf
+Cave and encounter another Ankhelox. We defeat it and enter the cave where we see a shard of glass on the cave floor. I
+cast identify on it and discover that it's a shard of the Orb of Dragonkind. It's powerless in its current state, but I
+notice something off about Dalamar.
+
+## March 16, 2024
+
+We asked Dalamar about the shard of glass. He wasn't very forthcoming about the nature of the Orb of Dragonkind, but he
+eventually provided some information. He mentioned that it's necessary to attune to it, and attuning to it comes with a
+risk of being charned,
+
+Eiffa finds a chest containing 400 GP. Kari finds a pouch containing gold and silver. Barhum finds a chest containing a
+helmet and chain mail with an insignia of the Knights of Salamnia with 50 GP..
