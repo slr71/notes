@@ -289,3 +289,34 @@ risk of being charned,
 
 Eiffa finds a chest containing 400 GP. Kari finds a pouch containing gold and silver. Barhum finds a chest containing a
 helmet and chain mail with an insignia of the Knights of Salamnia with 50 GP..
+
+## April 6, 2024
+
+We encounter a rugged guy being attacked by giant spiders and we helped him kill the spiders. He tells us that is name
+is Clystran. He says that he saw a dragon and he found a scale. He offers to take us to his village, which is called
+Hearts Hollow. He says that the village elder, Ness, might be able to tell us where we can find the City of Lost
+Names. Clystran suggests that our army shouled stay outside of the town. There's a store called Ends Odds where slightly
+used equipment is sold. There's another store run by a mage called Lavendar Jalles, alchemical tinctures are sold
+there. There's another place called The Mosaic. Visitors are encouraged to place stones there.
+
+Kari shows the dragon egg to Nezrah (a.k.a. Ness) leads us to the back of the Salt Lick bar. She has made it her life's
+mission to build and protect Heart's Hollow. She was seeking clutches of dragon eggs. She says that the egg is hers, and
+she appears to be telling the truth. She says that we are welcome here and has Clystran show us to our lodging.
+
+We go to Lavender's shop, who is a renegade wizard. Lavender refused to take the tests because of the hypocracy that he
+saw in the Order of Wizards. He convinces Eiffa of the hypocracy. He knows of the red dragon army and of the power that
+Tekhesis wields.
+
+We go to Odds Ends, which has nothing interesting except another glass shard. Eiffa purchases the shard. She hands it to
+Dalamar after we exit the shop. Dalamar holds the two shards next to each other, and they fuse.
+
+We ask Ness about the tunnels. She says that they're not entirely sure what's down there, but there's a mysterious
+groaning down there periodically. She's forbidden everyone in town from going down there for their own safety.
+
+Clystran leads us to the Blue Maw cave. A few of us realize that this cave was carved by a dragon. As we approach it, we
+notice the blue hues, indicating that there's a high concentration of blue salt cyrstals. A couple of people notice
+rocky gravel that blends in with the surrounding ground. It's a trap. Keltrick trips the trap. It's a spiked pit. A
+woman comes and and says that the trap is not for us, but for the monsters. She describes "fang worms" and some other
+monsters. Keltrick shows her an image of a dragonelle and she says that they were there along with the gricks. Her name
+is Grasha. She's fascinated by the rare minerals in the cave. The "fang worms" that she describes remind us a little bit
+of Gricks. She says that they bring filled sacks out of the cave.
