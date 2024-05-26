@@ -1,4 +1,4 @@
-# Dragonlance
+.# Dragonlance
 
 ## September 23, 2023
 
@@ -289,3 +289,12 @@ risk of being charned,
 
 Eiffa finds a chest containing 400 GP. Kari finds a pouch containing gold and silver. Barhum finds a chest containing a
 helmet and chain mail with an insignia of the Knights of Salamnia with 50 GP..
+
+## May 25, 2025
+
+We defeat the stone golem, take a long rest then keep exploring. We go around the corner and find some dragon bones. We
+investigate, and three dragon skeletons emerge from the walls. The skeletons accuse us of riding on their backs. We deny
+the accusations, but they don't seem to understand us. These are guardian nagas. We defeat them then o to a room that
+appears to be an abandoned tavern. There were two slods in the room, and they attacked us. Zyrin has taken quite a bit
+of damage, and I was planning to heal her first. Kari's horse also needs healing.
+
