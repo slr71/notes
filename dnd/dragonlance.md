@@ -290,7 +290,7 @@ risk of being charned,
 Eiffa finds a chest containing 400 GP. Kari finds a pouch containing gold and silver. Barhum finds a chest containing a
 helmet and chain mail with an insignia of the Knights of Salamnia with 50 GP..
 
-## May 25, 2025
+## May 25, 2024
 
 We defeat the stone golem, take a long rest then keep exploring. We go around the corner and find some dragon bones. We
 investigate, and three dragon skeletons emerge from the walls. The skeletons accuse us of riding on their backs. We deny
@@ -298,3 +298,27 @@ the accusations, but they don't seem to understand us. These are guardian nagas.
 appears to be an abandoned tavern. There were two slods in the room, and they attacked us. Zyrin has taken quite a bit
 of damage, and I was planning to heal her first. Kari's horse also needs healing.
 
+## May 31, 2024
+
+We defeat the slods and find a place to rest. Then we continue exploring. We enter a room where a building from the
+surface has fallen into the cave. There's a staircase, blocked by rubble leading up to the east. Eiffa sees an upright
+glass containing some liquid. She investigates, but can't identify the liquid. Keltrick investigates and finds that the
+liquid comes from several wine bottles. He finds three bottles containing blue wine.
+
+We go back to the stage tavern then go through the doors at the back of the stage. We see a bunch of chairs and a rlief
+of dragons bowing to a dragon. There's also a skull. Kari pays respsects to the skull, and we move on. Green flames
+blaze in the skull's eyes and animate it. The bones of a phantom brass dragon appears. It says the following: "you built
+your degenerate throne on our graves, but your gods abandoned you. You have returned, but so have we!" Kari speaks to
+it, and convinces it that we mean no harm. It nods and disappears. We investigate, and it appears that the Astarians
+repurposed the room as a lounge and used the artifacts as decoration.
+
+We go through another door. This room is filled with lab equipment, and live mice occupy some of the cages. Eiffa talks
+to some of the mice and asks why they are there. They say that there are here because of Demlin, a mage who resides
+there. We read some of the books in the shelves. We find some books containing lore pre-dating the catalysm. We find
+references to a flying city called Anyari. We gather as much information as we possibly can about it and its fall. We
+find a scroll of Arcane Gate. We also find a book containing rituals for divination and phantom steed spells.
+
+We fight for a few minutes, then Demlin introduces herself. She's an archmage who is hundreds of years old, one of a
+handful of sylvanesti elves old enough to have survived the catalysm. She's a high wizard of Anyari. She encourages us
+to seek out the Temple of Paladin in the northeast corner of the city to find out why the god has returned the Dragon
+Lance to Anyari.
