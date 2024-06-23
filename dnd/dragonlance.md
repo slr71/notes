@@ -322,3 +322,45 @@ We fight for a few minutes, then Demlin introduces herself. She's an archmage wh
 handful of sylvanesti elves old enough to have survived the catalysm. She's a high wizard of Anyari. She encourages us
 to seek out the Temple of Paladin in the northeast corner of the city to find out why the god has returned the Dragon
 Lance to Anyari.
+
+## June 22, 2024
+
+We leave Demlin's abode and enter a passageway that is lit with torches. She says that thew city is not far: maybe 50
+feet. We must beware of Lozahet, who is a wizard, and Belaphyan, the cleric of Tekhisis, whi is a cleric. They must be
+killed because they are attempting to raise the city, which could cause another Cataclysm. They are located near the
+threshhold of the heavens, which is at the center of the city. It floats, and in the past it was the tower that controls
+the city's flight. It will be very hard to get in there. We must try to find the Temple of the Paladin first. It is one
+of the most intact places on Yarin's Fall. We will find answers regarding Sarlamir's Dragonlance. She says that the
+Dragonlance may be fixed, but it's not as powerful as it could be. We can recharge it at the Temple of the Paladin.
+
+We go through the passageway and find a crater. The City of Lost Names is in the crater. To the southwest, the sound of
+shearing rock comes from a temple to the southwest. A dragon appears, and someone mounts the dragon and flies to the
+south. I recognize the undead dragon rider from the Calaman catacombs. It is the knight, Lord Soth. We continue walking
+through that part of the city.
+
+Katina Rickledust calls us over the fargab. She tells us that Lord Soth is attacking their armies, and they're trying to
+hold on as long as they can. They're going to retreat and draw the Red Dragon Army away from us. She encourages us to
+find teh army's leader's within the city rather than pursue Lord Soth. She tells us that she's confident that the
+Calaman army can retreat safely. She also says that she has a few tricks in store for the Red Dragon Army.
+
+We see Dragon Army soldiers throughout the city. We hide ourselves and wait for about ten minutes so as not to be
+detected. There's activity in three locations: the central spire, which is a tower in the center of the city. The tower
+floats dozens of feet off the ground; small patrols come from a ruined mantion near the center of the city, just to the
+southeast of the central spire; there's also a foreboding sinister temple in the south of the city.
+
+We meet a drunkard who tells us that a black robed wizard named Lozahet and Belaphyan. Those two, they lead the forces
+of the city. They spend their time in the Threshhold of the Heavens. You need a password ot get in. He doesn't know the
+password, and he doesn't know who has it. We check his pockets, and he has a key. Keltrick takes the key. The drunkard
+tells us that it's the key to the mansion.
+
+We enter the mansion through a side door, and we see a Dragonelle being attacked by three Capac Draconians. One of the
+Draconians has a key on its belt. We defeat the Draconians, take the key, and use it to free the Dragonelle that they've
+captured. Eiffa finds a door, and we go through it. We find some dragon army cloaks, put them on and enter teh
+mansion. We ask one of them what's going on. It says that they killed a bronze dragon recently, and they're serving it
+for dinner.
+
+We investigate the room to the east of the salon that they've converted into a mess hall. It's a kitchen. A hobgoblin
+complains, so we exit. We then investigate a room to the north of the kitchen. It appears to be the soldier's
+quarters. They ask why the cook was yelling, so we tell them not to worry, and we exit. They tell us to grab a bunk, but
+one of the soldiers recognizes that Eiffa is wearing their cloak. We end up fighting them. I casted spiritual weapon at
+second level and everybody has bless. We're started at Dragon Army soldier E.
