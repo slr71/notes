@@ -364,3 +364,28 @@ complains, so we exit. We then investigate a room to the north of the kitchen. I
 quarters. They ask why the cook was yelling, so we tell them not to worry, and we exit. They tell us to grab a bunk, but
 one of the soldiers recognizes that Eiffa is wearing their cloak. We end up fighting them. I casted spiritual weapon at
 second level and everybody has bless. We're started at Dragon Army soldier E.
+
+## June 29, 2024
+
+We win the fight. We find fire swords and 80 gold. We split the gold evenly. Dinner was ready, so we go out to eat. The
+cook realizes that something is amiss, and goes to check on the room. He sees the dead bodies along with the spirit and
+the specter inside. We attack the spirit and the specter in order to maintain the ruse. One of the commanders goes into
+the room after we kill the spirit and the specter. They believe the ruse, and ask us to search the place. We search the
+kitchen and find a pouch containing a handful of animal teeth. The pantry is locked, so we unlock it with the key that
+the cook gave to us for searching. The pantry is packed with all kind of supplies. It contains a metal crate etched with
+symbols of blue dragons. We trip the trap with a mage hand spell then pry the chest open with a crowbar. The lock is
+owned by Belephyon, one of the mages at the central spire. It contains three javelins of lightning. It also contains a
+pouch full of sapphires valued at 1600 GP. We pretend that we're fighting a ghost to try to maintain the deception. We
+look in the backyard; there was a courtyard, but nothing of interest. Next, we go upstairs.
+
+We enter a room that appears to be a master bedroom. It's well maintained with a four poster bed and a small chest. A
+door leads to a room to the east, and another doorway leads to the hallway to the north. We hear a voice, that says,
+"who are you?" We see an Aurak draconian writing reports. The Draconian attacks us. We have a few minutes between
+attacks. Two dragon army leaders Belaphyan and Lozahet work at the gateway to the heavens. The password is "by her will,
+the world." Dragon army engineers have completed the majority of their work, shoring up the most well preserved portion
+of the city. There's an open chest containing a Pearl of Power and a 200 lb sack containing 10000 silver pieces. We take
+the sack.
+
+We hear someone in the next room. Kari kicks in the door, and there are two people in dragon army clothes who look like
+clerks. They beg for mercy and warn them to stay put. We defeat the Dradonian and interrogate the clerks. Zyrin picks up
+a trident. We'll start with the interrogation next week.
