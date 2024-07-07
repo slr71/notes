@@ -389,3 +389,31 @@ the sack.
 We hear someone in the next room. Kari kicks in the door, and there are two people in dragon army clothes who look like
 clerks. They beg for mercy and warn them to stay put. We defeat the Dradonian and interrogate the clerks. Zyrin picks up
 a trident. We'll start with the interrogation next week.
+
+## July 6, 2024
+
+We interrogate the two clerks who were in the room next to the Draconian. We ask them what the safest route to the
+Temple of Paladine is. There are papers on the desk saying that the Dragon Army soldiers have completed most of their
+work shoring up the most intact areas of the city. We decide to go to the the Temple of Paladine first. We have to
+beware of High Master Consaldi Fireeye. She is ruthless! The commanders, Beleaphyon and Lozahet don't get
+along. Cansaldi listens to Belaphyon. Lozahet is a scheming black mage, obsessed with black magic and venomous
+beasts. His research led the Red Dragon Army to this city. The clerks suggest that we avoid the Threshhold of the
+Heavens. Belaphyon and Lozahet are planning to raise the city and make it fly again. Lord Soth is even worse than
+Cansaldi.
+
+As we leave the mansion, there are wide and narrow streets lined with houses and buildings. We walk for about ten
+minutes. We see a bridge that crosses one of the gorges, but it passes right in front of the Threshhold of the
+Heavens. Mora notices some guards on the bridge. We come to a bridge, and as we continue our trek, we find a dilapidated
+building where we can set up the tent. We take a long rest, and Zyrin attunes to her Pearl of Power.
+
+We continue our trek, and Kari sees a humanoid skeleton holding a dagger. We pass by the dead body and see the words,
+"we deserve this" scratched into the cobblestone. The dagger is just a plain dagger. We continue our trek. At the end of
+the boulevard that we're walking down, we see two enormous marble feet. The rest of the statue is gone. The marble is
+colored, but it's of a color that doesn't exist in this world. There are no pieces of the statue remaining
+anywhere. Mora investigates and finds the partial remains of an adult bronze dragon, laying in a heap.
+
+We continue toward the north of the city. Seven ghasts come out of the side streets. We kill the ghasts and continue
+northward. We approach a bridge, and we see nobody guarding the bridge. We cross the bridge and continue. We've been
+traveling most of the afternoon, and the sun is starting to go down. We're going to resume this conflict next week,
+starting with Barhum. Everybody but Barhum, Hodor, and Quira is blessed. Cyclopse B is frightened, so it has
+disadvantage on attacks and saves.
