@@ -414,6 +414,21 @@ anywhere. Mora investigates and finds the partial remains of an adult bronze dra
 
 We continue toward the north of the city. Seven ghasts come out of the side streets. We kill the ghasts and continue
 northward. We approach a bridge, and we see nobody guarding the bridge. We cross the bridge and continue. We've been
-traveling most of the afternoon, and the sun is starting to go down. We're going to resume this conflict next week,
-starting with Barhum. Everybody but Barhum, Hodor, and Quira is blessed. Cyclopse B is frightened, so it has
-disadvantage on attacks and saves.
+traveling most of the afternoon, and the sun is starting to go down. We're attacked by three cyclopses. We're going to
+resume this conflict next week, starting with Barhum. Everybody but Barhum, Hodor, and Quira is blessed. Cyclopse B is
+frightened, so it has disadvantage on attacks and saves.
+
+## July 13, 2024
+
+We finish off the Cyclopses and take a long rest. The rest is uneventful, an we continue on our journey in the
+morning. We walk for three hours then reach the Temple of Paladine. The Temple of Palaine is one of the most intact
+structures to survive the city's fall. The structure sits atop a hill, keeping it out of the deepest water. The area in
+and around the temple has the following features. Ceilings are ten feet high unless otherwise noted. Its grounds are
+flooded. We don't know how deep the water is. The temple and its grounds are lit by natural lights alone. We approach
+the cosway. The water deepens into a large pond, dotted with the roofs of structures. The cosway rises over water that's
+twenty feet deep. IN the distance, we an see the Temple in the distance. Kari notices figures wearing red and black
+clothing in area P2. We walk along the pathway, and the trees form a violet archway. As we walk along, Eiffa thinks she
+sees a tree move. We see a tree walking towards us. It calls us infidels, and tells us that we shall die. Because we're
+wearing the Dragon Army cloaks, they think that we're them. We convince them to let us pass.
+
+We continue along, and a water elemental and a mirid attack us. We kill the water elemental and the mirid.
