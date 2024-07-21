@@ -320,3 +320,10 @@ woman comes and and says that the trap is not for us, but for the monsters. She 
 monsters. Keltrick shows her an image of a dragonelle and she says that they were there along with the gricks. Her name
 is Grasha. She's fascinated by the rare minerals in the cave. The "fang worms" that she describes remind us a little bit
 of Gricks. She says that they bring filled sacks out of the cave.
+
+## Mqy 4, 2025
+
+Darrett says that the Dragon Army outnumbers Calaman, but Calaman has the element of surprise. If they attack, it will
+draw forces away from Wind's End. He believes that such an attack is our best strategy. We get into position in the
+canyon and call Darrett. We hear shouts quickly followed by smoke and alarm bells. Most of the soldiers at Wind's End
+rush to help, and we enter and encounter a few soldiers and a dragonelle.
