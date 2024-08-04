@@ -59,3 +59,30 @@ into the room. They're fighting some people who are dressed like the Zenturum (s
 
 We enter the yard and are attacked by a cult fanatic and two mastiffs. We quickly take care of them and go to the
 mansion. We enter the mansion to find two thugs standing over 8 bodies. They immediately attack us.
+
+## 2024-08-03
+
+We quickly defeat the thugs, and go upstairs to find three thugs attacking a group of veterans who are protecting lady
+Graalhund. We help the veterans kill the thugs then go to the adjacent room to talk to Lady Graalhund and a half orc
+standing next to her. The lady talks to the half orc, who takes out a pouch and gives us five GP each. We ask her why
+the Zentaurum attacked her and her family, and she just said that they kept asking for an artifact and she doesn't know
+what they were referring to. We ask if she has any more information aboout the Zentaurum. We go out of the room and take
+out the nimblewright detector. The detector is not spinning anymore. We leave the manor then go back to Troll Skull
+Manor and take a rest.
+
+In the morning, we go talk to Lady Graalhund to see if she has some more information. As we're walking over, we continue
+using the nimblewright detector. We notice a slightly increased presence of the city guard in this area and a young boy
+comes across the street and brings us a note. Maeve gives him a piece of sliver. The note is from Istrid Horne. We're
+supposed to meet her in the city of the dead.
+
+As we approach the manor, we see members of the city guard everywhere. From the gate where we entered last time, we can
+see Lady Graalhund speaking to some investigators, so we leave and go to the City of the Dead, using the mimblewright
+dectector along the way. The detector doesn't resact. When we arrive, we see a male dwarf standing at the base of a
+statue. We talk to the dwarf for a while. We talk to the dwarf and quickly learn that it's Istrid in disguise. She asks
+us if we can help her lie low for a while. We offer to let her stay at Troll Skull manor, and she offers us 20 platinum
+today and another 20 platinum at the end of the ten-day. She also offers to do some chores.
+
+When we get back to the manor, our ghost throws a broken chair at Istriid. A cat also approaches us and says that the
+city guard is looking for help catching a necromancer.
+
+We're supposed to go up to level 4 next week.
