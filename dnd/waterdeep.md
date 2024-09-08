@@ -86,3 +86,39 @@ When we get back to the manor, our ghost throws a broken chair at Istriid. A cat
 city guard is looking for help catching a necromancer.
 
 We're supposed to go up to level 4 next week.
+
+## 2024-08-10
+
+We decide to go to the Yawning Portal to talk to Ambrose about the necromancer. As we're walking to the tavern, Mystiq
+notices a halfling that appears to be watching us from a leatherworks store. I talk to the clerk, and she offers me some
+Van Bracers. I purchase them, and they'll give me a non-magical +1 to my armor class. Maeve keeps an eye on the hobit,
+who has crossed the street, and appears to be keeping an eye on us. The shopkeeper's name is Aliyah Deerrunner. She has
+some tribal looking tattoos and braids in her hair. We continue to the Yawning Portal.
+
+We make it to the Yawning Portal just in time for lunch. We order food and drinks and begin munching. Someone orders us
+a round of drinks. The halfling that we saw berfore enters and makes a beeline to our table. He bows with a flourish and
+he introduces himself as Gordo. We see a gold pin in the shape of a harp. We get another round of drinks. He says that
+he wants to welcome us to Waterdeep and ask us of we need anything. He says that he loves to collect stories, and that
+he is working on a poem about our early exploits at the Yawning Portal. Sir Ambrose has been spending a lot of time in
+the City of the Dead.
+
+We wait a little longer, and a tall knight comes striding in, and goes to a table where some other people are
+sitting. He stand there until they leave then sits down. We are to pursue a necromancer who is stealing bones and
+animating them. They must be caught and stopped. Sir Ambrose has seen skeletons and zombies. We are to meet him at the
+City of the Dead at dusk.
+
+We arrive at the City of the Dead, meet Sir Ambrose, and split up to patrol the area. The night passes quietly, and we
+meet Sir Ambrose. He says that he'd like us to help for the next nine days. We return to Troll Skull manor. Istriid has
+made significant progress on the manor and expects to have beer on tap after a few days. We see some movement at the
+corner of the bar. It's a mug being lifted off of the bar. Istriid says that she's working on it, and the mug slowly
+lowers back down.
+
+We eat then search for the nimblewright. We don't get any hits, but Maeve notices a street urchin attempting to steal an
+apple from a cart. We meet up with Sir Ambrose. We patrol the south while he patrols then north. Nothing happens on the
+next three nights. After the third night, the dwarf is testing out one of the taps. It's a little too foamy, but it's at
+least getting closer. We see peanuts floating into a dish at the end of the bar. Jester thanks the poltergeist. We wake
+up grab food, wander around the city with no encounters. We do get a brief hit on the nimblewright detector. The his is
+to the south, but it stops almost immediately. We go a litle further; it starts spinning and then it stops. Mystiq flies
+up to see if she can see anything. Maeve uses her survival skills to see if she can track the nimblewright we didn't
+find it, but we have someplace to start. We go back to the City of the Dead. Nothing happens that night, and we don't
+see the sheep or the shepherd. We go to pick up Maeve's van braces.
