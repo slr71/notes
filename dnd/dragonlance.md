@@ -1,4 +1,4 @@
-# Dragonlance
+.# Dragonlance
 
 ## September 23, 2023
 
@@ -321,9 +321,152 @@ monsters. Keltrick shows her an image of a dragonelle and she says that they wer
 is Grasha. She's fascinated by the rare minerals in the cave. The "fang worms" that she describes remind us a little bit
 of Gricks. She says that they bring filled sacks out of the cave.
 
-## Mqy 4, 2025
+## May 4, 2024
 
 Darrett says that the Dragon Army outnumbers Calaman, but Calaman has the element of surprise. If they attack, it will
 draw forces away from Wind's End. He believes that such an attack is our best strategy. We get into position in the
 canyon and call Darrett. We hear shouts quickly followed by smoke and alarm bells. Most of the soldiers at Wind's End
 rush to help, and we enter and encounter a few soldiers and a dragonelle.
+
+## May 25, 2024
+
+We defeat the stone golem, take a long rest then keep exploring. We go around the corner and find some dragon bones. We
+investigate, and three dragon skeletons emerge from the walls. The skeletons accuse us of riding on their backs. We deny
+the accusations, but they don't seem to understand us. These are guardian nagas. We defeat them then o to a room that
+appears to be an abandoned tavern. There were two slods in the room, and they attacked us. Zyrin has taken quite a bit
+of damage, and I was planning to heal her first. Kari's horse also needs healing.
+
+## May 31, 2024
+
+We defeat the slods and find a place to rest. Then we continue exploring. We enter a room where a building from the
+surface has fallen into the cave. There's a staircase, blocked by rubble leading up to the east. Eiffa sees an upright
+glass containing some liquid. She investigates, but can't identify the liquid. Keltrick investigates and finds that the
+liquid comes from several wine bottles. He finds three bottles containing blue wine.
+
+We go back to the stage tavern then go through the doors at the back of the stage. We see a bunch of chairs and a rlief
+of dragons bowing to a dragon. There's also a skull. Kari pays respsects to the skull, and we move on. Green flames
+blaze in the skull's eyes and animate it. The bones of a phantom brass dragon appears. It says the following: "you built
+your degenerate throne on our graves, but your gods abandoned you. You have returned, but so have we!" Kari speaks to
+it, and convinces it that we mean no harm. It nods and disappears. We investigate, and it appears that the Astarians
+repurposed the room as a lounge and used the artifacts as decoration.
+
+We go through another door. This room is filled with lab equipment, and live mice occupy some of the cages. Eiffa talks
+to some of the mice and asks why they are there. They say that there are here because of Demlin, a mage who resides
+there. We read some of the books in the shelves. We find some books containing lore pre-dating the catalysm. We find
+references to a flying city called Anyari. We gather as much information as we possibly can about it and its fall. We
+find a scroll of Arcane Gate. We also find a book containing rituals for divination and phantom steed spells.
+
+We fight for a few minutes, then Demlin introduces herself. She's an archmage who is hundreds of years old, one of a
+handful of sylvanesti elves old enough to have survived the catalysm. She's a high wizard of Anyari. She encourages us
+to seek out the Temple of Paladin in the northeast corner of the city to find out why the god has returned the Dragon
+Lance to Anyari.
+
+## June 22, 2024
+
+We leave Demlin's abode and enter a passageway that is lit with torches. She says that thew city is not far: maybe 50
+feet. We must beware of Lozahet, who is a wizard, and Belaphyan, the cleric of Tekhisis, whi is a cleric. They must be
+killed because they are attempting to raise the city, which could cause another Cataclysm. They are located near the
+threshhold of the heavens, which is at the center of the city. It floats, and in the past it was the tower that controls
+the city's flight. It will be very hard to get in there. We must try to find the Temple of the Paladin first. It is one
+of the most intact places on Yarin's Fall. We will find answers regarding Sarlamir's Dragonlance. She says that the
+Dragonlance may be fixed, but it's not as powerful as it could be. We can recharge it at the Temple of the Paladin.
+
+We go through the passageway and find a crater. The City of Lost Names is in the crater. To the southwest, the sound of
+shearing rock comes from a temple to the southwest. A dragon appears, and someone mounts the dragon and flies to the
+south. I recognize the undead dragon rider from the Calaman catacombs. It is the knight, Lord Soth. We continue walking
+through that part of the city.
+
+Katina Rickledust calls us over the fargab. She tells us that Lord Soth is attacking their armies, and they're trying to
+hold on as long as they can. They're going to retreat and draw the Red Dragon Army away from us. She encourages us to
+find teh army's leader's within the city rather than pursue Lord Soth. She tells us that she's confident that the
+Calaman army can retreat safely. She also says that she has a few tricks in store for the Red Dragon Army.
+
+We see Dragon Army soldiers throughout the city. We hide ourselves and wait for about ten minutes so as not to be
+detected. There's activity in three locations: the central spire, which is a tower in the center of the city. The tower
+floats dozens of feet off the ground; small patrols come from a ruined mantion near the center of the city, just to the
+southeast of the central spire; there's also a foreboding sinister temple in the south of the city.
+
+We meet a drunkard who tells us that a black robed wizard named Lozahet and Belaphyan. Those two, they lead the forces
+of the city. They spend their time in the Threshhold of the Heavens. You need a password ot get in. He doesn't know the
+password, and he doesn't know who has it. We check his pockets, and he has a key. Keltrick takes the key. The drunkard
+tells us that it's the key to the mansion.
+
+We enter the mansion through a side door, and we see a Dragonelle being attacked by three Capac Draconians. One of the
+Draconians has a key on its belt. We defeat the Draconians, take the key, and use it to free the Dragonelle that they've
+captured. Eiffa finds a door, and we go through it. We find some dragon army cloaks, put them on and enter teh
+mansion. We ask one of them what's going on. It says that they killed a bronze dragon recently, and they're serving it
+for dinner.
+
+We investigate the room to the east of the salon that they've converted into a mess hall. It's a kitchen. A hobgoblin
+complains, so we exit. We then investigate a room to the north of the kitchen. It appears to be the soldier's
+quarters. They ask why the cook was yelling, so we tell them not to worry, and we exit. They tell us to grab a bunk, but
+one of the soldiers recognizes that Eiffa is wearing their cloak. We end up fighting them. I casted spiritual weapon at
+second level and everybody has bless. We're started at Dragon Army soldier E.
+
+## June 29, 2024
+
+We win the fight. We find fire swords and 80 gold. We split the gold evenly. Dinner was ready, so we go out to eat. The
+cook realizes that something is amiss, and goes to check on the room. He sees the dead bodies along with the spirit and
+the specter inside. We attack the spirit and the specter in order to maintain the ruse. One of the commanders goes into
+the room after we kill the spirit and the specter. They believe the ruse, and ask us to search the place. We search the
+kitchen and find a pouch containing a handful of animal teeth. The pantry is locked, so we unlock it with the key that
+the cook gave to us for searching. The pantry is packed with all kind of supplies. It contains a metal crate etched with
+symbols of blue dragons. We trip the trap with a mage hand spell then pry the chest open with a crowbar. The lock is
+owned by Belephyon, one of the mages at the central spire. It contains three javelins of lightning. It also contains a
+pouch full of sapphires valued at 1600 GP. We pretend that we're fighting a ghost to try to maintain the deception. We
+look in the backyard; there was a courtyard, but nothing of interest. Next, we go upstairs.
+
+We enter a room that appears to be a master bedroom. It's well maintained with a four poster bed and a small chest. A
+door leads to a room to the east, and another doorway leads to the hallway to the north. We hear a voice, that says,
+"who are you?" We see an Aurak draconian writing reports. The Draconian attacks us. We have a few minutes between
+attacks. Two dragon army leaders Belaphyan and Lozahet work at the gateway to the heavens. The password is "by her will,
+the world." Dragon army engineers have completed the majority of their work, shoring up the most well preserved portion
+of the city. There's an open chest containing a Pearl of Power and a 200 lb sack containing 10000 silver pieces. We take
+the sack.
+
+We hear someone in the next room. Kari kicks in the door, and there are two people in dragon army clothes who look like
+clerks. They beg for mercy and warn them to stay put. We defeat the Dradonian and interrogate the clerks. Zyrin picks up
+a trident. We'll start with the interrogation next week.
+
+## July 6, 2024
+
+We interrogate the two clerks who were in the room next to the Draconian. We ask them what the safest route to the
+Temple of Paladine is. There are papers on the desk saying that the Dragon Army soldiers have completed most of their
+work shoring up the most intact areas of the city. We decide to go to the the Temple of Paladine first. We have to
+beware of High Master Consaldi Fireeye. She is ruthless! The commanders, Beleaphyon and Lozahet don't get
+along. Cansaldi listens to Belaphyon. Lozahet is a scheming black mage, obsessed with black magic and venomous
+beasts. His research led the Red Dragon Army to this city. The clerks suggest that we avoid the Threshhold of the
+Heavens. Belaphyon and Lozahet are planning to raise the city and make it fly again. Lord Soth is even worse than
+Cansaldi.
+
+As we leave the mansion, there are wide and narrow streets lined with houses and buildings. We walk for about ten
+minutes. We see a bridge that crosses one of the gorges, but it passes right in front of the Threshhold of the
+Heavens. Mora notices some guards on the bridge. We come to a bridge, and as we continue our trek, we find a dilapidated
+building where we can set up the tent. We take a long rest, and Zyrin attunes to her Pearl of Power.
+
+We continue our trek, and Kari sees a humanoid skeleton holding a dagger. We pass by the dead body and see the words,
+"we deserve this" scratched into the cobblestone. The dagger is just a plain dagger. We continue our trek. At the end of
+the boulevard that we're walking down, we see two enormous marble feet. The rest of the statue is gone. The marble is
+colored, but it's of a color that doesn't exist in this world. There are no pieces of the statue remaining
+anywhere. Mora investigates and finds the partial remains of an adult bronze dragon, laying in a heap.
+
+We continue toward the north of the city. Seven ghasts come out of the side streets. We kill the ghasts and continue
+northward. We approach a bridge, and we see nobody guarding the bridge. We cross the bridge and continue. We've been
+traveling most of the afternoon, and the sun is starting to go down. We're attacked by three cyclopses. We're going to
+resume this conflict next week, starting with Barhum. Everybody but Barhum, Hodor, and Quira is blessed. Cyclopse B is
+frightened, so it has disadvantage on attacks and saves.
+
+## July 13, 2024
+
+We finish off the Cyclopses and take a long rest. The rest is uneventful, an we continue on our journey in the
+morning. We walk for three hours then reach the Temple of Paladine. The Temple of Palaine is one of the most intact
+structures to survive the city's fall. The structure sits atop a hill, keeping it out of the deepest water. The area in
+and around the temple has the following features. Ceilings are ten feet high unless otherwise noted. Its grounds are
+flooded. We don't know how deep the water is. The temple and its grounds are lit by natural lights alone. We approach
+the cosway. The water deepens into a large pond, dotted with the roofs of structures. The cosway rises over water that's
+twenty feet deep. IN the distance, we an see the Temple in the distance. Kari notices figures wearing red and black
+clothing in area P2. We walk along the pathway, and the trees form a violet archway. As we walk along, Eiffa thinks she
+sees a tree move. We see a tree walking towards us. It calls us infidels, and tells us that we shall die. Because we're
+wearing the Dragon Army cloaks, they think that we're them. We convince them to let us pass.
+
+We continue along, and a water elemental and a mirid attack us. We kill the water elemental and the mirid.
