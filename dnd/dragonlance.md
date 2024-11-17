@@ -470,3 +470,14 @@ sees a tree move. We see a tree walking towards us. It calls us infidels, and te
 wearing the Dragon Army cloaks, they think that we're them. We convince them to let us pass.
 
 We continue along, and a water elemental and a mirid attack us. We kill the water elemental and the mirid.
+
+## November 16, 2024
+
+We enter a roomin the temple, and Quira recognizes that the relief of Paladine is on the altar, and we all feel that the
+enscriptions are watching us. We are all healed as if by the heal spell. A white light envelops the dragon lance, and we
+hear a voice saing that the it has been reforged. "Get to the Threshold of the Heavens," the voice tells us.
+
+As we approach the Threshold of the Heavens, four Sivak Draconians are guarding the gates. One of them asks us the
+password, so we tell it and it allows us to pass. We make it up to the base of the stairs. We enter the tower and fight
+a Bozak Draconian and a Bone Devil. After defeating them, we ascend the tower and make it to the third floor where we
+get in a fight with two Aurak Draconians. Kari kills one of them in one turn. We left in the midst of the first round.
