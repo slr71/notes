@@ -473,11 +473,23 @@ We continue along, and a water elemental and a mirid attack us. We kill the wate
 
 ## November 16, 2024
 
-We enter a roomin the temple, and Quira recognizes that the relief of Paladine is on the altar, and we all feel that the
-enscriptions are watching us. We are all healed as if by the heal spell. A white light envelops the dragon lance, and we
-hear a voice saing that the it has been reforged. "Get to the Threshold of the Heavens," the voice tells us.
+We enter a room in the temple, and Quira recognizes that the relief of Paladine is on the altar, and we all feel that
+the enscriptions are watching us. We are all healed as if by the heal spell. A white light envelops the dragon lance,
+and we hear a voice saing that the it has been reforged. "Get to the Threshold of the Heavens," the voice tells us.
 
 As we approach the Threshold of the Heavens, four Sivak Draconians are guarding the gates. One of them asks us the
 password, so we tell it and it allows us to pass. We make it up to the base of the stairs. We enter the tower and fight
 a Bozak Draconian and a Bone Devil. After defeating them, we ascend the tower and make it to the third floor where we
 get in a fight with two Aurak Draconians. Kari kills one of them in one turn. We left in the midst of the first round.
+
+## November 23, 2024
+
+We defeat the other Aurack Draconian, and the flame skulls from the other room enter. We defeat them as well, and Quira
+notices that the map is of the Northern Wastes, and it appears that the armies are moving south of the city. We check in
+an adjacent room where there appear to be some communication consoles. Unfortunately, the consoles are broken.
+
+We go up to the next floor and encounter Lozehet. She says that she's being held captive, but she's being deceptive. She
+grabs an item off the console, trying to be stealthy. She claims that she's attempting to identify it, and htat it's
+related to some other items on the console. Keltrick picks up the items. The first is a Gem of Brightness. The second is
+a Candle of Invocation. Keltrick steals the Istarian Relic from Lozahet. We cast Zone of Truth on Lozahet, and she
+informs us that Belaphyon is holding her captive.
