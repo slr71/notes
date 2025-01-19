@@ -103,7 +103,7 @@ he is working on a poem about our early exploits at the Yawning Portal. Sir Ambr
 the City of the Dead.
 
 We wait a little longer, and a tall knight comes striding in, and goes to a table where some other people are
-sitting. He stand there until they leave then sits down. We are to pursue a necromancer who is stealing bones and
+sitting. He stands there until they leave then sits down. We are to pursue a necromancer who is stealing bones and
 animating them. They must be caught and stopped. Sir Ambrose has seen skeletons and zombies. We are to meet him at the
 City of the Dead at dusk.
 
@@ -117,8 +117,39 @@ We eat then search for the nimblewright. We don't get any hits, but Maeve notice
 apple from a cart. We meet up with Sir Ambrose. We patrol the south while he patrols then north. Nothing happens on the
 next three nights. After the third night, the dwarf is testing out one of the taps. It's a little too foamy, but it's at
 least getting closer. We see peanuts floating into a dish at the end of the bar. Jester thanks the poltergeist. We wake
-up grab food, wander around the city with no encounters. We do get a brief hit on the nimblewright detector. The his is
+up grab food, wander around the city with no encounters. We do get a brief hit on the nimblewright detector. The hit is
 to the south, but it stops almost immediately. We go a litle further; it starts spinning and then it stops. Mystiq flies
 up to see if she can see anything. Maeve uses her survival skills to see if she can track the nimblewright we didn't
 find it, but we have someplace to start. We go back to the City of the Dead. Nothing happens that night, and we don't
 see the sheep or the shepherd. We go to pick up Maeve's van braces.
+
+## 2025-01-18
+
+One of the employees at Troll Skull Manor says that Brett has been out for a couple of days, and she's worried about
+him. She asked us to have him check in if we see him. We're going to check on some doppelgangers. The first that we're
+supposed to talk to is named Bonnie. She looks mostly human but there are some odd things about her. She's going to
+contact the others and have them meet us at Troll Skull Manor. Bonnie says that if any of them get out of line, to let
+her know. There are four other doppelgangers in addition to Bonnie. We're supposed to evaluate them to see if they're a
+good fit for the Harpers. If someone has to be in two places at once, they can help with that. Bonnie says that she's
+not interested in breaking any lows. She calls on the city watch if necessary. She says that all four of the other
+doppelgangers should show up in the next four days. All of them should be able to produce a badge that looks like a
+raptor with a rabbit in its talons.
+
+We ask about Brett. Nobody has seen him. Deviek recognizes him as Gerald. Gerald saw Bret tthree days before talking to
+Milo and they were being very secretive. Brett left in a hurry then Milo left a few minutes later. Deviek asks Alice,
+the bartender, where Milo is. Alice said that he might hve left yesterday morning. Someone wearing a green hood with log
+green gloves and green boots. Moved like an Elf.
+
+We asked the town drunk about Brett. The drunk said that he saw him and that he's going to die by a spear wound in the
+chest. He told Brett about that, and Brett called him a lunatic. We also ask the drunk about the elf that Alice
+mentioned. The drunk knew about him too; he's a drow, and not evil. The drow left right after Brett left. It was an ogre
+spear that was going to kill Brett. The drow left swiftly, surely, and quietly.
+
+We go to walk to Blackstaff Tower to find a diviner who happens to be named Clemintine. Brett is in danger and is to the
+south, somewhere in the Dock Ward. He's not able to leave where he is, which is dark and damp. She gives us a wand. The
+command word is Seek, and the user should think of the neclace and speak the command word. We use it to find a warehouse
+that is apparently abandoned and has a padlock on the door. We pick the lock, disarm a trap, and Maeve goes inside. We
+go inside. Palilalia attempts to open the crate. The crate is empty, so we move it. There's a trap door beneath. We open
+the trap door. We find no traps, so we go down. We see somebody slumped in the corner. It's Brett and he's been
+beaten. Zyrin flew him out. He was supposed to lose the fight and didn't. The mobsters who put him in there were angry
+because his refusal to throw the fight.
