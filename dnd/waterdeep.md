@@ -153,3 +153,15 @@ go inside. Palilalia attempts to open the crate. The crate is empty, so we move 
 the trap door. We find no traps, so we go down. We see somebody slumped in the corner. It's Brett and he's been
 beaten. Zyrin flew him out. He was supposed to lose the fight and didn't. The mobsters who put him in there were angry
 because his refusal to throw the fight.
+
+## 2025-01-25
+
+Maeve chooses to attune to the Stone of Galore so that we can learn the location of Neverremember's treasure. Her minor
+benefit is that while attuned to the artifact, she can't be charmed or frightened. Her minor detriment is that any plant
+she touches takes 1 d6 necrotic damage. When we go downstairs, we notice someone sitting at the bar who appears to be
+one of the doppelgangers that we are supposed to interview. She's a female elf with red hair. She tells us that her name
+is Silith. During the interview, it becomes pretty apparent that she killed the inspiration for her current
+appearance. We decided that she probably wasn't a good candidate for the Harpers.
+
+Maeve consults the Stone of Galore and asks it where the Treasure of Neverremember is located. It tells her that it's
+below a theater.
