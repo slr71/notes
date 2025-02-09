@@ -493,3 +493,11 @@ grabs an item off the console, trying to be stealthy. She claims that she's atte
 related to some other items on the console. Keltrick picks up the items. The first is a Gem of Brightness. The second is
 a Candle of Invocation. Keltrick steals the Istarian Relic from Lozahet. We cast Zone of Truth on Lozahet, and she
 informs us that Belaphyon is holding her captive.
+
+## February 1, 2025
+
+We make our way to the east and are met by Derret and Clystrin. Derret comes up and asks what happened in the City of
+Lost Names. Kari shares what we did and what happened. In the distance, we see a constellation of rocks floating. An
+island sized temple holds a temple wiht violet light escaping from its walls. We see dragonelles picking up dragon army
+soldiers and flying them up to that temple. Derret says that this doesn't feel right and says that we need to warn
+Calaman. We follow Derret so that we can take a rest, then we set out to Calaman in the morning after the rest.
