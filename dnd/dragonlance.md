@@ -496,8 +496,19 @@ informs us that Belaphyon is holding her captive.
 
 ## February 1, 2025
 
-We make our way to the east and are met by Derret and Clystrin. Derret comes up and asks what happened in the City of
+We make our way to the east and are met by Derret and Clystran. Derret comes up and asks what happened in the City of
 Lost Names. Kari shares what we did and what happened. In the distance, we see a constellation of rocks floating. An
 island sized temple holds a temple wiht violet light escaping from its walls. We see dragonelles picking up dragon army
 soldiers and flying them up to that temple. Derret says that this doesn't feel right and says that we need to warn
 Calaman. We follow Derret so that we can take a rest, then we set out to Calaman in the morning after the rest.
+
+## February 22, 2025
+
+We are summoned to see Marshal Vendry. As we're talking to her, a scout arrives and informs us of the approaching
+floating citadel. The Red Dragon Army had started approaching the city. She asks us to get to the walls and see what we
+can do. As we're going to the walls, we pass by the trade gate where the portcullis has been lowered. There are dozens
+of people outside begging to come in for safety. We convince the guards to open the portcullis. We notice a copper
+dragon approaching. The dragon lands and Clystran and Darret dismount the dragon. They inform us that they managed to
+fly close to the flying citadel. There are tunnels through the citadel's base. There are also three dragonels.
+Approaching. Clystran and Darret inform us that they're friendly. They tell us that there are undead dragons near the
+citadel.
