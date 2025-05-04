@@ -512,3 +512,13 @@ dragon approaching. The dragon lands and Clystran and Darret dismount the dragon
 fly close to the flying citadel. There are tunnels through the citadel's base. There are also three dragonels.
 Approaching. Clystran and Darret inform us that they're friendly. They tell us that there are undead dragons near the
 citadel.
+
+## May 3, 2025
+
+We enter S12, and there are statues of several evil gods: Hiddukel, Chemosh, Morgion, Nuitari, Sargonnas, Zeboim. There
+are several Draconians trying to dismantle the statues. They hear us enter and attack us. We defeat the Draconians and
+investigate. We eventually discover that we can move the statue of Techesis. We turn it so that it's facing south and a
+door opens. We find 5200 gold and a Plus One Greatsword. Barhum takes a Potion of Gaseous Form, and a Superior Healing
+Potion. Zirin takes a Superior Healing Potion.  We also find and take the Mirror of Reflected Pasts. We turn the statue
+so that it's facing West. It breathes fire, damages all of us, and turns back to the east. We heal ourselves and turn
+the statue to the north. Another secret door opens to the north.
