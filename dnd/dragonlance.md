@@ -522,3 +522,10 @@ door opens. We find 5200 gold and a Plus One Greatsword. Barhum takes a Potion o
 Potion. Zirin takes a Superior Healing Potion.  We also find and take the Mirror of Reflected Pasts. We turn the statue
 so that it's facing West. It breathes fire, damages all of us, and turns back to the east. We heal ourselves and turn
 the statue to the north. Another secret door opens to the north.
+
+## May 10, 2025
+
+We step into the room to the north. We just see an altar, so we continue in. Kelrick touches the altar with a mage hand
+and three wraiths appear. We defeat the wraiths and go up to the next floor. On the next floor, we encounter a woman
+named Caradoc. They lead us up the next level, and we're ambushed by two skeletal knights. We were in the middle of
+combat when we left off.
