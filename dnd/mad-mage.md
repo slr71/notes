@@ -25,4 +25,69 @@ finds none. Aarrrrgggghhhh breaks open the door and we follow a pathway to a sew
 radiance. Hallow shoots it with an arrow, and a Psychic Gray Ooze appears.
 
 We defeat the Gray Ooze and go back up to the main hallway then downstairs. We find room with a bunch of pillars. One of
-the pillars has a warning on the south wall that says certain death this way.
+the pillars has a warning on the south wall that says certain death this way. We decided to go south and we came to a
+partially caved-in room containing a dead Orc.
+
+## 2025-07-12
+
+We find a statue of a headless woman in the room where the Orc was laying. There's a door to the west and a double door
+to the east. Hallow find the head of the statue and we examine it. It's the head of a cobra with its fangs bared. We
+look in the neck of the statue and find nothing. We look in the head of the statue and find a faint purple glow as if
+there were some slowly dissipating magic.
+
+Ethelred does a religion check and finds that it's a representation of a deity who is known for being disinterested in
+followers except for their continued fealty. There is a trace of venom on the fangs. We decide to leave it be and
+explore further.
+
+We investigate the door to the west. There's just a 60' hallway with a door ending at the end of it. The door is closed,
+and we hear nothing. Hallow checks for traps and finds a tripwire near the bottom of the door. She disables it, and and
+we proceed. There's a small empty room to the west and the hallway continues to the north. Ethelred's familiar scouts to
+the north. The hallway turns left again after thirty feet, and enters a large room containing moldy bones that have been
+swept into a deep alcove. Hanging from rusty manicles on the wall to the east is a tiefling skeleton missing its
+legs. Writtin on the wall in dried blood in Infernal. Ethelred translates it for us, and it says, "Talk to me."
+
+Ethelred invokes her deity to help her speak to the tiefling. The tiefling says it was a mage, cast out of Dweomercore
+for using a spell that I stole, and for being a suspected agent of the Arcane Brotherhood. He was killed by the mage
+named Halister, and was left here as a decoration. Hey says, "look for the little dwarves under the mountain. One of
+them hides the key to my heart." He then slumps over. We all do history checks. Hallow and Ethelred know that Halister
+Blackcloak is the mad mage.
+
+In an alcove to the south, I find a dead goblin and search it. I find a pouch containing one gold piece, and next to the
+goblin is a scimitar. There's nothing else in the room, but there is a corridor leading north and a door on the left
+hand side of the corridor. Ethelred checks for traps; there are none. We open the door and hear a noise that sounds
+vaguely electrical. There's a bright violet light that appears to be pulsing. There are two stone pillars with the
+skeletal remains of two orcs in the room. The purple pulsating light is a lingering aura of wild magic. Hallow throws a
+rock through the aura, and it disappears. We decide to go back to the double doors on the east side of the room
+containing the stague. Ethelred checks for traps and find a pressure place. She disables it, and we crack open the
+doors, and we see a hallway going to the east and another hallway going south.
+
+The hallway is ten feet wide and ten feet high. After thirty feet the hallway comes to an end at an intersecting
+hallway. Ethelred's familiar couts down the hallway. The hallway is lit by floating lights that flicker and produce heat
+but not smoke. There are 25 niches along the hallway, each containing two candles. There's wax dripping down the
+candles, but it never drips, and the candles are never consumed by the flame. Her familiar looks down the hallway to the
+south and finds a maze of corridors. We come to a caved-in section of one of the corridors with four dead goblins. Each
+goblin has 10 gold.
+
+At the end of one of the hallways Ethelred's owl finds a gelatinous cube containing many goblin bones, some scimitars,
+and some armor. We decide to leave it for now. Ethelred's owl continues to explore and finds nothing but more collapssed
+sections of the tunnels. We return to the door in the west tunnel. We find a ten-foot square room, which is empty except
+for a pair of white silk gloves that become black for one hour when they come into contact with poison.
+
+We go down the east corridor and Ethelred finds a mirror with a depiction of a wizard wielding a wand ethed into its
+frame. Hallow investigates the mage, and the depiction appeared to move a little. It's glowing the same color purple as
+the other magic items in the dungeon. When we look into the mirror, we simply see a reflection. We do an arcana check
+and learn nothing of interest. Ethelred's owl touches it; the mirror is solid.
+
+We go back to the double doors and follow the hallway to the east. The hallway veers to the north then back to the
+east. There are intersections with hallways to the north and south. To the north is just an alcove containing a bass
+relief sculpture of a nude heavy-set man playing a harp. There's a broken half of a pole, five feet long. Hallow kicks
+the pole and nothing interesting happens. There is an aura of conjuration, but Ethelred does a religion check to see
+what this to be. There's an inscription in Common carved into the harp. It says, "Gaze upon me with bronzed visage and
+secrets will be revealed. Ethelred uses minor illusion to give herself a bronze face and looks at the image. She sees
+the image begin to play the harp and he says, "you are close, but you are not halister. But if you bring back the
+Halister mask, you can pass through the alcove."
+
+We follow the hallway to the south and find a door to the east. The door is untrapped and unlocked, so we go through
+finding a hallway going north and south. We follow the corridor to the north, and find a room off to the east. There are
+two bugbears and six goblins in the room. The bugbears run north as soon as they see us. The goblins attack us
+immediately.
