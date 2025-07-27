@@ -91,3 +91,23 @@ We follow the hallway to the south and find a door to the east. The door is untr
 finding a hallway going north and south. We follow the corridor to the north, and find a room off to the east. There are
 two bugbears and six goblins in the room. The bugbears run north as soon as they see us. The goblins attack us
 immediately.
+
+##
+
+We defeat the goblins. And follow the hobgoblins to the north, and follow a curving hallway until we encounter a group
+of goblins hiding behind a table. We defeat them as well then investigate a room shaped like a cross with an obilisk in
+the center. Solali touches the obilisk and hears a telepathic voice recite the following verse:
+
+    I cast my eye
+    Into the future
+    And see in yours
+    A perilous descent
+    South of here
+    Beyond a secret passage
+    Waits the two-headed king
+    Look to his left
+    There you will see
+    The path you are
+    Destined to take.
+
+We spot the two bugbears and defeat them.
