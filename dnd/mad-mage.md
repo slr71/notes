@@ -92,7 +92,7 @@ finding a hallway going north and south. We follow the corridor to the north, an
 two bugbears and six goblins in the room. The bugbears run north as soon as they see us. The goblins attack us
 immediately.
 
-##
+## 2025-07-26
 
 We defeat the goblins. And follow the hobgoblins to the north, and follow a curving hallway until we encounter a group
 of goblins hiding behind a table. We defeat them as well then investigate a room shaped like a cross with an obilisk in
@@ -111,3 +111,31 @@ the center. Solali touches the obilisk and hears a telepathic voice recite the f
     Destined to take.
 
 We spot the two bugbears and defeat them.
+
+## 2025-08-02
+
+We follow the diagonal hallways and come to a door. We didn't detect any traps, so we opened it and found pools of
+semi-congealed blood on the floor with dried spatters of blood on the walls and the body of a humanoid
+adventurer. Hallow reconigzes that the adventurer is wearing the garb of the Fine Fellows of Daggerford, a well-known
+adventuring party. Otherwise, he is carrying nothing of value. There's a ten-foot pit along the north wall. We examine
+the pit, and find a revanent, which is an undead humanoid creature. We investigate the room and find an engraving of the
+undermountain with 20 dungeon levels. There aren't any details about any of the levels in the engraving. However, there
+are three salient features: next to the third level, there's a carving of a flaming skull with somehting that appears to
+be a button next to it; next to the sixteenth level is a carving of a comet next to it; next to the 23rd level, which is
+the lowest level there's an engraving of a tower with a button next to it.
+
+We push the button with the comet, and we hear a disembodied male voice say "gate access to star dock from level 16
+only." We push the button with the skull, and hear "gate access to skull port is disabled." We push the button next to
+the tower and hear the same voice say, "gate access to tower port from level 23 only." We continue to search and find
+what appears to be a secret door. We push it open and the door opens to the south. We see humanoid footprints in the
+dust going to the south. We follow the hallway and come to another secret passage. We enter a thirty-foot tall room
+containing a deteriorating granite statue. West of the statue, there's a stairway descending 200 feet to level 2. We
+also hear what sounds like a loud distant voice. There are hallway entrances to the east, southeast, and south. We
+examine the statue, it depicts a dwarven king with a second head jutting out from its neck, ending with a head that is
+nearly featureless and has a toothless mouth.
+
+Following the instructions from the verse, and see a long hallway. The noise that we heard seems to be getting
+louder. Looking down the hallway, we see several passages to the west. We Check one of the passageways to the west and
+find a dining table with several goblins eating and noisily bickering amongst themselves. We defeat the goblins and
+decide that we need to get some rest and some potions. On the way out of the dungeon, we encounter two bugbears who are
+being controlled by intellect devourers. We defeat them as well and return to the yawning portal.
