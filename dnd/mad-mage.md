@@ -139,3 +139,12 @@ louder. Looking down the hallway, we see several passages to the west. We Check 
 find a dining table with several goblins eating and noisily bickering amongst themselves. We defeat the goblins and
 decide that we need to get some rest and some potions. On the way out of the dungeon, we encounter two bugbears who are
 being controlled by intellect devourers. We defeat them as well and return to the yawning portal.
+
+## 2025-08-09
+
+We go to the nearest apothecary to purchase some potions. I pick up several healing potions. We go back into the dungeon
+and explore the hallway to the west of the diamond-shaped room where we went south last time. We see a hallway with
+several niches, each of which contains a mirror in a stone frame on the back wall. There is also a burnt out torch on
+the floor in the middle of the corridor. As Salali and Aarggh walk past the last two mirrors, two Shadowy Duplicates
+that resemble Halister emerge from the mirrors and attack. We defeat one and the other escapes, then we take a short
+rest to regain strength and hit points.
