@@ -148,3 +148,10 @@ several niches, each of which contains a mirror in a stone frame on the back wal
 the floor in the middle of the corridor. As Salali and Aarggh walk past the last two mirrors, two Shadowy Duplicates
 that resemble Halister emerge from the mirrors and attack. We defeat one and the other escapes, then we take a short
 rest to regain strength and hit points.
+
+## 2025-08-16
+
+We continue exploring and encounter the Shadowy Duplicate that ran away yesterday. We defeat it and continue exploring
+again, and encounter some Bugbears and Intellect Devourers. We defeat them, but Hallow is stunned by an Intellect
+Devourer. We have nothing to restore her, so we exit the dungeon, go back to the apothecary, and get a potion of greater
+restoration to restore her. We take a long rest before re-entering the dungeon.
