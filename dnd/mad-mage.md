@@ -155,3 +155,35 @@ We continue exploring and encounter the Shadowy Duplicate that ran away yesterda
 again, and encounter some Bugbears and Intellect Devourers. We defeat them, but Hallow is stunned by an Intellect
 Devourer. We have nothing to restore her, so we exit the dungeon, go back to the apothecary, and get a potion of greater
 restoration to restore her. We take a long rest before re-entering the dungeon.
+
+## 2025-09-06
+
+After resting, we ask about a cleric. An adventurer comes up to us and offers to join. His name is Dibble. He looks kind
+of dumpy, with a chain mail shirt that looks like it was snipped at the bottom and at the sleeves. We allow him to join,
+and go down into the dungeon. We go back to the coffin shaped room and head north. We enter a room and look
+around. There's a vent in the roof in the middle of the room. Beneath the vent is an unadorned wooden armor stand with a
+faintly glowing longsword stabbed into it. We go to explore the hallway to the north; it leads both east and west. We
+search to the east first. We continue exploring and find a room containing three stone statues of Waterdepian nobles. At
+the base of the middle statue, we see the skeleton of a hobgoblin next to a broken staff. There's a name carved into the
+base of each statue: Elendran, Ruathyndar, Onthelass. Each name has been crossed out and replaced by a name in chalk:
+Smelly Bottom, Stupid Skull, and Born Toothless. We continue exploring and find a secret door to the north. We go
+through the secret door and find a room containing a dozen bedrolls and a mural terrorizing villagers. Another room was
+off the edge of this room. It contains a coffin with a hole bored into the foot. We explore another hallway heading to
+the west and encounter a seventy-foot high room containing a throne. Each of the throne's boned armrest is carved to
+resemble a snake. There are empty torch brackets adorning the walls. The the middle of the room are the bones, and
+stinger of a Wyvern. We investigate, and then we hear a door open. Five bandits enter the room, and attack us. We kill
+the bandits and continue exploring. The room to the north contains fifteen statues. The twenty-foot high ceiling is
+covered in spider webs, and there are three dead spiders amongst the webs. We explore to the west and encounter six
+pillars pock marked with tiny indentations the length of the wall. Hallow investigates and sees various colors in
+several of the holes. We find the room where the bandits had been staying. We see a table with cards, empty glasses, and
+48 gold pieces. We search to the north and find a maggot ridden corpse of a dead human next to a scimitar and a money
+pouch. The pouch contains bloodstone, onyx, an emerald, a ruby, and a sapphire. The bloodstone and onyx are worth 50
+each. The emerald, ruby, and sapphire, are worth 50 each.
+
+Aarggh investigates the pillars and finds a suit of rusty armor, the remains of an animated guard that was destroyed
+years ago. We continue following the hallway and open a door to a closet that is filled with skulls. We continue
+following the hallway. We come to the end of the hallway and find a secret door. We open the door, which leads to a room
+containing a throne and a chest. There is also a green colored helm lying on the floor. We open the chest and find a
+puch containing 5000 gold and a cylindrical tube containing a wand. Dibble recognizes it as the Wand of Secrets. It has
+three charges, we can use an action to expend a charge. When used, it pulses and points to any secret door within 30
+feet of it.
