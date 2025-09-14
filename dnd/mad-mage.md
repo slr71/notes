@@ -187,3 +187,11 @@ containing a throne and a chest. There is also a green colored helm lying on the
 puch containing 5000 gold and a cylindrical tube containing a wand. Dibble recognizes it as the Wand of Secrets. It has
 three charges, we can use an action to expend a charge. When used, it pulses and points to any secret door within 30
 feet of it.
+
+## 2025-09-13
+
+We go back to the room containing the throne, and explore the room to the west of the throne. We enter the room to find
+a bed, a treasure chest, and a flesh golem. We defeat the flesh golem and open the chest, which contains a pouch
+containing 37 gold, 10 silver, 7 copper, and a tiger eye gemstone worth 10 gold. We explore the last unexplored hallway
+off of the room containing all of the statues. There's a closet behind a locked door on the west side of the hallway. We
+open the door, and find an abberant cultist. We defeat the cultist.
