@@ -145,9 +145,9 @@ being controlled by intellect devourers. We defeat them as well and return to th
 We go to the nearest apothecary to purchase some potions. I pick up several healing potions. We go back into the dungeon
 and explore the hallway to the west of the diamond-shaped room where we went south last time. We see a hallway with
 several niches, each of which contains a mirror in a stone frame on the back wall. There is also a burnt out torch on
-the floor in the middle of the corridor. As Salali and Aarggh walk past the last two mirrors, two Shadowy Duplicates
-that resemble Halister emerge from the mirrors and attack. We defeat one and the other escapes, then we take a short
-rest to regain strength and hit points.
+the floor in the middle of the corridor. As Salali and Aargh walk past the last two mirrors, two Shadowy Duplicates that
+resemble Halister emerge from the mirrors and attack. We defeat one and the other escapes, then we take a short rest to
+regain strength and hit points.
 
 ## 2025-08-16
 
@@ -180,7 +180,7 @@ several of the holes. We find the room where the bandits had been staying. We se
 pouch. The pouch contains bloodstone, onyx, an emerald, a ruby, and a sapphire. The bloodstone and onyx are worth 50
 each. The emerald, ruby, and sapphire, are worth 50 each.
 
-Aarggh investigates the pillars and finds a suit of rusty armor, the remains of an animated guard that was destroyed
+Aargh investigates the pillars and finds a suit of rusty armor, the remains of an animated guard that was destroyed
 years ago. We continue following the hallway and open a door to a closet that is filled with skulls. We continue
 following the hallway. We come to the end of the hallway and find a secret door. We open the door, which leads to a room
 containing a throne and a chest. There is also a green colored helm lying on the floor. We open the chest and find a
@@ -195,3 +195,33 @@ a bed, a treasure chest, and a flesh golem. We defeat the flesh golem and open t
 containing 37 gold, 10 silver, 7 copper, and a tiger eye gemstone worth 10 gold. We explore the last unexplored hallway
 off of the room containing all of the statues. There's a closet behind a locked door on the west side of the hallway. We
 open the door, and find an abberant cultist. We defeat the cultist.
+
+## 2025-09-20
+
+We continue exploring, and we return to the hallway with all of the statues. We enter to find a hallway ending in a room
+wiht a domed ceiling. We hear a sizzling coming from the dome. Threre's a statue of a four-armeed fish monster stainding
+in the southeast corner. The monster is clutching a one-foot cubic stone box with a lid and a keyhole. Hallow tries to
+pick the lock and acid instantly drops from the ceiling, damaging all of us. The box is lined with lead, and contains
+the dried withered heart of a Tiefling wizard. I cast detect magic, and there's an aura of necromancy magic surrounding
+the heart. We exit the room and wait for the room to drain. Hallow uses the wand of secrets, which instantly ponts to
+the northeast corner of the room. We open the door to find a ten-by-ten room containing a stand we a key. We do a
+collective facepalm and take the key.
+
+We go back to the hallway containing the statue gallery and open a door leading to the south. We find another hallway,
+which ends in a thirty by fouty room with a trap door at the entrance. Aargh triggers the trap and falls ten feet into
+a pit. He falls and takes some damage. Aargh searches the pit, but doesn't find anything valuable. He climbs out of the
+north side of the pit and appraches a chest along the north wall. It's not locked, so we open it. It contains 4200 gold,
+a great axe, two javelins, some hide armor, and a chain shirt. Aargh takes the javelins. There's a doorway at the south
+end of the room leading to an empty ten by ten room.
+
+We return to the statue gallery and find double doors at the east end of the hallway. We check for traps at the end of
+the hallway. We check the doors for traps and find none. Aargh touches the door, and a rune starts to glow. Aargh gains
+one bane that prevents him from gaining advantage on attack rolls, ability checks, or saving throws. He also gains a
+boon that allows him to reduce the damage that he takes from one source by ten d6. The room is Lammath, the elder rune
+of security.
+
+The doors open to a large room and we hear growling, we enter the room to find three manticores. We leave the room the
+way we came and prepare actions in case they come through the doors. We hear one of the manticores attack the
+door. Dibble, Hallow and Dayasa enter the room with the treasure while Aargh distracts the manticores. We use an
+illusion spell to disguise the door and wait for Aargh to return. Aargh gets back to where we're hiding, and we move
+into the treasure room, hoping to lure one of the manticores into the pit.
