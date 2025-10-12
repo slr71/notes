@@ -225,3 +225,17 @@ way we came and prepare actions in case they come through the doors. We hear one
 door. Dibble, Hallow and Dayasa enter the room with the treasure while Aargh distracts the manticores. We use an
 illusion spell to disguise the door and wait for Aargh to return. Aargh gets back to where we're hiding, and we move
 into the treasure room, hoping to lure one of the manticores into the pit.
+
+## 2025-10-11
+
+We stay in the room until the manticores stop moving then we sneak past them while they're sleeping. We then proceed to
+the south and explore a hallway off of one of the rooms. We encounter and defeat several bandits. We find 220 copper, 91
+silver, 85 gold, and a silver ring with a dwarven inscription. Each bandit has a pouch with 16 gold. We go to the room
+where the bandits were staying, and find a table with playing cards and 100 gold. There are several bedrolls on the
+floor. There's a hallway leading to the north and west of the room. We follow it, and come to a dead end containing
+several bodies. We decide that investigations are not worth the effort.
+
+We explore another hallway to the east and come to a secret door leading to the room that takes us back up to The
+Yawning Portal. We continue exploring to the west and come to a forty foot square room with five pillars made of
+mortared humanoid bones that have been painted black. There's an alcove on the east wall. Aargh goes in to investigate
+and encouners a grell. We go in to ambush the grell.
