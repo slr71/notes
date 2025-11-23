@@ -239,3 +239,9 @@ We explore another hallway to the east and come to a secret door leading to the 
 Yawning Portal. We continue exploring to the west and come to a forty foot square room with five pillars made of
 mortared humanoid bones that have been painted black. There's an alcove on the east wall. Aargh goes in to investigate
 and encouners a grell. We go in to ambush the grell.
+
+## 2025-11-22
+
+We enter the room stealthily and manage to do a surprise attack. Another grell appears shortly after we attack. We
+defeat both grells and search the room. We find nothing bot mortared human bones. We continue exploring and encounter a
+bunch of goblins and a bugbear. We defeat them and proceed to the next door.
