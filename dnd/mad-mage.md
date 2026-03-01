@@ -245,3 +245,11 @@ and encouners a grell. We go in to ambush the grell.
 We enter the room stealthily and manage to do a surprise attack. Another grell appears shortly after we attack. We
 defeat both grells and search the room. We find nothing bot mortared human bones. We continue exploring and encounter a
 bunch of goblins and a bugbear. We defeat them and proceed to the next door.
+
+## 2026-02-28
+
+We encounter a door at the south end of the hallway. Hallow unlocks the door and it instantly opens to reveal an archway
+suspended by stone pillars. Casting Detect Magic reveals that the archway has an aura of wild magic. Aargh goes through
+the archway and suffers some damage. The rest of us go around and enter through another door. After briefly searching
+the room, we follow a hallway leading to the west and encounter some stairs leading down. We descend the stairs to the
+second level.
