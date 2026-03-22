@@ -253,3 +253,51 @@ suspended by stone pillars. Casting Detect Magic reveals that the archway has an
 the archway and suffers some damage. The rest of us go around and enter through another door. After briefly searching
 the room, we follow a hallway leading to the west and encounter some stairs leading down. We descend the stairs to the
 second level.
+
+## 2026-03-21
+
+We walk down the hallway on the second level and encounter a room to the left. We enter to find the floor strewn with
+trash. Against the far wall, there's an inscription of several dwarves. Their faces have been scratched off and replaced
+by cartoonish goblin heads drawn in charcoal. A chest sits against the south wall, and we open it. A cloud of smoke
+appears, but nothing seems to happen to any of us. Inside the chest is a pouch containing 27 copper pieces and 15 silver
+pieces. There's also a goblin scimitar, but none of us needs a weapon.
+
+We explore the hallway leading off to the north from the the room. We hear some loud noises accompanies by creatures
+speaking in common to the east of us. We explore the passageway and find a large room with several goblins erecting
+stands to sell wares in an impromptu bazaar. We sepak to one of the goblins, and he warns us of the Xanathar guild and a
+Drow in the guild named Rizzeryl, who has several wererats doing his bidding. The goblin thinks that Rizzeryl is acting
+against the Xanathar guild as well. One of the rats has stolen a key from the guild.
+
+We speak to the local weapons dealer, Dinkle. Hallow purchases a heavy crossbow. I ask about magic weapons, but he says
+that two adventurers named Copper Stormforge and Rex have stolen gold from him. A nice one named Midna Tauberth likes to
+pray to someone named Char. Dinkle thinks that Copper Stormforge and Rex are after her. Rizzeryl stole a stone key from
+Xanathar. He thinks that the key opens the Melarkyn Vault. The humans claim that to be called the Fine Fellows of
+Daggerford.
+
+The hall where the bazaar is located has a 20' ceiling, and we hear repated banging as if someone is hitting somethign
+with a hammer. Dinkle says that the noise is coming from goblins who are constructing a stage on which to sell captured
+creatures into slavery. We explore the north end of the room and find the goblins who are constructing the stage.
+
+We ask one of the vendors about a place where we can rest. The vendor refers us to a room where a goblin named Glom is
+being held in shackles. She is in a member of a different tribe, called the Rustbone tribe. Glom says tha she knows
+about the magic circlet that made a member of her tribe, Yek, a human. She says that she also knows her way around
+undermountain.
+
+We find the room where Yek is waiting. As we enter the room containing ten goblins, four bugbears and Yek the
+Tall. There is a prisoner chained to the south wall, a female dwarf with copper orange hair clad in leather armor. We
+ask about purchasing Glom and the dwarf in the room. Yek allows us to purchase Glom for 30 gold. We agree, and Dibble
+and Aargh go to release her. They stop to equip Glom before returning to Yek's quarters. We negotiate an exchange of 200
+gold for both Glom and the dwarf. Yek attacks us, and we quickly defeat him. As soon as he is dead, the goblins begin to
+celebrate and the bugbears flee. We also take the circlet from Yek, causing him to turmn back into a goblin. The goblins
+in the bazaar begin to pack up and move away. We ask about a Bag of Holding, and one of the goblins, Jingle, sells one
+to us for five gold.
+
+Copper Stormforge leaves to find her party, saying that she's in our debt. Glom joins our party for a while, and asks us
+to follow her into a room to the north. We enter a room containing a stuffed beholder and six stuffed goblins in war
+poses. The room is also adorned with paintings of Yek. We loot the diorama and find fifteen pieces of costume jewelry
+worth 1 gold each and an ivory chess board that is worth 25gp. Hallow opens the chest, which is filled with 2000 gold
+pieces.
+
+We check the door to the south, which leads to a passageway with walls adorned by frescoes depicting dwarves who
+occasionally wave at us and wink. We arrive at an intersection and take the passageway leading to the north. Another
+hall leads to the right.
