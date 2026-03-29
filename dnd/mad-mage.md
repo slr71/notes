@@ -301,3 +301,36 @@ pieces.
 We check the door to the south, which leads to a passageway with walls adorned by frescoes depicting dwarves who
 occasionally wave at us and wink. We arrive at an intersection and take the passageway leading to the north. Another
 hall leads to the right.
+
+## 2026-03-28
+
+We enter a room with 20' ceilings containing a limestone altar topped with an amorphous mound of gold. There are also
+some inscribed figures with gaping mouths and lidless eyes. I cast Detect Magic and sense transmutation magic. It
+appears that there is a stasis field on the altar. We skip it for now, and go to the next room, which is swept clean and
+has a 30' ceiling. Inscriptions of cyclopses adorn the walls. There is also an aura of transmutation magic surrounding a
+dwarven skull encased in glass in the northeast corner of this room. We initially though it was levitating, but then
+noticed that it was enveloped in a giant gelatinous cube.
+
+We go through a door to the east and encounter a hallway that wraps aruound the room we were in to the north, the
+hallway veers east. We follow it and find ten bugbears asleep on the floor. We quickly dispatch them and loot the
+bodies. We get ten shields, ten hide armors, ten longswords, and twenty gold. We backtrack and enter a room to the
+north, and encounter a group of seven thugs who are Xanathar guild members, along withtheir leader, Shunn Shurreth, in a
+partially collapsed hallway. Shunn Sherreth is a Drow that has been partially transformed into a spider, with eight red
+arachnid eyes, a mouthful of fangs and slender black hairs jotting from his spindly limbs. He is wearing a black cord
+around his neck from which a silver key dangles. He offers us fifty GP each to find wererats. He wants us to give the
+stone key to him. He also says that he knows of a way to get to Skullport from within the dungeon. We turn down the
+offer and backtrack to the room with the gelatinous cube.
+
+We open the door and 24000 gallons of salt water rushes out and knocks Dibble ad Dayassa prone. A putrid corpse of human
+wizard in green and purple robes washes into the middle of the room we're in. The wizard also has a glass wand worth 25
+GB. We explore the room to the south, which is partially caved in. Someone has bored tunnels to adjacent dungeon
+passageways. We go to the east and explore the connecting hallway.
+
+We return to the hallway to the south of the stairs we used to enter this level and visit a room to the west of the
+hallway. The room has a rusted iron hand pump that draws water from a deep well. Aargh pumps a couple of gallons of
+water out of the well. It seems to be good potable water. There is a chest in the southeast corner of the room. Hallow
+checks it for traps. It turns out to be a mimic, and it attacks us. We defeat the mimic, and find a silver dagger, and a
+pouch containing 11 GP.
+
+We continue to the southwest and find a room filled with ancient alchemy tools and a cold stone hearth. We proceed to
+the next room and encounter four flying pots and a specter. The specter is turned, and we defeat the flying pans.
