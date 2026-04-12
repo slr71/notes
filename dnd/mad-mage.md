@@ -334,3 +334,31 @@ pouch containing 11 GP.
 
 We continue to the southwest and find a room filled with ancient alchemy tools and a cold stone hearth. We proceed to
 the next room and encounter four flying pots and a specter. The specter is turned, and we defeat the flying pans.
+
+## 2026-04-11
+
+During the battle, the specter fled into an adjacent room. We unlock the door to that room, and see an old rug inscribed
+with ancient symbols. There's an aura of abjuration matic eminating from the rug. We enter the room and defeat the
+specter. We move the rug in the middle of the room and find a circle of abjuratation magic. Dayassa does an arcana check
+and finds that the glyphs can be completed with blood or paint. Hallow investigates the desk and finds some blank
+books. We leave that for a moment to investigate a wooden chest on the side of the room. We disarm the trap and open
+the chst to find only a note in common that says, "retirement fund. Don't spend this on ale, Kalabash!"
+
+We return to the magic circle, which appears to be a portal of some sort. We complete the glyphs and Kalabash appears in
+the middle of the circle. He goes to pull his sword from his sheath and immediately falls over. He appears to be
+intoxiated. He stands up and tries to walk to me, but slips on some paint, partially distroying the glyph and
+immediately disappears. We complete the glyphs again. He appears again, but he's ready to fight this time. We defeat him
+and find an empty silver flask.
+
+We search the hallway to the east and find a well-maintained workroom with instruments intended to measure
+electricty. The air is putrid with the smell of rotting flesh. We investgate a chest and encounter a mimic. We defeat
+the mimic to find a rotting corpse with a short sword and a book. The book contains terms such as "rate of decay" and
+"accumulation of charge." Also a note saying, "Hallister has given me access to a copper mine. Finally I have access to
+the components needed for my experiments." Everything beyond that is smeared. The log is labeled, "Trenzia."
+
+We continue and find a room containing several sealed wooden barrels covered in dust. We decide to skip this room for
+the time being and proceed to the south. We come to a door. Aargh listens and hears nothing. We proceed to the east and
+encounter a room with a flesh golem in the center. The floor is plated with copper tiles; off to the northwest we see a
+metal coated skull that electriies the floor with rays of lightning every time it moves. The flesh golem stands in tne
+middle of the room amidst cables, shards of glass and rusty mining equipment. We also notice a five-foot high, five-foot
+wide chute. We decide to skip the room and go take a long rest.
