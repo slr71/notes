@@ -362,3 +362,14 @@ encounter a room with a flesh golem in the center. The floor is plated with copp
 metal coated skull that electriies the floor with rays of lightning every time it moves. The flesh golem stands in tne
 middle of the room amidst cables, shards of glass and rusty mining equipment. We also notice a five-foot high, five-foot
 wide chute. We decide to skip the room and go take a long rest.
+
+## 2026-04-25
+
+After our rest, we go back to the room with the flesh golem and the flaming skull. We attack and defeat them, then go
+back to the west and investigate a door leading to the south. The door is trapped and locked, so we disarm the trap and
+unlock the door. We open the door to find three ghasts, we attack and defeat them. Following the hallway leads to the
+end of a mine shaft where we find a vein of copper ore. Aarch finds a journal with a log entry from Trenzia. Hallow
+opens a chest and finds a healing potion. Aargh breaks open a chest filled with 100 lb of copper ore. Hallow opens
+another chest containing a greater healing portion. Hallow cheks another chest and finds a mimic. We defeat the mimic to
+find a puch contianing 50 GP, a spell scroll of Misty Step, and a spell scroll of Edritch Blast. I open another chest,
+but it's empyt. We take a long rest before proceeding.
