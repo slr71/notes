@@ -373,3 +373,19 @@ opens a chest and finds a healing potion. Aargh breaks open a chest filled with 
 another chest containing a greater healing portion. Hallow cheks another chest and finds a mimic. We defeat the mimic to
 find a puch contianing 50 GP, a spell scroll of Misty Step, and a spell scroll of Edritch Blast. I open another chest,
 but it's empyt. We take a long rest before proceeding.
+
+## 2026-05-02
+
+We return to the hallway near where the goblins were and explore south. The hallway curves around to the east and we
+encounter a hand-dug hallway leading back to the north. it leads to a hallway back to the west with an adjacent room
+containing 92 gold. Continuing around the hallway, we come to an archway with an inscription of a dead tree. It appears
+to be a portal, but it's inactive. We return to the main hallway, continue east, and come to a corner with the hallway
+proceeding to the south. The hallway continues to the south for 130 feet and turns back to the west. The hallway curves
+to the south and we come to a locked stone doorway with a very large keyhole. We coninue to the southwest. We eventually
+come to a corridor leading to the west, and we hear the sounds of battle coming from down the corridor, which leads to a
+room with 20 feet high ceilings. A watcher is hovering in the center of the room. We attempt stealth, but most of us
+fail the check. Aargh continues past the watcher and looks into the room the the west where a mock battle is being held.
+
+We defeat the watcher and go to take a short rest. After taking the short rest, we return to the room and fight the
+people training. We defeat all of the bugbears and thugs, but the leader fled. We follow her and find a gateway with an
+inscription of a rust golem on it.
