@@ -389,3 +389,17 @@ fail the check. Aargh continues past the watcher and looks into the room the the
 We defeat the watcher and go to take a short rest. After taking the short rest, we return to the room and fight the
 people training. We defeat all of the bugbears and thugs, but the leader fled. We follow her and find a gateway with an
 inscription of a rust golem on it.
+
+## 2026-05-09
+
+Hallow uses the wand of secrets to and we find a secret door in the hallway to the south. We encounter three bugbears
+and Nadia the Unbent again. We defeat them then explore the room. The ceilings are 20 feet high. There are weapon and
+armor racks in the middle of the room with rusty armor and weapons. We go back to a hallway that we passed by a while
+ago and explore it. We eventually find a stiarway leading down. Beyond the stairs is an old festival hall containing two
+rust monsters. There are reliefs depicting singing dwarves and a several empty torch brackets. We investigate the door
+at the west end of the room. We find a hallway and continue to the west. We find an empty room with two fallen
+chandeliers. One of the fallen chandeliers has fallen on a giant spider. We look into the room to the north, which is
+filled with sticky webs. Aargh throws a lit torch into the room and the webs catch fire. We go into follow the flames to
+the north and encounter five giant spiders and a swarm of baby spiders. There's also a port of arcing purple magic to
+the west of those rooms. We find dense webbing in the room to the south. Suspended within the webs are the desicated
+remains of five goblins and a nothic. We have 20 copper, 18 silver, 5 gold, and a silver dagger.
