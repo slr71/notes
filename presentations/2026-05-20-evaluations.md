@@ -2,9 +2,17 @@
 
 - Evaluations and feedback are two of the most valuable tools that any learner has.
     - I didn't say evaluator; they help the evaluator too, but are crucial to learners.
+    - This is true because the human brain is the product of millions of years of trade-offs.
+    - Our ancestors (both human and not human) had to strike a delicate balance between adaptability and speed.
+        - If you optimize too much for adaptability, reacting to life-threatening situation becomes impossible.
+        - If you optimize too much for speed, thriving in new environments becomes untenable.
 - How humans learn
-    - Neural pathways.
-    - Non-determinism: consitency vs. adaptability trade-off
+    - The trade-off for humans is to create neural pathways.
+    - You can think of them as well-worn trails for thoughts.
+    - The more often you practice a task, the more worn the trail becomes.
+    - This makes the task efficient, quick, and automatic.
+    - It also makes it progressively more difficult to change.
+    - This is where feedback comes in.
 - Example
     - Learning to sing.
     - Voice placement (examples)
