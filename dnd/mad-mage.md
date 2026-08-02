@@ -403,3 +403,41 @@ filled with sticky webs. Aargh throws a lit torch into the room and the webs cat
 the north and encounter five giant spiders and a swarm of baby spiders. There's also a port of arcing purple magic to
 the west of those rooms. We find dense webbing in the room to the south. Suspended within the webs are the desicated
 remains of five goblins and a nothic. We have 20 copper, 18 silver, 5 gold, and a silver dagger.
+
+## 2026-08-01
+
+We go back south and explore some rooms to the south. We find the remains of some spiders and the skeletal remains of a
+halfling warrior. The halfling is wearing the Ring of Swimming, which gives the wearer a swim speed of 40 feet. There's
+also an explorer's pack (minus water and rations) in the armoire. We go back to a hallway adjacent to the one we came
+from.
+
+We come to a door in the hallway, which is locked. Hallow picks the lock, and we open it. The room is bitterly cold, and
+a dwarvish rune is inscribed on the north wall. The Melarkyn dwarves used this room for cold storage. My detect magic
+detects an aura of conjuration magic. We go back east a ways and then go to a hallway to the north that we didn't
+explore earlier.
+
+The hallway leads to thenorth and ends in a collapsed tunnel. We listen to the four doors and hear nothing to the east,
+and footsteps and snoring to the west. We try the far door to the east, and enter a partially collapsed room, filling
+the chamber with dust and debris. No one has been in here in ages and nothing of value remains. We check the room that
+we heard snoring in, but it's locked and our attempts to unlock it failed. We try the far room to the west and encounter
+another partially collapsed room. There are footprints that crisscross the dusty floor. There's a plain stone throne
+along the south wall of the room. In the middle of the room, the footprints appear to change from human footprints to
+rodent footprints.
+
+We open the door with brute force and. We hear, "who comes through my door?" We look in to see a round table in the
+middle of the room and a chair in the southwest corner. We encounter a Drow mage who introduces himself as Rizzeryl. The
+table has a map made of stones on it. He asks our intentions and we hear some growling from the room to the south. He
+offers us an easier time exploring Undermountain if we bring the head of Shunn Sherreth. He says we should look for
+Bossken Goorg. We converse a little longer, and convince him to show us the stone key. There's a leather bound spell
+book next to the key, so we ask him about that. We try to convince him to give the to us, but that fails. We attack and
+defeat Rizzeryl. The key has a Dwarvish inscription that says, "meet me at the lost level and find my twin in Slither
+Swamp."
+
+The wererats have carefully arranged the stones on the table into an accurate map of this level of the dungeon. What we
+can't see is what's hidden behind secret doors. We sketch the map and add the sketch to the bag of holding. The wand
+that was stored with the stone key is a wooden wand, carved with the symbol of Xanathar. There are some dirty cots in
+the room where the whererats were. There's a wooden chest against the south wall containing thirty gold pieces and a
+copper tankard.
+
+We force the door on the other side of the hallway to find what used to be a Dwarven mithril mine. This room turns its
+inhabitants into Gibbering Mouthers and Nothics. There are also low-lying stone shelves with Dwarven tools and boots.
