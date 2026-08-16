@@ -404,6 +404,7 @@ the north and encounter five giant spiders and a swarm of baby spiders. There's 
 the west of those rooms. We find dense webbing in the room to the south. Suspended within the webs are the desicated
 remains of five goblins and a nothic. We have 20 copper, 18 silver, 5 gold, and a silver dagger.
 
+
 ## 2026-08-01
 
 We go back south and explore some rooms to the south. We find the remains of some spiders and the skeletal remains of a
@@ -441,3 +442,25 @@ copper tankard.
 
 We force the door on the other side of the hallway to find what used to be a Dwarven mithril mine. This room turns its
 inhabitants into Gibbering Mouthers and Nothics. There are also low-lying stone shelves with Dwarven tools and boots.
+
+## 2026-08-1504
+
+We defeat one of the gnothics and they notice that one of us has cast a spell. They offer to help us and give us a
+potion of greater healing. They offer to give us protection while we take a long rest. We took a long rest. They tell us
+about the elf and the wererats in an adjacent room, and we inform them that we've taken care of both the wererats and
+the elf.
+
+We continue to the east and find two bathrooms followed by a room wiht an 8' high and 2' high wall of hobgoblin
+skeletons and rusty armor with a 2' gap between the top of the wall and the ceiling. Aargh climbs the wall to see what's
+on the other side and finds an empty room and what appears to be an empty hallway leading to the north. We continue
+along the winding passageway until we encounter three gibbering mouthers. We investigate and find veins of copper in the
+walls, but no treasure. There was a crooked passageway leading to the northwest from the room wehere the gibbering
+mouthers were. We encounter another gibbering mouther and defeat it.
+
+We continue past the mouther to find the remains of a dwarven mithril mine. The mine contains an overturned mine
+cart. We find four chunks of mithril ore worth 25 gp each, and put them in the bag of holding. An altar lies at the
+north end of the mine engraved with dwarven prayers. Aargh investigates the altar and finds nothing. Aargh cleans the
+altar. Aargh can now view all secret doors for the next 24 hours.
+
+We go back to the south through the wall of hobgoblin bones and come to a room where we hear the soudns of combat. A
+mezzoloth and two gnothics are fighting Rex the Hammer. We joined the fight, but we didn't finish.
