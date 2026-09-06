@@ -443,12 +443,11 @@ copper tankard.
 We force the door on the other side of the hallway to find what used to be a Dwarven mithril mine. This room turns its
 inhabitants into Gibbering Mouthers and Nothics. There are also low-lying stone shelves with Dwarven tools and boots.
 
-## 2026-08-1504
+## 2026-08-15
 
-We defeat one of the gnothics and they notice that one of us has cast a spell. They offer to help us and give us a
-potion of greater healing. They offer to give us protection while we take a long rest. We took a long rest. They tell us
-about the elf and the wererats in an adjacent room, and we inform them that we've taken care of both the wererats and
-the elf.
+We defeat one of the nothics and they notice that one of us has cast a spell. They offer to help us and give us a potion
+of greater healing. They offer to give us protection while we take a long rest. We took a long rest. They tell us about
+the elf and the wererats in an adjacent room, and we inform them that we've taken care of both the wererats and the elf.
 
 We continue to the east and find two bathrooms followed by a room wiht an 8' high and 2' high wall of hobgoblin
 skeletons and rusty armor with a 2' gap between the top of the wall and the ceiling. Aargh climbs the wall to see what's
@@ -463,4 +462,21 @@ north end of the mine engraved with dwarven prayers. Aargh investigates the alta
 altar. Aargh can now view all secret doors for the next 24 hours.
 
 We go back to the south through the wall of hobgoblin bones and come to a room where we hear the soudns of combat. A
-mezzoloth and two gnothics are fighting Rex the Hammer. We joined the fight, but we didn't finish.
+mezzoloth and two nothics are fighting Rex the Hammer. We joined the fight, but we didn't finish.
+
+## 2026-09-05
+
+We defeat the mezzoloth and Rex the Hammer defeats the nothics. Rex offers to join our party, so we allow him to
+join. We tell him that we ran into Copper Stormforge earlier, and she left to find the rest of her party. We take a long
+rest and then Rex tells us to follow him to riches. We let him go on then we go down to find places that we haven't
+explored. We come to an arched hallway. Two animated ballistas await us at the end of the hallway. We defeat them and go
+check the door behind them. Behind the door is a room with a tower with three copper spigots. There are carvings of
+drunken dwarves with their arms jutting out from the wall. Three of the hands are holding copper tankards. Three's a
+door at the other end of room. There's a sign on the door that says, "brewers only! Others keep out! Orders of Garrack."
+We go in, of course. There's another door, and we open it to find a 20' high room containing six stone vats 10' high and
+10' in diameter arranged in rows of three. We continue through to double doors on the west side of the room. The doors
+lead to a hallway with something on the floor every ten feet. It appears that the dwarved built three trap doors in the
+floor in order to guard their ale supplies. We jump over the pits and see a 10x10 area filled with barrels of ale. We
+take one of the barrels of ale and put it in the bag of holding. Three mimics attack us and we flee. We check the room
+to the north to find a room full of barrels of ale. We return to a door that we passed earlier and head to the south. We
+eventually come to the stairs going down.
