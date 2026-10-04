@@ -480,3 +480,17 @@ floor in order to guard their ale supplies. We jump over the pits and see a 10x1
 take one of the barrels of ale and put it in the bag of holding. Three mimics attack us and we flee. We check the room
 to the north to find a room full of barrels of ale. We return to a door that we passed earlier and head to the south. We
 eventually come to the stairs going down.
+
+## 2026-10-03
+
+We go down to the next level and explore the catacombs. We encounter a partially rotted human corpse. It appears that a
+horde of spiderlings burst from his face. We continue and encounter some mining tunnels covered with spider webs. We set
+fire to tbe webs and wait until we can no longer hear webs burning before proceeding. We go back to the tunnels and hear
+something that sounds like breathing. We can't quite place the spell. We happen upon some quaggoths, which attack us
+immediately. We defeat them, then follow the hallway to the south. We encounter a room filled with webs and three-foot
+bundles wrappeed in thewebbing. We see the face of Hallister with hollow eyes close to the top of the ceiling. We also
+notice that one of the bundles is squirming. We release the bundle and free the creature inside, which is a goblin. His
+tongue is cut out, so we hand him a piece of paper. He tells us to beware of teh quaggoths and the spiders. The tunnel
+to the north leads to another part of the dungeon, but he doesn't know where. He also tells us that Telenna is part of
+the house of Auvryndar. He thanks us for saving him. We offer some assistance, and end up giving him a scimitar, some
+rations and some water. We also lead him to the stairs going up to the next level.
