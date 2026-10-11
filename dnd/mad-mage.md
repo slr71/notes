@@ -490,7 +490,44 @@ something that sounds like breathing. We can't quite place the spell. We happen 
 immediately. We defeat them, then follow the hallway to the south. We encounter a room filled with webs and three-foot
 bundles wrappeed in thewebbing. We see the face of Hallister with hollow eyes close to the top of the ceiling. We also
 notice that one of the bundles is squirming. We release the bundle and free the creature inside, which is a goblin. His
-tongue is cut out, so we hand him a piece of paper. He tells us to beware of teh quaggoths and the spiders. The tunnel
+tongue is cut out, so we hand him a piece of paper. He tells us to beware of the quaggoths and the spiders. The tunnel
 to the north leads to another part of the dungeon, but he doesn't know where. He also tells us that Telenna is part of
 the house of Auvryndar. He thanks us for saving him. We offer some assistance, and end up giving him a scimitar, some
 rations and some water. We also lead him to the stairs going up to the next level.
+
+## 2026-10-10
+
+We return to the room where we defeated and take a hallway to the north. We find a sign that says "Skullport," and I do
+a history check. Skullport was a town underneath waterdeep that was frequented by pirates. We see a human skeleton on
+the west side of the tunnel. The skeleton is moldy and holding a rusty short sword in one hand and a wooden tankard in
+the other. Dibble casts speak with dead. Dibble asked the skeleton's name, which is Skunkhead. He has hidden some
+treasure nearby, and he said to look for the slot. Skunkhead does not want to be raied from the dead because he's at
+peace. He wishes death to the person who killed him. Hallow uses her wand to see if there are any traps or secret
+doors. Then we look for a slot in the wall. We find a slot that looks like it's about the same width as the sword. We
+insert the sword into the slot, and a chest falls out of the ceiling. We find 500 silver pieces, 5 moss agates valued 10
+gp each, a pair of bone dice valued at 1 gp, an obsidian flask in the shape of a wizard's tower with a removable cork
+roof valued at 50gp, a pearl necklass worth 250gp, a shriveled sea elf's head with a potion in its mouth. The potion has
+an illustration of a mermaid on the front of the flask. As we pick up the loot, we're attacked by two Barlguras. We
+defeat them, search the room and find nothing.
+
+We explore the tunnel leading to the south where we can hear the sound of rushing water. We come to the edge of a
+river. There's a weathered backpack that belonged to a traveler. We find a hammer, a tinderbox, a skillet, a half empty
+waterskin, seven days worth of spoiled rations, and a receipt for a mermaid shaped bottle of potion of water
+breathing. To the west of he cave, there are some stairs leading down into the rushing river. We cant' find anything
+else of interest, so we return to where we freed the orc. We come to a room containing four quaggoths and a drow. The
+Drow asks us why we we are in the dungeon. The drow is named Ilnor Telenna. He tells us that they are investigating the
+dungeon. Hallow notices cobwebs in the top of the room that appear to be moving. There are also two bundles containing
+stone statues of dwarves. Ilnor says that they're investigating the veins of gold. We see a bronze door in the west
+wall. The bronze door contains an emmblem that looks like Dumathoin's symbol. The symbol appears to be missing a
+gemstone, so we try inserting a tiger eye gemstone in the slot for the missing gem, and the door unlock. We open the
+door, and we find someone working in the room, chipping away at a gold ore vein. I do a nature check and discover that
+the veins are not gold, but pyrite. There are troglodytes in the room mining the pyrite.
+
+Ilnor says that T'rissa Auvryndar (a drow priestess of Lolth, who is a spider queen). We know that T'rissa is as
+malevolent as the demonic god she worships. She also refuses to speak to non-drow. Aargh closes the door, and we go back
+to the stairs, and explore a passageway west of the stairs leading south. We come to the Ancient settlement of
+Stromkuhldur. Sections of the cavern ceiling show signs of collapse, and there are rocks scattered across the floor. We
+explore the settlement, and find nothing of value.
+
+We continue past the settlment and come to a room where we can hear some breathing. We encounter Mimi, T'rissa's pet
+chimara, who is sitting atop a pile of coins.
