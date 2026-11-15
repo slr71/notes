@@ -530,4 +530,30 @@ Stromkuhldur. Sections of the cavern ceiling show signs of collapse, and there a
 explore the settlement, and find nothing of value.
 
 We continue past the settlment and come to a room where we can hear some breathing. We encounter Mimi, T'rissa's pet
-chimara, who is sitting atop a pile of coins.
+chimera, who is sitting atop a pile of coins.
+
+## 2026-11-14
+
+We let the chimera be, continue to the south, and immediately encounter three giant spiders. Dayassa happens to know
+some history. After driving the legion of Azrok from the cavern, the house of Auvryndar assumed control of it. These
+ruins are a thirty feet high cavern filled with partially collapsed stone buildings. The walls of the buildings are ten
+feet high and the roofs have mostly caved in. Webs have been strung between the buildings by the giant spiders, but the
+webs are not thick enough to inhibit movement. We explore the southern part of the settlement.
+
+We open one of the doorways to the south of us. A male drow is using the latrine. Embarrassed, he throws the bucket at
+Hallow and runs away, attempting to pull up his trowsers. We open a door to the west of the spiders and find an empty
+room. We explore a hallway that leads to the east and then to the south. The hallway is filled with the aroma of a meat
+stew, which eminates from a doorway to the south. We knock and a person inside invites us in, saying that there's plenty
+of food. The door opens to a large room containing three drow, three goblins, and a bugbear. The goblins are shackled at
+th ankles and are preparing the food. The drow are supervising the goblins. Stone counters are spread throughout the
+room, and a large cauldron sits above a fire. The simmering cauldron contains a hearty stew of ripplebark fungus and
+troglodyte meat.
+
+We continue to the east and encounter two more giant spiders. We defeat the spiders, and check a door to the north. The
+door is locked, and Hallow picks it. This room is filled with cobwebs, and a 3' tall oval mirror hangs on the west
+wall. The mirror frame is carved with eerily lifelike spiders. Aargh looks at the mirror, and initially sees his normal
+reflection. The reflection fades then a spider, Yochlol, appears. The spider says why have efforts been started to
+conquer the twisted caverns when Stormcaldur and Skullport have yet to be taken? It says, "I know who you are," and the
+mirror falls to the floor and shatters.
+
+We check a door to the northeast. We can hear water, but we only see a few cobwebs. We continue exploring to the north.
