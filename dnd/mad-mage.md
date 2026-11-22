@@ -557,3 +557,23 @@ conquer the twisted caverns when Stormcaldur and Skullport have yet to be taken?
 mirror falls to the floor and shatters.
 
 We check a door to the northeast. We can hear water, but we only see a few cobwebs. We continue exploring to the north.
+
+## 2026-11-21
+
+We explore to the north and encounter two drow guards. We attack and defeat the two guards as well as an additional drow
+that exits the room that was being guarded. We enter the room to find Trissa's quarters. The wall is adorned with two
+stuffed bugbear heads and a stuffed goblin head. A bed draped in spider webs and a chest with jewels made to look like
+spider eyes sits against the west wall. Across from the bed, there's an empty space where a mirror should be.
+
+We examine the chest, which is locked although we don't find any traps. Hallow doublechecks with her wand before
+attempting to pick the lock. There are no traps, so she picks the lock and Aargh opens the chest. The eight red crystal
+eyes can be pried loose, and are worth 5gp each. The chest contains an onyx spider figurine worth 25 gp. Eight sticks of
+insence worth 1gp each, and a dagger with slots for vials of poison. The middle shelf contains a robe worth 90gp, hidden
+in the folds of the robe is a potion of healing in a crystal vail. On the bottom shelf, lies a birchwood wand and a
+leather bound spellbook with the name Marta Moonshadow inscribed on the cover. The book contains the following spells:
+chromatic orb, cone of cold, counterspell, detect magic, dispell magic, enlarge, reduce, fireball, fly, greater
+invisibility, ice storm, identify, mage armor, magic missile, magic weapon, misty step, polymorph, sending, shield, and
+suggestion.
+
+I cast detect magic, and the only magic item is the birchwood wand. We continue to search the chest and find a pouch
+containing 2500 gp.
