@@ -576,4 +576,18 @@ invisibility, ice storm, identify, mage armor, magic missile, magic weapon, mist
 suggestion.
 
 I cast detect magic, and the only magic item is the birchwood wand. We continue to search the chest and find a pouch
-containing 2500 gp.
+containing 2500 gp. We search the drows that we defeated, and both elite guards are carrying a pouch with 50 gp each.
+
+We continue south past the giant spiders that we killed the other day and search the hallways to the south. We check a
+door to the south. After entering the room, we see a vein of turquoise, and the grantite on the walls have been carved
+to look like a school of trout. The turquoise vein appears to lead to an empty basin in the floor. I cast detect magic,
+and I detect illusion magic eminating from the fish carvings. We investigate, and find that the carvings can be
+rotated. We turn the fish to rotate them. The basin fills with 50 gallons of fresh water. We notice a tiny emerald fish
+swimming in the water. Aargh catches the fish, and it transforms into an elemental water gem. The gem contains a mote of
+elemental energy. When we break the gem, it summons an elemental. Hallow takes the gem so that she can use it in battle
+if necessary.
+
+We check a room to the south. Eleven padded bedrolls are scattered throughout the room on stone bed rests. Each bed has
+a chest next to it. We check a door to the north of the hallway. We hear something eating, so we just move on. We check
+a doorway to the west, which is an old dining hall with a table sized for dwarves. We go back to the south and encounter
+three giant spiders.
